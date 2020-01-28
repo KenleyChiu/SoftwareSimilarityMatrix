@@ -31,9 +31,13 @@ public class UsernameController {
 
         stage.show();
     }
-    
+
     public void passStage(Stage stage){
         this.stage = stage;
+    }
+
+    public void Test(){
+        System.out.println("Lol");
     }
 
 
