@@ -36,6 +36,11 @@ public class UsernameController {
         this.stage = stage;
     }
 
+    public void whatsoever()
+    {
+        System.out.println("HELLO Universe");
+    }
+
 }
 
 
