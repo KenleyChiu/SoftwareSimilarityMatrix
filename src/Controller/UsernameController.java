@@ -26,7 +26,7 @@ public class UsernameController {
         passCont.passStage(stage);
 
         stage.setScene(scene);
-        stage.setTitle("Software Similarity Program");
+        int x = 0;
         stage.show();
     }
 
