@@ -15,6 +15,10 @@ public class UsernameController {
     public TextField nameField;
     private Stage stage;
 
+    public void passStage(Stage stage){
+        this.stage = stage;
+    }
+
     public void toNext() throws IOException {
         FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("../FXML/Filenames.fxml"));
         Parent root = (Parent) fxmloader.load();
@@ -30,10 +34,6 @@ public class UsernameController {
         int x = 0;
 
         stage.show();
-    }
-
-    public void passStage(Stage stage){
-        this.stage = stage;
     }
 
 }
