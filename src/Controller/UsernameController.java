@@ -26,7 +26,7 @@ public class UsernameController {
         passCont.passStage(stage);
 
         stage.setScene(scene);
-        stage.setTitle("Sabu");
+        System.out.println("SABU");
         stage.show();
     }
 
