@@ -27,7 +27,7 @@ public class UsernameController {
 
         stage.setScene(scene);
 
-        int x = 0;
+        stage.setTitle("Similarity Software Program");
 
         stage.show();
     }
@@ -35,7 +35,7 @@ public class UsernameController {
     public void passStage(Stage stage){
         this.stage = stage;
     }
-    
+
 
 
 }
