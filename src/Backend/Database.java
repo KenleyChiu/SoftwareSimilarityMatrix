@@ -9,7 +9,7 @@ public class Database {
         FileWriter writer = new FileWriter("Logs/"+fileName+".txt", true);
         BufferedWriter bufferedWriter = new BufferedWriter(writer);
         bufferedWriter.write(message);
-        bufferedWriter.write("\n");
+        bufferedWriter.newLine();
         bufferedWriter.close();
     }
 
