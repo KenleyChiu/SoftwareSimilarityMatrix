@@ -21,7 +21,7 @@ public class FilenamesController {
     private String fileName;
     private String message;
     private Similarity check= new Similarity();
-    private Database logs = new Database();
+    private Matrix logs = new Matrix();
 
     public void passStage(Stage stage){
         this.stage = stage;
@@ -52,7 +52,7 @@ public class FilenamesController {
         popUp.show();
 
         StatusController passCont = fxmloader.getController();
-        check.readFile();
+        check.readFile(comparison);
 
     }
 
