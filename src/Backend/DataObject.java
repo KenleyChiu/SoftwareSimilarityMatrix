@@ -28,6 +28,10 @@ public class DataObject {
         return dataLabel;
     }
 
+    public float getData(){
+        return data;
+    }
+
     public Rectangle getRect(){
         return rect;
     }
