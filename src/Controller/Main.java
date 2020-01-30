@@ -18,7 +18,7 @@ public class Main extends Application {
         Parent root =fxmloader.load();
 
         primaryStage.setTitle("Software Similarity Program");
-        primaryStage.setScene(new Scene(root, 1450, 850));
+        primaryStage.setScene(new Scene(root, 1600, 850));
 
 //        UsernameController passCont = fxmloader.getController();
 //        passCont.passStage(stage);

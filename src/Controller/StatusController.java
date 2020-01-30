@@ -1,13 +1,16 @@
 package Controller;
 
+import Backend.DataObject;
 import Backend.Similarity;
 import com.sun.org.apache.xml.internal.security.Init;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.FileNotFoundException;
@@ -19,21 +22,12 @@ public class StatusController implements Initializable {
 
 //    public Label matrixStatus,matrixText;
     public GridPane gridPane;
-    public ToggleGroup toggleChoice = new ToggleGroup();
+//    public ToggleGroup toggleChoice = new ToggleGroup();
     public RadioButton lineChoice,characterChoice;
     public TextField username;
     public Button check,quit;
     private Similarity compare = new Similarity();
-    private String comparison = "";
-
-
-//    public void passMatrix(StringBuilder message,int i) {
-//        if(i == 0) this.matrixStatus.setText("Matrix Created - Compared by line");
-//        else this.matrixStatus.setText("Matrix Created - Compared by character");
-//
-//        StringBuilder text = new StringBuilder(message);
-//        this.matrixText.setText(text.toString());
-//    }
+    private String comparison = "line";
 
 
     public void line() {
@@ -46,6 +40,9 @@ public class StatusController implements Initializable {
 
     public void createMatrix() throws FileNotFoundException {
 
+        if(compare.getMatrix() != null){
+            gridPane.getChildren().removeAll();
+        }
 
 //        if(lineChoice.isSelected()) line();
 //        else {
@@ -54,6 +51,23 @@ public class StatusController implements Initializable {
 //        }
 
         compare.readFile(comparison);
+
+        for(int x=0;x<compare.getMatrix().arraySize();x++){
+            //System.out.print(form.getMatrix().get(0).get(x) + " ");  //to see first row values
+            for(int y=0;y<compare.getMatrix().matrixSize();y++){
+                System.out.print(compare.getMatrix().getMatrix().get(y).get(x) + "   ");
+                DataObject dataObj = new DataObject(compare.getMatrix().getMatrix().get(y).get(x));
+
+                VBox vbox = new VBox();
+                vbox.setAlignment(Pos.CENTER);
+                vbox.getChildren().addAll(dataObj.getLabel());
+
+                gridPane.add(vbox,y,x);
+
+            }
+            System.out.println();
+        }
+
 
 
     }
@@ -67,9 +81,8 @@ public class StatusController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        lineChoice.setToggleGroup(toggleChoice);
-        characterChoice.setToggleGroup(toggleChoice);
-
+//        lineChoice.setToggleGroup(toggleChoice);
+//        characterChoice.setToggleGroup(toggleChoice);
 
     }
 }
