@@ -14,14 +14,14 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Stage stage = primaryStage;
 
-        FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("../FXML/Username.fxml"));
+        FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("../FXML/Status.fxml"));
         Parent root =fxmloader.load();
 
         primaryStage.setTitle("Software Similarity Program");
-        primaryStage.setScene(new Scene(root, 500, 300));
+        primaryStage.setScene(new Scene(root, 1450, 850));
 
-        UsernameController passCont = fxmloader.getController();
-        passCont.passStage(stage);
+//        UsernameController passCont = fxmloader.getController();
+//        passCont.passStage(stage);
 
         primaryStage.show();
     }

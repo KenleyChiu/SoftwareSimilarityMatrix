@@ -107,11 +107,12 @@ public class Similarity {
         for(int x=0;x<form.arraySize();x++){
             //System.out.print(form.getMatrix().get(0).get(x) + " ");  //to see first row values
             for(int y=0;y<form.matrixSize();y++){
-                wholeMatrix.append(form.getMatrix().get(y).get(x)).append("  ");
-                //System.out.print(form.getMatrix().get(y).get(x) + "   ");
+//                wholeMatrix.append(form.getMatrix().get(y).get(x)).append("  ");
+                System.out.print(form.getMatrix().get(y).get(x) + "   ");
+                DataObject dataObj = new DataObject(form.getMatrix().get(y).get(x));
             }
-            wholeMatrix.append("\n");
-            //System.out.println();
+//            wholeMatrix.append("\n");
+            System.out.println();
         }
 
         //System.out.println(wholeMatrix);
