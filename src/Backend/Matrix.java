@@ -6,12 +6,32 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Matrix {
-    ArrayList<ArrayList<Float>> matrix=new ArrayList<>();
-    public void setMatrix(int i, float value)
-    {
-        matrix.get(i).add(value);
-    }
-    public void getMatrix(){
+    private ArrayList<ArrayList<Float>> matrix = new ArrayList<>();
+    private ArrayList<Float> arrayTemp;
 
+    public ArrayList<ArrayList<Float>> getMatrix() {
+
+        return matrix;
     }
+
+    public void setNewArray() {
+        arrayTemp= new ArrayList<>();
+    }
+
+    public void addArray(float value) {
+        arrayTemp.add(value);
+    }
+
+    public void setMatrix() {
+        matrix.add(arrayTemp);
+    }
+
+    public int arraySize(){
+        return arrayTemp.size();
+    }
+
+    public int matrixSize(){
+        return matrix.size();
+    }
+
 }

@@ -4,19 +4,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="300.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.StatusController">
+<AnchorPane prefHeight="850.0" prefWidth="1450.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.StatusController">
    <children>
-      <Pane layoutX="10.0" layoutY="10.0" prefHeight="300.0" prefWidth="500.0">
+      <Pane prefHeight="850.0" prefWidth="1450.0">
          <children>
-            <VBox alignment="CENTER" prefHeight="300.0" prefWidth="500.0" spacing="10.0">
+            <VBox alignment="CENTER" prefHeight="850.0" prefWidth="1450.0" spacing="5.0">
                <children>
-                  <Label fx:id="status" text="Matrix Creation Status">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
+                  <Label fx:id="matrixStatus" text="Matrix Creation Status" />
+                  <Label fx:id="matrixText" alignment="CENTER" prefHeight="789.0" prefWidth="1450.0" text="MATRIX" />
                </children>
             </VBox>
          </children>

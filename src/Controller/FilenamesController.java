@@ -21,7 +21,7 @@ public class FilenamesController {
     private String fileName;
     private String message;
     private Similarity check= new Similarity();
-    private Matrix logs = new Matrix();
+    private int type = 0;
 
     public void passStage(Stage stage){
         this.stage = stage;
@@ -41,19 +41,27 @@ public class FilenamesController {
     }
 
     public void toNext() throws IOException {
-//        Stage popUp= new Stage();
-//        FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("../FXML/Status.fxml"));
-//        Parent root = (Parent) fxmloader.load();
-//
-//        Scene scene = new Scene(root);
-//
-//        popUp.setScene(scene);
-//        popUp.setTitle("Software Similarity Program");
-//        popUp.show();
+        Stage popUp= new Stage();
+        FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("../FXML/Status.fxml"));
+        Parent root = (Parent) fxmloader.load();
 
-        //StatusController passCont = fxmloader.getController();
+        Scene scene = new Scene(root);
+
+        //CREATE MATRIX
+        if(lineChoice.isSelected()) line();
+        else {
+            character();
+            type = 1;
+        }
+
+        StatusController passCont = fxmloader.getController();
         check.readFile(comparison);
+        passCont.passMatrix(check.getSB(),type);
+//        check.clearSb();
 
+        popUp.setScene(scene);
+        popUp.setTitle("Software Similarity Program");
+        popUp.show();
     }
 
     private void clear()

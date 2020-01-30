@@ -8,46 +8,36 @@ public class Similarity {
     private float  percentage = 0;
     private Scanner prog1Scan, prog2Scan;
     private File filename1, filename2;
+    private Matrix form= new Matrix();
+    private StringBuilder wholeMatrix = new StringBuilder();
 
     public void ReadCodeLine() {
         float sameLines = 0, totalLines = 0, lineLength = 0;
         StringBuilder prog1String = new StringBuilder();
         StringBuilder prog2String = new StringBuilder();
 
-        while(true)
-        {
-            if (prog1Scan.hasNext() && prog2Scan.hasNext()) {
-                String prog1Word = prog1Scan.nextLine();
-                String prog2Word = prog2Scan.nextLine();
+        while (prog1Scan.hasNextLine() || prog2Scan.hasNextLine()) {
+            String prog1Word = prog1Scan.nextLine();
+            String prog2Word = prog2Scan.nextLine();
 
-                prog1String.append(prog1Word + "\n");
-                prog2String.append(prog2Word + "\n");
+            prog1String.append(prog1Word + "\n");
+            prog2String.append(prog2Word + "\n");
 
-                if (prog1Word.equals(prog2Word)) {
-                    int newLineLength = prog1Word.length();
+            if (prog1Word.equals(prog2Word)) {
+                /*int newLineLength = prog1Word.length();
 
-                    if (newLineLength > lineLength) {
-                        lineLength = newLineLength;
-                    }
-                    sameLines++;
-                }
-                totalLines++;
+                if (newLineLength > lineLength) {
+                    lineLength = newLineLength;
+                }*/
+                sameLines++;
             }
-            else if(prog1Scan.hasNext())
-            {
-               totalLines++;
-            }
-            else if(prog2Scan.hasNext())
-            {
-                totalLines++;
-            }
-            else {
-                break;
-            }
+            totalLines++;
+            if (!prog1Scan.hasNextLine() || !prog2Scan.hasNextLine()) break;
         }
+        //System.out.println("same: " + sameLines + " and total: " + totalLines);
         percentage = (sameLines / totalLines);
-        System.out.println(percentage);
     }
+
 
     public void ReadCodeCharacter() {
         int countChar = 0;
@@ -87,17 +77,17 @@ public class Similarity {
         prog1Scan.close();
         prog2Scan.close();
         percentage = ((float) countChar / (float) countTotal);
-
-
     }
 
     public void readFile(String comparison) throws FileNotFoundException {
-        File prog1File = new File("D:\\College\\TERM5\\LBYCP2D\\Module 1-2 Correlation Matrix\\SoftwareSimilarityMatrix\\Codes");
-        File prog2File = new File("D:\\College\\TERM5\\LBYCP2D\\Module 1-2 Correlation Matrix\\SoftwareSimilarityMatrix\\Codes");
+
+        File prog1File = new File("Codes");
+        File prog2File = new File("Codes");
         File[] file1 = prog1File.listFiles();
         File[] file2 = prog2File.listFiles();
         for(int i=0; i<file1.length; i++)
         {
+            form.setNewArray();
             this.filename1=file1[i];
             for(int j=0; j<file2.length; j++)
             {
@@ -106,11 +96,34 @@ public class Similarity {
                 prog2Scan = new Scanner(filename2);
                 if(comparison.equals("line")) ReadCodeLine();
                 else ReadCodeCharacter();
-            }
 
+                //form.addArray(percentage);  //raw percentage
+                form.addArray((float)(Math.round(percentage*100.0)/100.0));  //two decimal points
+
+            }
+            form.setMatrix();
         }
-        //File prog1File = new File("D:\\Downloads\\College stuff\\Term 5\\LBYCP2D\\SoftwareSimilarityGui\\src\\sample\\" + filename1);
-        //File prog2File = new File("D:\\Downloads\\College stuff\\Term 5\\LBYCP2D\\SoftwareSimilarityGui\\src\\sample\\" + filename2);
+
+        for(int x=0;x<form.arraySize();x++){
+            //System.out.print(form.getMatrix().get(0).get(x) + " ");  //to see first row values
+            for(int y=0;y<form.matrixSize();y++){
+                wholeMatrix.append(form.getMatrix().get(y).get(x)).append("  ");
+                //System.out.print(form.getMatrix().get(y).get(x) + "   ");
+            }
+            wholeMatrix.append("\n");
+            //System.out.println();
+        }
+
+        //System.out.println(wholeMatrix);
     }
+
+    public StringBuilder getSB(){
+        return wholeMatrix;
+    }
+
+//    public void clearSb(){
+//        wholeMatrix.setLength(0);
+//        System.out.println(wholeMatrix);
+//    }
 
 }
