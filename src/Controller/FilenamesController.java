@@ -23,10 +23,6 @@ public class FilenamesController {
     private Similarity check= new Similarity();
     private Database logs = new Database();
 
-    public void getFileName(String fileName){
-        this.fileName=fileName;
-    }
-
     public void passStage(Stage stage){
         this.stage = stage;
     }
@@ -46,7 +42,7 @@ public class FilenamesController {
 
     public void toNext() throws IOException {
         Stage popUp= new Stage();
-        FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("../FXML/Percentage.fxml"));
+        FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("../FXML/Status.fxml"));
         Parent root = (Parent) fxmloader.load();
 
         Scene scene = new Scene(root);
@@ -55,23 +51,8 @@ public class FilenamesController {
         popUp.setTitle("Software Similarity Program");
         popUp.show();
 
-        check.readFile(filename1.getText(),filename2.getText());
-        PercentageController passCont = fxmloader.getController();
-
-        if(lineChoice.isSelected()) {
-            line();
-            setMessage(check.ReadCodeLine(comparison));
-            logs.appendToFile(message,fileName);
-            passCont.passValues(message);
-            clear();
-        }
-        if(characterChoice.isSelected()) {
-            character();
-            setMessage(check.ReadCodeCharacter(comparison));
-            logs.appendToFile(message,fileName);
-            passCont.passValues(message);
-            clear();
-        }
+        StatusController passCont = fxmloader.getController();
+        check.readFile();
 
     }
 

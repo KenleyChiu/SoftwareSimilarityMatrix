@@ -9,14 +9,14 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class PercentageController {
+public class StatusController {
 
     public Button quit,again;
-    public Label percentage,longestSame;
+    public Label status,longestSame;
 
 
     public void passValues(String message) {
-        this.percentage.setText(message);
+        this.status.setText("Matrix created per " + message + "!");
     }
 
 }

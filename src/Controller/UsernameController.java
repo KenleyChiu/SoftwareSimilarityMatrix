@@ -22,7 +22,6 @@ public class UsernameController {
         Scene scene = new Scene(root);
 
         FilenamesController passCont = fxmloader.getController();
-        passCont.getFileName(nameField.getText());
         passCont.passStage(stage);
 
         stage.setScene(scene);
