@@ -3,11 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="6be087a0-260d-4211-ac7d-2739b26d7f1d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Codes/prog1.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Codes/prog2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Backend/Matrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Backend/Matrix.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Backend/Similarity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Backend/Similarity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/FilenamesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/FilenamesController.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,8 +19,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="341">
-              <caret line="345" column="10" lean-forward="true" selection-start-line="345" selection-start-column="10" selection-end-line="345" selection-end-column="10" />
+            <state relative-caret-position="270">
+              <caret line="329" column="14" selection-start-line="329" selection-start-column="14" selection-end-line="329" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -201,11 +196,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12640000" />
+    <option name="totallyTimeSpent" value="12738000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24966443" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -216,7 +210,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.28470254" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.28470254" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -321,8 +315,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="345" column="10" lean-forward="true" selection-start-line="345" selection-start-column="10" selection-end-line="345" selection-end-column="10" />
+        <state relative-caret-position="270">
+          <caret line="329" column="14" selection-start-line="329" selection-start-column="14" selection-end-line="329" selection-end-column="14" />
         </state>
       </provider>
     </entry>
