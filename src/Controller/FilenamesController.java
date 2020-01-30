@@ -21,7 +21,6 @@ public class FilenamesController {
     private String fileName;
     private String message;
     private Similarity check= new Similarity();
-    private Matrix logs = new Matrix();
 
     public void passStage(Stage stage){
         this.stage = stage;

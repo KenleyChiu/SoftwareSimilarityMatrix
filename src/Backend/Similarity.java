@@ -7,7 +7,8 @@ import java.util.Scanner;
 public class Similarity {
     private float  percentage = 0;
     private Scanner prog1Scan, prog2Scan;
-    private String filename1, filename2;
+    private File filename1, filename2;
+    private Matrix form= new Matrix();
 
     public void ReadCodeLine() {
         float sameLines = 0, totalLines = 0, lineLength = 0;
@@ -46,6 +47,7 @@ public class Similarity {
             }
         }
         percentage = (sameLines / totalLines);
+
     }
 
     public void ReadCodeCharacter() {
@@ -91,23 +93,27 @@ public class Similarity {
     }
 
     public void readFile(String comparison) throws FileNotFoundException {
-        File prog1File = new File("Codes");
-        File prog2File = new File("Codes");
+        File prog1File = new File("Codes/");
+        File prog2File = new File("Codes/");
         File[] file1 =prog1File.listFiles();
         File[] file2 = prog2File.listFiles();
         for(int i=0; i<file1.length; i++)
         {
-            this.filename1=file1[i].getName();
+            form.setNewArray();
+            this.filename1=file1[i];
             for(int j=0; j<file2.length; j++)
             {
-                this.filename2=file2[j].getName();
-                prog1Scan = new Scanner(prog1File);
-                prog2Scan = new Scanner(prog2File);
-                if(comparison.equals("line")) ReadCodeLine();
-                else ReadCodeCharacter();
+                this.filename2=file2[j];
+                prog1Scan = new Scanner(filename1);
+                prog2Scan = new Scanner(filename2);
+//                if(comparison.equals("line")) ReadCodeLine();
+//                else
+               ReadCodeCharacter();
+                form.addArray(percentage);
             }
-
+            form.setMatrix();
         }
+        System.out.println(form.getMatrix().get(5));
         //File prog1File = new File("D:\\Downloads\\College stuff\\Term 5\\LBYCP2D\\SoftwareSimilarityGui\\src\\sample\\" + filename1);
         //File prog2File = new File("D:\\Downloads\\College stuff\\Term 5\\LBYCP2D\\SoftwareSimilarityGui\\src\\sample\\" + filename2);
     }
