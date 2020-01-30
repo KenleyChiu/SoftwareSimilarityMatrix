@@ -11,5 +11,7 @@ public class Matrix {
     {
         matrix.get(i).add(value);
     }
-    public void
+    public void getMatrix(){
+        
+    }
 }
