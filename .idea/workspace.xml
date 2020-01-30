@@ -2,10 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6be087a0-260d-4211-ac7d-2739b26d7f1d" name="Default Changelist" comment="">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/SoftwareSimilarityGui/Backend/Matrix.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SoftwareSimilarityGui/Backend/Matrix.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/SoftwareSimilarityGui/Backend/Similarity.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SoftwareSimilarityGui/Backend/Similarity.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/SoftwareSimilarityGui/Controller/FilenamesController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SoftwareSimilarityGui/Controller/FilenamesController.class" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/src/Backend/Matrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Backend/Matrix.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Backend/Similarity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Backend/Similarity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/FilenamesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/FilenamesController.java" afterDir="false" />
+>>>>>>> 4efaedd1cdc9391d4733112e68a44de0109144e2
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,19 +26,36 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="6460">
               <caret line="394" column="14" selection-start-line="394" selection-start-column="14" selection-end-line="394" selection-end-column="14" />
+=======
+        <entry file="file://$PROJECT_DIR$/src/Backend/Matrix.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="242">
+              <caret line="11" column="22" lean-forward="true" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#263#264#0" expanded="true" />
+                <element signature="e#303#304#0" expanded="true" />
+              </folding>
+>>>>>>> 4efaedd1cdc9391d4733112e68a44de0109144e2
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Backend/Matrix.java">
+        <entry file="file://$PROJECT_DIR$/src/Controller/StatusController.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="100">
               <caret line="9" column="12" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
+=======
+            <state relative-caret-position="242">
+              <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+>>>>>>> 4efaedd1cdc9391d4733112e68a44de0109144e2
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#422#423#0" expanded="true" />
@@ -46,6 +69,7 @@
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file pinned="false" current-in-tab="false">
         <entry file="jar://C:/Program Files/Java/jdk1.8.0_212/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -60,6 +84,13 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="256">
               <caret line="101" column="31" selection-start-line="101" selection-start-column="31" selection-end-line="101" selection-end-column="31" />
+=======
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Backend/Similarity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="286">
+              <caret line="105" column="47" selection-start-line="105" selection-start-column="47" selection-end-line="105" selection-end-column="47" />
+>>>>>>> 4efaedd1cdc9391d4733112e68a44de0109144e2
             </state>
           </provider>
         </entry>
@@ -67,8 +98,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controller/FilenamesController.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="301">
               <caret line="53" column="14" selection-start-line="53" selection-start-column="14" selection-end-line="53" selection-end-column="14" />
+=======
+            <state relative-caret-position="64">
+              <caret line="54" column="14" selection-start-line="54" selection-start-column="14" selection-end-line="54" selection-end-column="14" />
+>>>>>>> 4efaedd1cdc9391d4733112e68a44de0109144e2
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -106,9 +142,14 @@
         <option value="$PROJECT_DIR$/src/Controller/StatusController.java" />
         <option value="$PROJECT_DIR$/src/Controller/UsernameController.java" />
         <option value="$PROJECT_DIR$/src/Backend/Database.java" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/src/Controller/FilenamesController.java" />
         <option value="$PROJECT_DIR$/src/Backend/Similarity.java" />
+=======
+>>>>>>> 4efaedd1cdc9391d4733112e68a44de0109144e2
         <option value="$PROJECT_DIR$/src/Backend/Matrix.java" />
+        <option value="$PROJECT_DIR$/src/Controller/FilenamesController.java" />
+        <option value="$PROJECT_DIR$/src/Backend/Similarity.java" />
       </list>
     </option>
   </component>
@@ -139,12 +180,19 @@
             <path>
               <item name="SoftwareSimilarityMatrix" type="b2602c69:ProjectViewProjectNode" />
               <item name="SoftwareSimilarityMatrix" type="462c0819:PsiDirectoryNode" />
-              <item name="Codes" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="SoftwareSimilarityMatrix" type="b2602c69:ProjectViewProjectNode" />
               <item name="SoftwareSimilarityMatrix" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Backend" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SoftwareSimilarityMatrix" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SoftwareSimilarityMatrix" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Controller" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="SoftwareSimilarityMatrix" type="b2602c69:ProjectViewProjectNode" />
@@ -230,8 +278,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
+<<<<<<< HEAD
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25637585" />
+=======
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25302014" />
+>>>>>>> 4efaedd1cdc9391d4733112e68a44de0109144e2
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -240,8 +293,13 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
+<<<<<<< HEAD
       <window_info anchor="bottom" id="Run" order="2" weight="0.28470254" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39943343" />
+=======
+      <window_info anchor="bottom" id="Run" order="2" weight="0.37393767" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+>>>>>>> 4efaedd1cdc9391d4733112e68a44de0109144e2
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -300,6 +358,7 @@
     <entry file="file://$PROJECT_DIR$/src/FXML/Status.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor" />
+<<<<<<< HEAD
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/StatusController.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -310,6 +369,8 @@
           </folding>
         </state>
       </provider>
+=======
+>>>>>>> 4efaedd1cdc9391d4733112e68a44de0109144e2
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/UsernameController.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -329,6 +390,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+<<<<<<< HEAD
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6460">
           <caret line="394" column="14" selection-start-line="394" selection-start-column="14" selection-end-line="394" selection-end-column="14" />
@@ -339,19 +401,52 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="28101">
           <caret line="1773" selection-start-line="1773" selection-end-line="1773" />
+=======
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="329" column="14" selection-start-line="329" selection-start-column="14" selection-end-line="329" selection-end-column="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/FilenamesController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="53" column="14" selection-start-line="53" selection-start-column="14" selection-end-line="53" selection-end-column="14" />
+        <state relative-caret-position="64">
+          <caret line="54" column="14" selection-start-line="54" selection-start-column="14" selection-end-line="54" selection-end-column="14" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Backend/Matrix.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="11" column="22" lean-forward="true" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#263#264#0" expanded="true" />
+            <element signature="e#303#304#0" expanded="true" />
+          </folding>
+>>>>>>> 4efaedd1cdc9391d4733112e68a44de0109144e2
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/StatusController.java">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="301">
+          <caret line="53" column="14" selection-start-line="53" selection-start-column="14" selection-end-line="53" selection-end-column="14" />
+=======
+        <state relative-caret-position="242">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+>>>>>>> 4efaedd1cdc9391d4733112e68a44de0109144e2
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/Backend/Matrix.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
@@ -372,6 +467,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="256">
           <caret line="101" column="31" selection-start-line="101" selection-start-column="31" selection-end-line="101" selection-end-column="31" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/Backend/Similarity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="105" column="47" selection-start-line="105" selection-start-column="47" selection-end-line="105" selection-end-column="47" />
+>>>>>>> 4efaedd1cdc9391d4733112e68a44de0109144e2
         </state>
       </provider>
     </entry>

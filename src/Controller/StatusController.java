@@ -1,5 +1,7 @@
 package Controller;
 
+import Backend.Similarity;
+import com.sun.org.apache.xpath.internal.operations.String;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -11,12 +13,14 @@ import java.io.IOException;
 
 public class StatusController {
 
-    public Button quit,again;
-    public Label status,longestSame;
+    public Label matrixStatus,matrixText;
 
+    public void passMatrix(StringBuilder message,int i) {
+        if(i == 0) this.matrixStatus.setText("Matrix Created - Compared by line");
+        else this.matrixStatus.setText("Matrix Created - Compared by character");
 
-    public void passValues(String message) {
-        this.status.setText("Matrix created per " + message + "!");
+        StringBuilder text = new StringBuilder(message);
+        this.matrixText.setText(text.toString());
     }
 
 }

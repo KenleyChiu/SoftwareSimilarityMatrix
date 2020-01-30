@@ -21,6 +21,7 @@ public class FilenamesController {
     private String fileName;
     private String message;
     private Similarity check= new Similarity();
+    private int type = 0;
 
     public void passStage(Stage stage){
         this.stage = stage;
@@ -46,13 +47,21 @@ public class FilenamesController {
 
         Scene scene = new Scene(root);
 
-        popUp.setScene(scene);
-        popUp.setTitle("Software Similarity Program");
-        popUp.show();
+        //CREATE MATRIX
+        if(lineChoice.isSelected()) line();
+        else {
+            character();
+            type = 1;
+        }
 
         StatusController passCont = fxmloader.getController();
         check.readFile(comparison);
+        passCont.passMatrix(check.getSB(),type);
+//        check.clearSb();
 
+        popUp.setScene(scene);
+        popUp.setTitle("Software Similarity Program");
+        popUp.show();
     }
 
     private void clear()
