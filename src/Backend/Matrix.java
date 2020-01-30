@@ -12,6 +12,6 @@ public class Matrix {
         matrix.get(i).add(value);
     }
     public void getMatrix(){
-        
+
     }
 }
