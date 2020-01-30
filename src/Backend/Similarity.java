@@ -9,8 +9,6 @@ public class Similarity {
     private Scanner prog1Scan, prog2Scan;
     private File filename1, filename2;
     private Matrix form= new Matrix();
-    private StringBuilder wholeMatrix = new StringBuilder();
-    private DataObject dataObj;
 
     public void ReadCodeLine() {
         float sameLines = 0, totalLines = 0, lineLength = 0;
@@ -101,7 +99,6 @@ public class Similarity {
                 if(comparison.equals("line")) ReadCodeLine();
                 else ReadCodeCharacter();
 
-
                 //form.addArray(percentage);  //raw percentage
                 form.addArray((float)(Math.round(percentage*100.0)/100.0));  //two decimal points
 
@@ -109,20 +106,11 @@ public class Similarity {
             form.setMatrix();
         }
 
-        //System.out.println(wholeMatrix);
     }
 
     public Matrix getMatrix(){
         return form;
     }
 
-    public StringBuilder getSB(){
-        return wholeMatrix;
-    }
-
-//    public void clearSb(){
-//        wholeMatrix.setLength(0);
-//        System.out.println(wholeMatrix);
-//    }
 
 }

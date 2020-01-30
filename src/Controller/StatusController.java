@@ -20,7 +20,6 @@ import java.util.ResourceBundle;
 
 public class StatusController implements Initializable {
 
-//    public Label matrixStatus,matrixText;
     public GridPane gridPane;
 //    public ToggleGroup toggleChoice = new ToggleGroup();
     public RadioButton lineChoice,characterChoice;
@@ -41,7 +40,7 @@ public class StatusController implements Initializable {
     public void createMatrix() throws FileNotFoundException {
 
         if(compare.getMatrix() != null){
-            gridPane.getChildren().removeAll();
+            gridPane.getChildren().removeAll(); //not working
         }
 
 //        if(lineChoice.isSelected()) line();
