@@ -10,6 +10,7 @@ public class Similarity {
     private File filename1, filename2;
     private Matrix form= new Matrix();
     private StringBuilder wholeMatrix = new StringBuilder();
+    private DataObject dataObj;
 
     public void ReadCodeLine() {
         float sameLines = 0, totalLines = 0, lineLength = 0;
@@ -109,7 +110,7 @@ public class Similarity {
             for(int y=0;y<form.matrixSize();y++){
 //                wholeMatrix.append(form.getMatrix().get(y).get(x)).append("  ");
                 System.out.print(form.getMatrix().get(y).get(x) + "   ");
-                DataObject dataObj = new DataObject(form.getMatrix().get(y).get(x));
+                dataObj = new DataObject(form.getMatrix().get(y).get(x));
             }
 //            wholeMatrix.append("\n");
             System.out.println();
