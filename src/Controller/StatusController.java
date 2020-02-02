@@ -10,7 +10,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 import java.io.FileNotFoundException;
@@ -61,8 +65,12 @@ public class StatusController implements Initializable {
                 vbox.setAlignment(Pos.CENTER);
                 vbox.getChildren().addAll(dataObj.getLabel());
 
-                gridPane.add(vbox,y,x);
+                StackPane pane = new StackPane();
+                pane.setAlignment(Pos.CENTER);
+                pane.getChildren().addAll(dataObj.getRect(),vbox);
 
+                gridPane.add(pane,y,x);
+                //gridPane.setGridLinesVisible(true);
             }
             System.out.println();
         }
