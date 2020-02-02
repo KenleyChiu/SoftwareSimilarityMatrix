@@ -11,28 +11,46 @@ public class Similarity {
     private Matrix form= new Matrix();
 
     public void ReadCodeLine() {
-        float sameLines = 0, totalLines = 0, lineLength = 0;
-        StringBuilder prog1String = new StringBuilder();
-        StringBuilder prog2String = new StringBuilder();
+        float sameLines=0,prog1Lines=0,prog2Lines=0,totalLines=0,longestLength=0;
+        String longestString = "";
 
-        while (prog1Scan.hasNextLine() || prog2Scan.hasNextLine()) {
-            String prog1Word = prog1Scan.nextLine();
-            String prog2Word = prog2Scan.nextLine();
+        while(prog1Scan.hasNextLine() || prog2Scan.hasNextLine()){
 
-            prog1String.append(prog1Word + "\n");
-            prog2String.append(prog2Word + "\n");
+            if(!prog1Scan.hasNextLine() && prog2Scan.hasNextLine()){
+                prog2Lines++;
 
-            if (prog1Word.equals(prog2Word)) {
-                /*int newLineLength = prog1Word.length();
+                String prog2_line = prog2Scan.nextLine();
+                //System.out.println("PROG 2 LINE: " + prog2_line);
 
-                if (newLineLength > lineLength) {
-                    lineLength = newLineLength;
-                }*/
-                sameLines++;
+            } else if(!prog2Scan.hasNextLine() && prog1Scan.hasNextLine()){
+                prog1Lines++;
+
+                String prog1_line = prog1Scan.nextLine();
+                //System.out.println("PROG 1 LINE: "+prog1_line);
+
+            } else {
+
+                String prog1_line = prog1Scan.nextLine();
+                //System.out.println("PROG 1 LINE: "+prog1_line);
+
+                String prog2_line = prog2Scan.nextLine();
+                //System.out.println("PROG 2 LINE: " + prog2_line);
+
+                if(prog1_line.equals(prog2_line)){
+                    if(prog1_line.length() > longestLength){
+                        longestString = prog1_line;
+                        longestLength = longestString.length();
+                    }
+                    sameLines++;
+                }
+
             }
             totalLines++;
-            if (!prog1Scan.hasNextLine() || !prog2Scan.hasNextLine()) break;
         }
+        //System.out.println("SAME: " + sameLines);
+        //System.out.println("TOTAL: " + totalLines);
+        //System.out.println("\nLongest Similar Line: \n" + longestString);
+
         //System.out.println("same: " + sameLines + " and total: " + totalLines);
         percentage = (sameLines / totalLines);
         //percentage = (float)((sameLines/totalLines)-0.5) * 2; //testing for negatives
@@ -87,11 +105,11 @@ public class Similarity {
         File prog2File = new File("Codes");
         File[] file1 = prog1File.listFiles();
         File[] file2 = prog2File.listFiles();
-        for(int i=0; i<file1.length; i++)
+        for(int i=0; i<file1.length; i++) //file1.length
         {
             form.setNewArray();
             this.filename1=file1[i];
-            for(int j=0; j<file2.length; j++)
+            for(int j=0; j<file2.length; j++) //file2.length
             {
                 this.filename2=file2[j];
                 prog1Scan = new Scanner(filename1);
