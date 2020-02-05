@@ -8,7 +8,8 @@ public class Similarity {
     private float  percentage = 0;
     private Scanner prog1Scan, prog2Scan;
     private File filename1, filename2;
-    private Matrix form= new Matrix();
+    private Matrix line = new Matrix();
+    private Matrix character = new Matrix();
 
     public void ReadCodeLine() {
         float sameLines=0,prog1Lines=0,prog2Lines=0,totalLines=0,longestLength=0;
@@ -99,7 +100,7 @@ public class Similarity {
 
     }
 
-    public void readFile(String comparison) throws FileNotFoundException {
+    public void readFile(String comparison,Boolean status) throws FileNotFoundException {
 
         File prog1File = new File("Codes");
         File prog2File = new File("Codes");
@@ -107,7 +108,9 @@ public class Similarity {
         File[] file2 = prog2File.listFiles();
         for(int i=0; i<file1.length; i++) //file1.length
         {
-            form.setNewArray();
+            if(status) line.setNewArray();
+            else character.setNewArray();
+
             this.filename1=file1[i];
             for(int j=0; j<file2.length; j++) //file2.length
             {
@@ -118,17 +121,21 @@ public class Similarity {
                 else ReadCodeCharacter();
 
                 //form.addArray(percentage);  //raw percentage
-                form.addArray((float)(Math.round(percentage*100.0)/100.0));  //two decimal points
+                if(status) line.addArray((float)(Math.round(percentage*100.0)/100.0));  //two decimal points
+                else character.addArray((float)(Math.round(percentage*100.0)/100.0));  //two decimal points
 
             }
-            form.setMatrix();
+            if(status) line.setMatrix();
+            else character.setMatrix();
         }
 
     }
 
-    public Matrix getMatrix(){
-        return form;
+    public Matrix getMatrix1(){
+        return line;
     }
 
-
+    public Matrix getMatrix2(){
+        return character;
+    }
 }
