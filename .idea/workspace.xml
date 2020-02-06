@@ -16,7 +16,6 @@
       <change beforePath="$PROJECT_DIR$/src/Controller/FilenamesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/FilenamesController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/StatusController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/StatusController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FXML/Status.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/FXML/Status.fxml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
