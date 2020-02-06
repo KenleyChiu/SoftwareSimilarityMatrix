@@ -3,7 +3,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class main {
+public class main(7) {
 
     public static void main (String[] args) throws IOException {
 

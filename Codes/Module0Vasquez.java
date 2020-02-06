@@ -6,8 +6,8 @@ public class Module0Vasquez {
         public static void main(String[] args) throws IOException {
             boolean areEqual = true;
             int lineCounter=0, sameLine=0, simScore=0;
-            BufferedReader text1 = new BufferedReader(new FileReader(“/home/ece/IdeaProjects/HelloWorld/assets/test_program1.cpp”));
-            BufferedReader text2 = new BufferedReader(new FileReader(“/home/ece/IdeaProjects/HelloWorld/assets/test_program2.cpp”));
+            BufferedReader text1 = new BufferedReader(new FileReader("/home/ece/IdeaProjects/HelloWorld/assets/test_program1.cpp"));
+            BufferedReader text2 = new BufferedReader(new FileReader("/home/ece/IdeaProjects/HelloWorld/assets/test_program2.cpp"));
             String line1 = text1.readLine();
             String line2 = text2.readLine();
 
