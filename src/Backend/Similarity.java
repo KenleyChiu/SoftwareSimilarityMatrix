@@ -8,7 +8,7 @@ public class Similarity {
     private float  percentage = 0;
     private Scanner prog1Scan, prog2Scan;
     private File filename1, filename2;
-    private Matrix line = new Matrix();
+    private Matrix data = new Matrix();
     private Matrix character = new Matrix();
 
     public void ReadCodeLine() {
@@ -100,16 +100,18 @@ public class Similarity {
 
     }
 
-    public void readFile(String comparison,Boolean status) throws FileNotFoundException {
+    public void readFile(String comparison) throws FileNotFoundException {
 
         File prog1File = new File("Codes");
         File prog2File = new File("Codes");
         File[] file1 = prog1File.listFiles();
         File[] file2 = prog2File.listFiles();
+
+        data.newMatrix();
+
         for(int i=0; i<file1.length; i++) //file1.length
         {
-            if(status) line.setNewArray();
-            else character.setNewArray();
+            data.setNewArray();
 
             this.filename1=file1[i];
             for(int j=0; j<file2.length; j++) //file2.length
@@ -117,25 +119,19 @@ public class Similarity {
                 this.filename2=file2[j];
                 prog1Scan = new Scanner(filename1);
                 prog2Scan = new Scanner(filename2);
-                if(comparison.equals("line")) ReadCodeLine();
+                if(comparison.equals("data")) ReadCodeLine();
                 else ReadCodeCharacter();
 
                 //form.addArray(percentage);  //raw percentage
-                if(status) line.addArray((float)(Math.round(percentage*100.0)/100.0));  //two decimal points
-                else character.addArray((float)(Math.round(percentage*100.0)/100.0));  //two decimal points
-
+                data.addArray((float)(Math.round(percentage*100.0)/100.0));  //two decimal points
             }
-            if(status) line.setMatrix();
-            else character.setMatrix();
+            data.setMatrix();
         }
 
     }
 
-    public Matrix getMatrix1(){
-        return line;
+    public Matrix getMatrix(){
+        return data;
     }
 
-    public Matrix getMatrix2(){
-        return character;
-    }
 }
