@@ -3,6 +3,20 @@
   <component name="ChangeListManager">
     <list default="true" id="6be087a0-260d-4211-ac7d-2739b26d7f1d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/SoftwareSimilarityGui/Backend/DataObject.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Backend/DataObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SoftwareSimilarityGui/Backend/Matrix.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SoftwareSimilarityGui/Backend/Matrix.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SoftwareSimilarityGui/Backend/Similarity.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SoftwareSimilarityGui/Backend/Similarity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SoftwareSimilarityGui/Controller/FilenamesController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SoftwareSimilarityGui/Controller/FilenamesController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SoftwareSimilarityGui/Controller/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SoftwareSimilarityGui/Controller/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SoftwareSimilarityGui/Controller/StatusController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SoftwareSimilarityGui/Controller/StatusController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SoftwareSimilarityGui/FXML/Status.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SoftwareSimilarityGui/FXML/Status.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Backend/Matrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Backend/Matrix.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Backend/Similarity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Backend/Similarity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/FilenamesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/FilenamesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/StatusController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/StatusController.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
