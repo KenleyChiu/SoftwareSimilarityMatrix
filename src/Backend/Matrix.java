@@ -10,7 +10,6 @@ public class Matrix {
     private ArrayList<Float> arrayTemp;
 
     public ArrayList<ArrayList<Float>> getMatrix() {
-
         return matrix;
     }
 

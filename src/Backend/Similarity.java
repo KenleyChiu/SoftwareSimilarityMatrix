@@ -10,6 +10,7 @@ public class Similarity {
     private File filename1, filename2;
     private Matrix form= new Matrix();
     private StringBuilder wholeMatrix = new StringBuilder();
+    private DataObject dataObj;
 
     public void ReadCodeLine() {
         float sameLines = 0, totalLines = 0, lineLength = 0;
@@ -36,6 +37,7 @@ public class Similarity {
         }
         //System.out.println("same: " + sameLines + " and total: " + totalLines);
         percentage = (sameLines / totalLines);
+        //percentage = (float)((sameLines/totalLines)-0.5) * 2; //testing for negatives
     }
 
 
@@ -77,6 +79,8 @@ public class Similarity {
         prog1Scan.close();
         prog2Scan.close();
         percentage = ((float) countChar / (float) countTotal);
+        //percentage = (float)((countChar/countTotal)-0.5) * 2; //testing for negatives
+
     }
 
     public void readFile(String comparison) throws FileNotFoundException {
@@ -97,6 +101,7 @@ public class Similarity {
                 if(comparison.equals("line")) ReadCodeLine();
                 else ReadCodeCharacter();
 
+
                 //form.addArray(percentage);  //raw percentage
                 form.addArray((float)(Math.round(percentage*100.0)/100.0));  //two decimal points
 
@@ -104,17 +109,11 @@ public class Similarity {
             form.setMatrix();
         }
 
-        for(int x=0;x<form.arraySize();x++){
-            //System.out.print(form.getMatrix().get(0).get(x) + " ");  //to see first row values
-            for(int y=0;y<form.matrixSize();y++){
-                wholeMatrix.append(form.getMatrix().get(y).get(x)).append("  ");
-                //System.out.print(form.getMatrix().get(y).get(x) + "   ");
-            }
-            wholeMatrix.append("\n");
-            //System.out.println();
-        }
-
         //System.out.println(wholeMatrix);
+    }
+
+    public Matrix getMatrix(){
+        return form;
     }
 
     public StringBuilder getSB(){
