@@ -24,7 +24,7 @@ public class StatusController implements Initializable {
     public TextField username;
     public Button check,quit;
     private Similarity compare = new Similarity();
-    private String comparison = "data";
+    private String comparison = "line";
     private DataObject dataObj;
 
 
@@ -53,10 +53,12 @@ public class StatusController implements Initializable {
     }
 
     public void MatrixToGridpane(){
+        System.out.println("BY "+comparison.toUpperCase()+":");
+
         for(int x = 0; x<compare.getMatrix().arraySize(); x++){
             //System.out.print(form.getMatrix().get(0).get(x) + " ");  //to see MatrixToGridpane row values
             for(int y = 0; y<compare.getMatrix().matrixSize(); y++){
-                System.out.print(compare.getMatrix().getMatrix().get(y).get(x) + "   ");
+                System.out.print(compare.getMatrix().getMatrix().get(y).get(x) + "  ");
                 dataObj = new DataObject(compare.getMatrix().getMatrix().get(y).get(x));
 
 
@@ -72,7 +74,6 @@ public class StatusController implements Initializable {
                 //gridPane.setGridLinesVisible(true);
             }
             System.out.println();
-
         }
     }
 
