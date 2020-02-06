@@ -1,13 +1,15 @@
 package Backend;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class Matrix {
     private ArrayList<ArrayList<Float>> matrix = new ArrayList<>();
     private ArrayList<Float> arrayTemp;
+
+    public void newMatrix()
+    {
+        matrix= new ArrayList<>();
+    }
 
     public ArrayList<ArrayList<Float>> getMatrix() {
         return matrix;
