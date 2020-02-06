@@ -42,7 +42,7 @@ public class StatusController implements Initializable {
 //            character();
 //            type = 1;
 //        }
-        
+
         compare.readFile(comparison);
 
         MatrixToGridpane();

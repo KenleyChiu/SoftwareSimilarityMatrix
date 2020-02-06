@@ -55,7 +55,7 @@ public class FilenamesController {
         }
 
 //        StatusController passCont = fxmloader.getController();
-        check.readFile(comparison);
+//        check.readFile(comparison,status);
         //passCont.passMatrix(check.getSB(),type);
 //        check.clearSb();
 

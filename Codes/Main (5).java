@@ -39,7 +39,7 @@ public class Main {
             totalCount = secondFile.length();
             otherCount = firstFile.length();
         }
-        // For checking the similarity of each character between the first file contents and the second file contents
+        // For checking the similarity of each character between the MatrixToGridpane file contents and the second file contents
         float counter = 0;
         for (int i = 0; i < totalCount; i++) {
             // For the index before it goes out of bounds with the shorter file
