@@ -9,6 +9,11 @@ public class Matrix {
     private ArrayList<ArrayList<Float>> matrix = new ArrayList<>();
     private ArrayList<Float> arrayTemp;
 
+    public void newMatrix()
+    {
+        matrix= new ArrayList<>();
+    }
+
     public ArrayList<ArrayList<Float>> getMatrix() {
         return matrix;
     }

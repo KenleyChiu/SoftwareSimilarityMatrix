@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SoftwareSimilarityGui.iml" filepath="$PROJECT_DIR$/SoftwareSimilarityGui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SoftwareSimilarityMatrix.iml" filepath="$PROJECT_DIR$/SoftwareSimilarityMatrix.iml" />
     </modules>
   </component>
 </project>
