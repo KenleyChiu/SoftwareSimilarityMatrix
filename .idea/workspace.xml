@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-<<<<<<< HEAD
   <component name="ChangeListManager">
     <list default="true" id="6be087a0-260d-4211-ac7d-2739b26d7f1d" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/out/production/SoftwareSimilarityGui/Backend/DataObject.class" afterDir="false" />
@@ -455,13 +454,28 @@
       </provider>
     </entry>
   </component>
-=======
+
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="950" />
     <option name="width" value="980" />
     <option name="height" value="1040" />
   </component>
->>>>>>> 78732625d2fe768b40ad6087ed0550e262868714
+  <component name="RunManager" selected="Application.Unnamed">
+    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Controller.Main" />
+      <module name="SoftwareSimilarityMatrix" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Unnamed" type="CompoundRunConfigurationType">
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Application.Unnamed" />
+      <item itemvalue="Compound.Unnamed" />
+    </list>
+  </component>
   <component name="masterDetails">
     <states>
       <state key="ProjectJDKs.UI">
