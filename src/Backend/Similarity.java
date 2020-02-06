@@ -9,10 +9,9 @@ public class Similarity {
     private Scanner prog1Scan, prog2Scan;
     private File filename1, filename2;
     private Matrix data = new Matrix();
-    private Matrix character = new Matrix();
 
     public void ReadCodeLine() {
-        float sameLines=0,prog1Lines=0,prog2Lines=0,totalLines=0,longestLength=0;
+        float sameLines = 0,prog1Lines = 0,prog2Lines = 0,totalLines = 0,longestLength = 0;
         String longestString = "";
 
         while(prog1Scan.hasNextLine() || prog2Scan.hasNextLine()){
@@ -119,7 +118,7 @@ public class Similarity {
                 this.filename2=file2[j];
                 prog1Scan = new Scanner(filename1);
                 prog2Scan = new Scanner(filename2);
-                if(comparison.equals("data")) ReadCodeLine();
+                if(comparison.equals("line")) ReadCodeLine();
                 else ReadCodeCharacter();
 
                 //form.addArray(percentage);  //raw percentage
