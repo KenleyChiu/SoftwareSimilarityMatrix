@@ -162,7 +162,7 @@ public class Similarity {
     public void createSystemMetricsTable(File directory) throws IOException {
 
         metrics.getAllFiles(directory);
-        metrics.searchDots();
+        metrics.searchDots();  //go to searchDots()
 
 
     }
