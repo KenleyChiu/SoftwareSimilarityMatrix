@@ -30,7 +30,7 @@ public class StatusController implements Initializable {
 
 
     public void line() {
-        comparison = "data";
+        comparison = "line";
     }
 
     public void character() {
@@ -39,16 +39,9 @@ public class StatusController implements Initializable {
 
     public void createMatrix() throws FileNotFoundException {
 
-//        if(lineChoice.isSelected()) line();
-//        else {
-//            character();
-//            type = 1;
-//        }
-
         compare.readFile(comparison);
 
         MatrixToGridpane();
-
 
     }
 
