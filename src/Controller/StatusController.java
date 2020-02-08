@@ -1,7 +1,6 @@
 package Controller;
 
-import Backend.DataObject;
-import Backend.Similarity;
+import Backend.*;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -12,7 +11,9 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -37,11 +38,14 @@ public class StatusController implements Initializable {
         comparison = "character";
     }
 
-    public void createMatrix() throws FileNotFoundException {
+    public void createMatrix() throws IOException {
 
         compare.readFile(comparison);
 
         MatrixToGridpane();
+
+        File masterFile = new File("src");
+        compare.createSystemMetricsTable(masterFile);
 
     }
 
