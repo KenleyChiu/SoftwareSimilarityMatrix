@@ -20,7 +20,6 @@ import java.util.ResourceBundle;
 public class StatusController implements Initializable {
 
     public GridPane gridPane;
-//    public ToggleGroup toggleChoice = new ToggleGroup();
     public RadioButton lineChoice,characterChoice;
     public TextField username;
     public Button check,quit;
@@ -44,8 +43,8 @@ public class StatusController implements Initializable {
 
         MatrixToGridpane();
 
-        File masterFile = new File("src");
-        compare.createSystemMetricsTable(masterFile);
+        File masterFile = new File("src");  //for our files
+        compare.createSystemMetricsTable(masterFile);  //check this for other's files
 
     }
 
