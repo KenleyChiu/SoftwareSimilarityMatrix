@@ -26,7 +26,7 @@ public class SystemMetrics {
         //System.out.println(numOfFiles);
     }
 
-    public void searchDots() throws FileNotFoundException {
+    public void searchOperations() throws FileNotFoundException {
         String word = "";
         int dots=0;
 
@@ -43,6 +43,9 @@ public class SystemMetrics {
                     if(word.charAt(x) == '.'){
                         dots++;
                     }
+                    /*if(word.charAt(x) == '.'){  //to search other symbols or words
+                        dots++;
+                    }*/
                 }
 
             }
