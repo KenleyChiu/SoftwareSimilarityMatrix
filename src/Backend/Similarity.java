@@ -2,6 +2,7 @@ package Backend;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Similarity {
@@ -9,53 +10,72 @@ public class Similarity {
     private Scanner prog1Scan, prog2Scan;
     private File filename1, filename2;
     private Matrix data = new Matrix();
+    private ArrayList<String> arrayA,arrayB;
 
     public void ReadCodeLine() {
-        float sameLines = 0,prog1Lines = 0,prog2Lines = 0,totalLines = 0,longestLength = 0;
+        float sameLines=0,totalLines=0,shorterLimit=0,longestLength=0;
         String longestString = "";
 
-        while(prog1Scan.hasNextLine() || prog2Scan.hasNextLine()){
+        arrayA = new ArrayList<>();
+        arrayB = new ArrayList<>();
 
-            if(!prog1Scan.hasNextLine() && prog2Scan.hasNextLine()){
-                prog2Lines++;
+        while(prog1Scan.hasNextLine() || prog2Scan.hasNextLine()) {
 
-                String prog2_line = prog2Scan.nextLine();
-                //System.out.println("PROG 2 LINE: " + prog2_line);
+            if(!prog1Scan.hasNextLine() && prog2Scan.hasNextLine()) {
+                String line2 = prog2Scan.nextLine();
 
-            } else if(!prog2Scan.hasNextLine() && prog1Scan.hasNextLine()){
-                prog1Lines++;
-
-                String prog1_line = prog1Scan.nextLine();
-                //System.out.println("PROG 1 LINE: "+prog1_line);
-
-            } else {
-
-                String prog1_line = prog1Scan.nextLine();
-                //System.out.println("PROG 1 LINE: "+prog1_line);
-
-                String prog2_line = prog2Scan.nextLine();
-                //System.out.println("PROG 2 LINE: " + prog2_line);
-
-                if(prog1_line.equals(prog2_line)){
-                    if(prog1_line.length() > longestLength){
-                        longestString = prog1_line;
-                        longestLength = longestString.length();
-                    }
-                    sameLines++;
+                if(!line2.trim().isEmpty()) {
+                    arrayB.add(line2);
+                    totalLines++;
                 }
-
             }
-            totalLines++;
-        }
-        //System.out.println("SAME: " + sameLines);
-        //System.out.println("TOTAL: " + totalLines);
-        //System.out.println("\nLongest Similar Line: \n" + longestString);
+            else if (prog1Scan.hasNextLine() && !prog2Scan.hasNextLine()) {
+                String line1 = prog1Scan.nextLine();
 
-        //System.out.println("same: " + sameLines + " and total: " + totalLines);
+                if(!line1.trim().isEmpty()) {
+                    arrayA.add(line1);
+                    totalLines++;
+                }
+            }
+            else {
+                String line1 = prog1Scan.nextLine();
+                String line2 = prog2Scan.nextLine();
+
+                if(!line1.trim().isEmpty()) arrayA.add(line1);
+                if(!line2.trim().isEmpty()) arrayB.add(line2);
+                //if(!line1.trim().isEmpty() && !line2.trim().isEmpty()) totalLines++;
+            }
+        }
+
+        if(arrayA.size() > arrayB.size()) totalLines = arrayA.size();
+        else totalLines = arrayB.size();
+
+        System.out.println("\nNUMBER OF PROG1 LINES: " + arrayA.size());
+        System.out.println("NUMBER OF PROG2 LINES: " + arrayB.size() + "\n");
+
+
+        for(int x=0;x<arrayA.size();x++){  //arrayA.size()
+//            System.out.println("PROG 1 LINE: "+arrayA.get(x));
+            boolean compared = false;
+            for(int y=0;y<arrayB.size();y++){  //arrayB.size()
+//                System.out.println("PROG 2 LINE: "+arrayB.get(y));
+                if(arrayA.get(x).equals(arrayB.get(y))){
+                    if(!compared) {
+                        System.out.println("PROG 1 LINE #"+(x+1)+": "+arrayA.get(x));
+                        System.out.println("PROG 2 LINE #"+(y+1)+": "+arrayB.get(y));
+                        sameLines++;
+                        System.out.println(sameLines);
+                    }
+                    compared = true;
+                }
+            }
+        }
+
+        System.out.println("\nNUMBER OF SAME LINES: " + sameLines);
+        System.out.println("NUMBER OF TOTAL LINES: " + totalLines + "\n");
         percentage = (sameLines / totalLines);
         //percentage = (float)((sameLines/totalLines)-0.5) * 2; //testing for negatives
     }
-
 
     public void ReadCodeCharacter() {
         int countChar = 0;
