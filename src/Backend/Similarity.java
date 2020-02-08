@@ -2,6 +2,7 @@ package Backend;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -11,6 +12,8 @@ public class Similarity {
     private File filename1, filename2;
     private Matrix data = new Matrix();
     private ArrayList<String> arrayA,arrayB;
+    private SystemMetrics metrics = new SystemMetrics();
+
 
     public void ReadCodeLine() {
         float sameLines=0,totalLines=0,shorterLimit=0,longestLength=0;
@@ -49,6 +52,8 @@ public class Similarity {
 
         if(arrayA.size() > arrayB.size()) totalLines = arrayA.size();
         else totalLines = arrayB.size();
+
+//        totalLines = arrayA.size() + arrayB.size();
 
         System.out.println("\nNUMBER OF PROG1 LINES: " + arrayA.size());
         System.out.println("NUMBER OF PROG2 LINES: " + arrayB.size() + "\n");
@@ -152,5 +157,15 @@ public class Similarity {
     public Matrix getMatrix(){
         return data;
     }
+
+
+    public void createSystemMetricsTable(File directory) throws IOException {
+
+        metrics.getAllFiles(directory);
+        metrics.searchDots();
+
+
+    }
+
 
 }

@@ -20,7 +20,6 @@ public class DataObject {
         rect.setWidth(45);
         rect.setHeight(25);
 
-        //if(0.0 <= data && data <= 0.10) rect.setFill(Color.hsb(30,1,1));
         if (data == 1.0) rect.setFill(Color.hsb(330, 1, 1));
         if (0.90 <= data && data < 1.0) rect.setFill(Color.hsb(300, 1, 1));
         if (0.80 <= data && data < 0.90) rect.setFill(Color.hsb(270, 1, 1));
