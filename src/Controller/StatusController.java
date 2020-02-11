@@ -43,9 +43,6 @@ public class StatusController implements Initializable {
 
         MatrixToGridpane();
 
-        File masterFile = new File("src");  //for our files
-        compare.createSystemMetricsTable(masterFile);  //check this for other's files
-
     }
 
     public void MatrixToGridpane(){
