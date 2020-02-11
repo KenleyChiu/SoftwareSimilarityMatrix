@@ -2,7 +2,6 @@ package Backend;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -12,7 +11,6 @@ public class Similarity {
     private File filename1, filename2;
     private Matrix data = new Matrix();
     private ArrayList<String> arrayA,arrayB;
-    private SystemMetrics metrics = new SystemMetrics();
 
 
     public void ReadCodeLine() {
@@ -156,15 +154,6 @@ public class Similarity {
 
     public Matrix getMatrix(){
         return data;
-    }
-
-
-    public void createSystemMetricsTable(File directory) throws IOException {
-
-        metrics.getAllFiles(directory);
-        metrics.searchOperations();  //go to searchDots()
-
-
     }
 
 
