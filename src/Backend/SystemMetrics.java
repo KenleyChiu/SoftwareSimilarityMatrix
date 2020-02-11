@@ -8,13 +8,13 @@ import java.util.Scanner;
 public class SystemMetrics {
     private File[] folders;
     private int numOfFiles=0;
-    private String[] filesArray = new String[8];
+    private String[] filesArray = new String[35];
 
     public void getAllFiles(File directory) throws IOException {
         folders = directory.listFiles();
         for(File file : folders){  //folders.length
             if(file.isDirectory()){  //folders[x]
-                System.out.println("FOLDER: "+file.getCanonicalPath());
+                System.out.println("\nFOLDER: "+file.getCanonicalPath());
                 getAllFiles(file);
             } else {
                 System.out.println("FILE: "+file.getCanonicalPath());
@@ -51,6 +51,14 @@ public class SystemMetrics {
             }
         }
         System.out.println("NUMBER OF PERIODS: " + dots);
+    }
+
+    public void createSystemMetricsTable(File directory) throws IOException {
+
+        getAllFiles(directory);
+        searchOperations();  //go to searchDots()
+
+
     }
 
 }
