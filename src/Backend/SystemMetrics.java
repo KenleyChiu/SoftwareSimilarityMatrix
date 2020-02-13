@@ -44,7 +44,7 @@ public class SystemMetrics {
 
             while(fileScanner.hasNext()){
                 word = fileScanner.nextLine();
-                System.out.println(word);
+//                System.out.println(word);
 
                 for(int x=0;x<word.length();x++){
                     //OPERATORS

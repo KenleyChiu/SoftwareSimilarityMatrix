@@ -48,9 +48,9 @@ public class StatusController implements Initializable {
     public void MatrixToGridpane(){
         System.out.println("MATRIX BY "+comparison.toUpperCase()+":");
 
-        for(int x = 0; x<compare.getMatrix().arraySize(); x++){
+        for(int x=0; x<compare.getMatrix().arraySize(); x++){
             //System.out.print(form.getMatrix().get(0).get(x) + " ");  //to see MatrixToGridpane row values
-            for(int y = 0; y<compare.getMatrix().matrixSize(); y++){
+            for(int y=0; y<compare.getMatrix().matrixSize(); y++){
                 System.out.print(compare.getMatrix().getMatrix().get(y).get(x) + "  ");
                 dataObj = new DataObject(compare.getMatrix().getMatrix().get(y).get(x));
 

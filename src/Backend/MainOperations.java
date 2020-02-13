@@ -10,7 +10,7 @@ public class MainOperations {
 
         SystemMetrics metrics = new SystemMetrics();
 
-        File masterFile = new File("Codes");  //for our files [Codes or src only]
+        File masterFile = new File("src");  //for our files [Codes or src only]
         metrics.createSystemMetricsTable(masterFile);  //check this for other's files
 
 
