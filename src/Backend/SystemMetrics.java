@@ -42,31 +42,63 @@ public class SystemMetrics {
             Scanner fileScanner = new Scanner(file);
             //System.out.println(filesArray[i]);
 
-            while(fileScanner.hasNextLine()){
+            while(fileScanner.hasNext()){
                 word = fileScanner.nextLine();
-                //System.out.println(word);
+                System.out.println(word);
 
                 for(int x=0;x<word.length();x++){
                     //OPERATORS
                     if(word.charAt(x) == '.') dots++;
                     if(word.charAt(x) == '(') par++;
-                    if(word.charAt(x) == 'i' && word.charAt(x+1) == 'f') ifs++;
-                    if(word.charAt(x) == 'f' && word.charAt(x+1) == 'o' && word.charAt(x+2) == 'r') fors++;
+                    if(word.charAt(x) == 'i') {
+                        if(x==word.length()-1) continue;
+                        if(word.charAt(x+1) == 'f') ifs++;
+                    }
+                    if(word.charAt(x) == 'f' && word.charAt(x+1) == 'o' && word.charAt(x+2) == 'r') {
+                        if(x==word.length()-1) continue;
+                        fors++;
+                    }
                     if(word.charAt(x) == '=') equal++;
                     if(word.charAt(x) == '+') plus++;
-                    if(word.charAt(x) == 'w' && word.charAt(x+1) == 'h' && word.charAt(x+2) == 'i' && word.charAt(x+3) == 'l' && word.charAt(x+4) == 'e') whiles++;
+                    if(word.charAt(x) == 'w') {
+                        if(x==word.length()-1) continue;
+                        if(word.charAt(x+1) == 'h' && word.charAt(x+2) == 'i' && word.charAt(x+3) == 'l' && word.charAt(x+4) == 'e') whiles++;
+                    }
                     if(word.charAt(x) == '!') not++;
                     if(word.charAt(x) == ';') colon++;
-                    if(word.charAt(x) == '=' && word.charAt(x+1) == '=') equals++;
-                    if(word.charAt(x) == '<' && word.charAt(x+1) == '=') lessEqual++;
+                    if(word.charAt(x) == '=') {
+                        if(x==word.length()-1) continue;
+                        if(word.charAt(x+1) == '=') equals++;
+                    }
+                    if(word.charAt(x) == '<') {
+                        if (x == word.length() - 1) continue;
+                        if(word.charAt(x+1) == '=') lessEqual++;
+                    }
                     if(word.charAt(x) == '<') less++;
-                    if(word.charAt(x) == 'f' && word.charAt(x+1) == 'l' && word.charAt(x+2) == 'o' && word.charAt(x+3) == 'a' && word.charAt(x+4) == 't') floats++;
-                    if(word.charAt(x) == 'i' && word.charAt(x+1) == 'n' && word.charAt(x+2) == 't') ints++;
+                    if(word.charAt(x) == 'f') {
+                        if (x == word.length() - 1) continue;
+                        if(word.charAt(x+1) == 'l' && word.charAt(x+2) == 'o' && word.charAt(x+3) == 'a' && word.charAt(x+4) == 't') floats++;
+                    }
+                    if(word.charAt(x) == 'i') {
+                        if (x == word.length() - 1) continue;
+                        if (x+1 == word.length()-1) continue;
+                        if(word.charAt(x+1) == 'n' && word.charAt(x+2) == 't') ints++;
+                    }
                     if(word.charAt(x) == '>') greater++;
                     if(word.charAt(x) == '+' && word.charAt(x+1) == '+') pluses++;
-                    if(word.charAt(x) == 'n' && word.charAt(x+1) == 'e' && word.charAt(x+2) == 'w') news++;
-                    if(word.charAt(x) == '&' && word.charAt(x+1) == '&') ands++;
-                    if(word.charAt(x) == '|' && word.charAt(x+1) == '|') ors++;
+                    if(word.charAt(x) == 'n') {
+                        if (x == word.length() - 1) continue;
+                        if (x+1 == word.length()-1) continue;
+                        if(word.charAt(x+1) == 'e' && word.charAt(x+2) == 'w') news++;
+                    }
+                    if(word.charAt(x) == '&') {
+                        if (x == word.length() - 1) continue;
+                        if(word.charAt(x+1) == '&') ands++;
+                    }
+                    if(word.charAt(x) == '|') {
+                        if (x == word.length() - 1) continue;
+                        if(word.charAt(x+1) == '|') ors++;
+                    }
                     if(word.charAt(x) == '/') fslash++;
                     if(word.charAt(x) == '{') curly++;
 
@@ -77,10 +109,31 @@ public class SystemMetrics {
                     if(word.charAt(x) == 'j') ys++;*/
 
                     //considers only x,y,i,j used in for loops or basta as variables lang
-                    if(word.charAt(x) == 'x' && (word.charAt(x+1) == '<' || word.charAt(x+1) == '=' || word.charAt(x+1) == '+' || word.charAt(x+1) == ')' || word.charAt(x+1) == ']')) xs++;
-                    if(word.charAt(x) == 'y' && (word.charAt(x+1) == '<' || word.charAt(x+1) == '=' || word.charAt(x+1) == '+' || word.charAt(x+1) == ')' || word.charAt(x+1) == ']')) ys++;
-                    if(word.charAt(x) == 'i' && (word.charAt(x+1) == '<' || word.charAt(x+1) == '=' || word.charAt(x+1) == '+' || word.charAt(x+1) == ')' || word.charAt(x+1) == ']')) is++;
-//                    if(word.charAt(x) == 'j' && (word.charAt(x+1) == '<' || word.charAt(x+1) == '=' || word.charAt(x+1) == '+' || word.charAt(x+1) == ')' || word.charAt(x+1) == ']')) js++;
+                    if(word.charAt(x) == 'x') {
+                        if(x==word.length()-1) continue;
+                        if((word.charAt(x+1) == '<' || word.charAt(x+1) == '=' || word.charAt(x+1) == '+' || word.charAt(x+1) == ')' || word.charAt(x+1) == ']')){
+                            xs++;
+                        }
+                    }
+                    if(word.charAt(x) == 'y') {
+                        if(x==word.length()-1) continue;
+                        if((word.charAt(x+1) == '<' || word.charAt(x+1) == '=' || word.charAt(x+1) == '+' || word.charAt(x+1) == ')' || word.charAt(x+1) == ']')){
+                            ys++;
+                        }
+                    }
+                    if(word.charAt(x) == 'i') {
+                        if(x==word.length()-1) continue;
+                        if((word.charAt(x+1) == '<' || word.charAt(x+1) == '=' || word.charAt(x+1) == '+' || word.charAt(x+1) == ')' || word.charAt(x+1) == ']')){
+                            is++;
+                        }
+                    }
+                    if(word.charAt(x) == 'j') {
+                        if(x==word.length()-1) continue;
+                        if((word.charAt(x+1) == '<' || word.charAt(x+1) == '=' || word.charAt(x+1) == '+' || word.charAt(x+1) == ')' || word.charAt(x+1) == ']')){
+                            js++;
+                        }
+                    }
+
                 }
 
             }
