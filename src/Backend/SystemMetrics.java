@@ -38,7 +38,7 @@ public class SystemMetrics {
         String word = "";
         boolean isComment = false;
 
-        for(int i=0; i<5; i++) {  //numOfFiles [change numOfFiles to 1 for the first file only)
+        for(int i=0; i<numOfFiles; i++) {  //numOfFiles [change numOfFiles to 1 for the first file only)
             File file = new File(filesArray[i]);
             Scanner fileScanner = new Scanner(file);
             //System.out.println(filesArray[i]);
