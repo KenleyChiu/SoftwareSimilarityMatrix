@@ -12,7 +12,6 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -39,7 +38,7 @@ public class StatusController implements Initializable {
 
     public void createMatrix() throws IOException {
 
-        compare.readFile(comparison);
+        compare.creationMatrix(comparison);
 
         MatrixToGridpane();
 

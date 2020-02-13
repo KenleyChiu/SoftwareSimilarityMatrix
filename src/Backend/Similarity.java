@@ -1,37 +1,39 @@
 package Backend;
 
 import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Similarity {
     private float  percentage = 0;
-    private Scanner prog1Scan, prog2Scan;
-    private File filename1, filename2;
+    private Scanner checkerScan, comparisonScan;
     private Matrix data = new Matrix();
     private ArrayList<String> arrayA,arrayB;
 
+    private SystemMetrics metrics = new SystemMetrics();
+    private ArrayList<File> listFiles= new ArrayList<>();
+
 
     public void ReadCodeLine() {
-        float sameLines=0,totalLines=0,shorterLimit=0,longestLength=0;
-        String longestString = "";
+        float sameLines=0,totalLines=0;
 
         arrayA = new ArrayList<>();
         arrayB = new ArrayList<>();
 
-        while(prog1Scan.hasNextLine() || prog2Scan.hasNextLine()) {
+        while(checkerScan.hasNextLine() || comparisonScan.hasNextLine()) {
 
-            if(!prog1Scan.hasNextLine() && prog2Scan.hasNextLine()) {
-                String line2 = prog2Scan.nextLine();
+            if(!checkerScan.hasNextLine() && comparisonScan.hasNextLine()) {
+                String line2 = comparisonScan.nextLine();
 
                 if(!line2.trim().isEmpty()) {
                     arrayB.add(line2);
                     totalLines++;
                 }
             }
-            else if (prog1Scan.hasNextLine() && !prog2Scan.hasNextLine()) {
-                String line1 = prog1Scan.nextLine();
+            else if (checkerScan.hasNextLine() && !comparisonScan.hasNextLine()) {
+                String line1 = checkerScan.nextLine();
 
                 if(!line1.trim().isEmpty()) {
                     arrayA.add(line1);
@@ -39,8 +41,8 @@ public class Similarity {
                 }
             }
             else {
-                String line1 = prog1Scan.nextLine();
-                String line2 = prog2Scan.nextLine();
+                String line1 = checkerScan.nextLine();
+                String line2 = comparisonScan.nextLine();
 
                 if(!line1.trim().isEmpty()) arrayA.add(line1);
                 if(!line2.trim().isEmpty()) arrayB.add(line2);
@@ -84,9 +86,9 @@ public class Similarity {
         int countChar = 0;
         int countTotal = 0;
         while (true) {
-            if (prog1Scan.hasNext() && prog2Scan.hasNext()) {
-                String data1 = prog1Scan.nextLine();
-                String data2 = prog2Scan.nextLine();
+            if (checkerScan.hasNext() && comparisonScan.hasNext()) {
+                String data1 = checkerScan.nextLine();
+                String data2 = comparisonScan.nextLine();
                 int i = 0;
                 while (true) {
                     if (i < data1.length() && i < data2.length()) {
@@ -106,51 +108,68 @@ public class Similarity {
                     }
                 }
 
-            } else if (prog1Scan.hasNext()) {
-                countTotal = countTotal + prog1Scan.nextLine().length();
-            } else if (prog2Scan.hasNext()) {
-                countTotal = countTotal + prog2Scan.nextLine().length();
+            } else if (checkerScan.hasNext()) {
+                countTotal = countTotal + checkerScan.nextLine().length();
+            } else if (comparisonScan.hasNext()) {
+                countTotal = countTotal + comparisonScan.nextLine().length();
             } else {
                 break;
             }
 
         }
-        prog1Scan.close();
-        prog2Scan.close();
+        checkerScan.close();
+        comparisonScan.close();
         percentage = ((float) countChar / (float) countTotal);
         //percentage = (float)((countChar/countTotal)-0.5) * 2; //testing for negatives
 
     }
 
-    public void readFile(String comparison) throws FileNotFoundException {
+    //creating the correlation Matrix
+    public void creationMatrix(String comparison) throws IOException {
 
+        File checkerFile, comparisonFile; //storing for files when comparing
         File prog1File = new File("Codes");
-        File prog2File = new File("Codes");
-        File[] file1 = prog1File.listFiles();
-        File[] file2 = prog2File.listFiles();
+        File[] dir = prog1File.listFiles(); // getting all file in the Codes directory
+        data.newMatrix(); // creating a new correlation matrix
+        getAllFiles(dir);
 
-        data.newMatrix();
-
-        for(int i=0; i<file1.length; i++) //file1.length
+        //comparing files
+        for(int i=0; i<listFiles.size(); i++)
         {
-            data.setNewArray();
-
-            this.filename1=file1[i];
-            for(int j=0; j<file2.length; j++) //file2.length
+            data.setNewArray();// creating a new array for the checker file
+            checkerFile=listFiles.get(i);
+            for(int j=0; j<listFiles.size();j++)
             {
-                this.filename2=file2[j];
-                prog1Scan = new Scanner(filename1);
-                prog2Scan = new Scanner(filename2);
+                comparisonFile=listFiles.get(j);
+                checkerScan = new Scanner(checkerFile);
+                comparisonScan = new Scanner(comparisonFile);
+                //checks whether the user chose the to compare by line or by character
                 if(comparison.equals("line")) ReadCodeLine();
                 else ReadCodeCharacter();
-
-                //form.addArray(percentage);  //raw percentage
                 data.addArray((float)(Math.round(percentage*100.0)/100.0));  //two decimal points
             }
-            data.setMatrix();
+            data.setMatrix();//saving the data gathered to another array list for the correlation matrix
         }
 
     }
+
+    private void getAllFiles(File[] dir) throws IOException //get all files recursively
+    {
+        for(File files: dir)
+        {
+            if(files.isDirectory())// if the list found is a directory
+            {
+                File[] newDir=files.listFiles(); //gets the filename of the files inside the directory
+                getAllFiles(newDir);// recursive
+            }
+            else
+            {
+                listFiles.add(files);// add to the Array List of all files
+                System.out.println(files.getCanonicalPath());
+            }
+        }
+    }
+
 
     public Matrix getMatrix(){
         return data;
