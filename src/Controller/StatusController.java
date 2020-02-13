@@ -18,10 +18,11 @@ import java.util.ResourceBundle;
 
 public class StatusController implements Initializable {
 
-    public GridPane gridPane;
+    public VBox vboxMain;
     public RadioButton lineChoice,characterChoice;
     public TextField username;
     public Button check,quit;
+    public GridPane gridPane;
     private Similarity compare = new Similarity();
     private String comparison = "line";
     private DataObject dataObj;
@@ -40,19 +41,43 @@ public class StatusController implements Initializable {
 
         compare.creationMatrix(comparison);
 
+        addRowsColumns();
+
         MatrixToGridpane();
 
+
+    }
+
+    public void addRowsColumns(){
+
+        removeRowsColumns();
+
+        gridPane = new GridPane();
+
+        vboxMain.getChildren().add(gridPane);
+
+        for(int x=0; x<compare.getMatrix().arraySize(); x++){
+            gridPane.addRow(x);
+            for(int y=0; y<compare.getMatrix().matrixSize(); y++){
+                gridPane.addColumn(y);
+            }
+        }
+
+    }
+
+    public void removeRowsColumns(){
+        vboxMain.getChildren().remove(gridPane);
     }
 
     public void MatrixToGridpane(){
         System.out.println("MATRIX BY "+comparison.toUpperCase()+":");
-
+//        vboxMain.setPrefSize(1600,850);
+//        gridPane.setAlignment(Pos.CENTER);
         for(int x=0; x<compare.getMatrix().arraySize(); x++){
             //System.out.print(form.getMatrix().get(0).get(x) + " ");  //to see MatrixToGridpane row values
             for(int y=0; y<compare.getMatrix().matrixSize(); y++){
                 System.out.print(compare.getMatrix().getMatrix().get(y).get(x) + "  ");
                 dataObj = new DataObject(compare.getMatrix().getMatrix().get(y).get(x));
-
 
                 VBox vbox = new VBox();
                 vbox.setAlignment(Pos.CENTER);
@@ -78,8 +103,6 @@ public class StatusController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-//        lineChoice.setToggleGroup(toggleChoice);
-//        characterChoice.setToggleGroup(toggleChoice);
 
     }
 }
