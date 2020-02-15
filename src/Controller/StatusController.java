@@ -4,6 +4,7 @@ import Backend.*;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
@@ -24,7 +25,7 @@ public class StatusController implements Initializable {
     public Button check,quit;
     public GridPane gridPane;
     private Similarity compare = new Similarity();
-    private String comparison = "line";
+    private String comparison = "line",type="";
     private DataObject dataObj;
 
 
@@ -39,7 +40,7 @@ public class StatusController implements Initializable {
 
     public void createMatrix() throws IOException {
 
-        compare.creationMatrix(comparison);
+        compare.creationMatrix(comparison,type);
 
         addRowsColumns();
 
@@ -53,8 +54,10 @@ public class StatusController implements Initializable {
         removeRowsColumns();
 
         gridPane = new GridPane();
-
+        gridPane.setVgap(-2);
+        gridPane.setGridLinesVisible(true);
         vboxMain.getChildren().add(gridPane);
+        vboxMain.setSpacing(10);
 
         for(int x=0; x<compare.getMatrix().arraySize(); x++){
             gridPane.addRow(x);
@@ -77,7 +80,12 @@ public class StatusController implements Initializable {
             //System.out.print(form.getMatrix().get(0).get(x) + " ");  //to see MatrixToGridpane row values
             for(int y=0; y<compare.getMatrix().matrixSize(); y++){
                 System.out.print(compare.getMatrix().getMatrix().get(y).get(x) + "  ");
-                dataObj = new DataObject(compare.getMatrix().getMatrix().get(y).get(x));
+
+                //FOR LABELS
+                Label userFile = new Label(compare.getMatrix().getUserFileNames().get(y));
+                System.out.println(compare.getMatrix().getUserFileNames().get(y));
+
+                dataObj = new DataObject(compare.getMatrix().getMatrix().get(y).get(x),userFile);
 
                 VBox vbox = new VBox();
                 vbox.setAlignment(Pos.CENTER);
