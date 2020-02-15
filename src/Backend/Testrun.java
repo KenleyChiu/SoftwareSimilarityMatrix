@@ -9,15 +9,17 @@ public class Testrun {
         displayDirectoryContents(currentDir);
     }
 
-    public static void displayDirectoryContents(File dir) {
+    public static void displayDirectoryContents(File folder) {
         try {
-            File[] files = dir.listFiles();
+            File[] files = folder.listFiles();
             for (File file : files) {
                 if (file.isDirectory()) {
-                    System.out.println("directory:" + file.getCanonicalPath());
+                    System.out.println("FOLDER:" + file.getCanonicalPath());
                     displayDirectoryContents(file);
                 } else {
-                    System.out.println("     file:" + file.getCanonicalPath());
+                    if(file.getCanonicalPath().contains(".java") || file.getCanonicalPath().contains(".cpp")) {
+                        System.out.println("FILE:" + file.getCanonicalPath());
+                    }
                 }
             }
         } catch (IOException e) {

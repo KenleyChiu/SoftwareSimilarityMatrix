@@ -11,14 +11,16 @@ public class DataObject {
     private Rectangle rect;
     private float data;
     private Label dataLabel;
+    private Label name;
 
-    public DataObject(float data) {
+    public DataObject(float data, Label username) {
         this.data = data;
+        name = username;
 
         rect = new Rectangle();
 
-        rect.setWidth(45);
-        rect.setHeight(25);
+//        rect.setWidth(40);
+//        rect.setHeight(20);
 
         if (data == 1.0) rect.setFill(Color.hsb(330, 1, 1));
         if (0.90 <= data && data < 1.0) rect.setFill(Color.hsb(300, 1, 1));
@@ -40,6 +42,10 @@ public class DataObject {
 
     public Label getLabel() {
         return dataLabel;
+    }
+
+    public Label getName() {
+        return name;
     }
 
     public float getData() {

@@ -10,17 +10,16 @@ public class Similarity {
     private float  percentage = 0;
     private Scanner checkerScan, comparisonScan;
     private Matrix data = new Matrix();
-    private ArrayList<String> arrayA,arrayB;
 
     private SystemMetrics metrics = new SystemMetrics();
-    private ArrayList<File> listFiles= new ArrayList<>();
+    private ArrayList<File> listFiles;
 
 
     public void ReadCodeLine() {
         float sameLines=0,totalLines=0;
 
-        arrayA = new ArrayList<>();
-        arrayB = new ArrayList<>();
+        ArrayList<String> arrayA = new ArrayList<>();
+        ArrayList<String> arrayB = new ArrayList<>();
 
         while(checkerScan.hasNextLine() || comparisonScan.hasNextLine()) {
 
@@ -59,15 +58,15 @@ public class Similarity {
         System.out.println("NUMBER OF PROG2 LINES: " + arrayB.size() + "\n");
 
 
-        for(int x=0;x<arrayA.size();x++){  //arrayA.size()
+        for(int x = 0; x< arrayA.size(); x++){  //arrayA.size()
 //            System.out.println("PROG 1 LINE: "+arrayA.get(x));
             boolean compared = false;
-            for(int y=0;y<arrayB.size();y++){  //arrayB.size()
+            for(int y = 0; y< arrayB.size(); y++){  //arrayB.size()
 //                System.out.println("PROG 2 LINE: "+arrayB.get(y));
                 if(arrayA.get(x).equals(arrayB.get(y))){
                     if(!compared) {
-                        System.out.println("PROG 1 LINE #"+(x+1)+": "+arrayA.get(x));
-                        System.out.println("PROG 2 LINE #"+(y+1)+": "+arrayB.get(y));
+                        System.out.println("PROG 1 LINE #"+(x+1)+": "+ arrayA.get(x));
+                        System.out.println("PROG 2 LINE #"+(y+1)+": "+ arrayB.get(y));
                         sameLines++;
                         System.out.println(sameLines);
                     }
@@ -125,21 +124,40 @@ public class Similarity {
     }
 
     //creating the correlation Matrix
-    public void creationMatrix(String comparison) throws IOException {
-
+    public void creationMatrix(String comparison,String type) throws IOException {
+        listFiles = new ArrayList<>();
         File checkerFile, comparisonFile; //storing for files when comparing
         File prog1File = new File("Codes");
         File[] dir = prog1File.listFiles(); // getting all file in the Codes directory
         data.newMatrix(); // creating a new correlation matrix
-        getAllFiles(dir);
+
+        //FOR USER FILE NAMES
+        data.newUsers();
+
+        getAllFiles(dir,type);
 
         //comparing files
         for(int i=0; i<listFiles.size(); i++)
         {
             data.setNewArray();// creating a new array for the checker file
             checkerFile=listFiles.get(i);
+
+            //FOR SPECIFIC FILE TYPES
+            /*if(type.equals("java") && listFiles.get(i).getName().contains(type))
+                checkerFile=listFiles.get(i);
+            else if(type.equals("cpp") && listFiles.get(i).getName().contains(type))
+                checkerFile=listFiles.get(i);
+            else checkerFile=listFiles.get(i);*/
+
             for(int j=0; j<listFiles.size();j++)
             {
+                //FOR SPECIFIC FILE TYPES
+                /*if(type.equals("java") && listFiles.get(i).getName().contains(type))
+                    comparisonFile=listFiles.get(j);
+                else if(type.equals("cpp") && listFiles.get(i).getName().contains(type))
+                    comparisonFile=listFiles.get(j);
+                else comparisonFile=listFiles.get(j);*/
+
                 comparisonFile=listFiles.get(j);
                 checkerScan = new Scanner(checkerFile);
                 comparisonScan = new Scanner(comparisonFile);
@@ -153,19 +171,31 @@ public class Similarity {
 
     }
 
-    private void getAllFiles(File[] dir) throws IOException //get all files recursively
+    private void getAllFiles(File[] dir,String type) throws IOException //get all files recursively
     {
         for(File files: dir)
         {
             if(files.isDirectory())// if the list found is a directory
             {
                 File[] newDir=files.listFiles(); //gets the filename of the files inside the directory
-                getAllFiles(newDir);// recursive
+
+                data.addUser(files.getName());
+//                System.out.println(files.getName());
+
+                getAllFiles(newDir,type);// recursive
             }
             else
             {
-                listFiles.add(files);// add to the Array List of all files
-                System.out.println(files.getCanonicalPath());
+                //FOR SPECIFIC FILE TYPES
+                /*if(type.equals("java") && files.getName().contains("." + type)) {
+                    listFiles.add(files);
+                    System.out.println(files.getCanonicalPath());
+                }
+                else if (type.equals("cpp") && files.getName().contains("." + type))listFiles.add(files);
+                else listFiles.add(files);*/
+
+                listFiles.add(files); // add to the Array List of all files
+//                System.out.println(files.getCanonicalPath());
             }
         }
     }
