@@ -1,7 +1,6 @@
 package Backend;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -178,6 +177,7 @@ public class Similarity {
             if(files.isDirectory())// if the list found is a directory
             {
                 File[] newDir=files.listFiles(); //gets the filename of the files inside the directory
+//<<<<<<< HEAD
 
                 data.addUser(files.getName());
 //                System.out.println(files.getName());
@@ -196,9 +196,41 @@ public class Similarity {
 
                 listFiles.add(files); // add to the Array List of all files
 //                System.out.println(files.getCanonicalPath());
+//=======
+//                getFilesRecursively(newDir,files.getName());// going to the method that will check every file recursively
             }
         }
     }
+
+    private void getFilesRecursively(File[] dir,String fileName) throws IOException {
+        for(File files: dir)
+        {
+            if(files.isDirectory())// if the list found is a directory
+            {
+                File[] newDir=files.listFiles(); //gets the filename of the files inside the directory
+                getFilesRecursively(newDir,fileName);// going to the method that will check every file recursively
+            }
+            else
+            {
+                if(files.getName().contains(".java") || files.getName().contains(".cpp"))
+                {
+                    FileWriter fstream = new FileWriter("MergedCodes/"+fileName+".txt",true);
+                    BufferedWriter writing = new BufferedWriter(fstream);
+                    Scanner input = new Scanner(files);
+                    while(input.hasNext())
+                    {
+                        writing.write(input.nextLine());
+                        writing.newLine();
+                    }
+                    writing.close();
+                }
+
+
+//>>>>>>> 13256f519e7c08d8a515f916668f01debc2aacd0
+            }
+        }
+    }
+
 
 
     public Matrix getMatrix(){
