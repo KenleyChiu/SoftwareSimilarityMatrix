@@ -1,0 +1,674 @@
+format 222
+"projectpairmachine" // projectpairmachine
+  revision 1
+  modified_by 69 "ACER"
+  // class settings
+  
+  classdiagramsettings member_max_width 0 end
+  
+  classcompositediagramsettings end
+  
+  usecasediagramsettings end
+  
+  sequencediagramsettings end
+  
+  collaborationdiagramsettings end
+  
+  objectdiagramsettings end
+  
+  objectcompositediagramsettings end
+  
+  componentdiagramsettings
+   end
+  
+  deploymentdiagramsettings
+   end
+  
+  statediagramsettings
+   end
+  
+  activitydiagramsettings
+   end
+  
+  java_dir "C:\\Users\\ACER\\LopezMOSS\\LopezMOSS\\src\\moss\\projectpairmachine/"
+  java_package "moss.projectpairmachine"
+  classview 135749 "projectpairmachine"
+    
+    classdiagramsettings member_max_width 0 end
+    
+    classcompositediagramsettings end
+    
+    collaborationdiagramsettings end
+    
+    objectdiagramsettings end
+    
+    objectcompositediagramsettings end
+    
+    sequencediagramsettings end
+    
+    statediagramsettings
+     end
+    
+    
+    activitydiagramsettings
+     end
+    class 141253 "MultiProjectComparison"
+      visibility package stereotype "interface"
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}interface ${name}${extends} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+    end
+
+    class 141381 "ProjectsCorrelationMatrix"
+      visibility package 
+      cpp_decl ""
+      final java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      comment "@apiNote It might be reasonable that this class be moved inside an abstract multi-comparison class or
+a multi-comparison interface because its existence is intertwined with comparison
+@apiNote It is also reasonable to create a separate builder for
+this class to give better immutability than package-private methods
+Contains results for multi-project comparisons
+"
+      class 141509 "ResultRow"
+	visibility package 
+	cpp_decl ""
+	final static java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+	classrelation 138693 // rowProject (<unidirectional association>)
+	  relation 138693 --->
+	    a role_name "rowProject" const_relation private
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      classrelation_ref 138693 // rowProject (<unidirectional association>)
+	    b parent class_ref 140101 // Project
+	end
+
+	classrelation 138821 // results (<unidirectional association>)
+	  relation 138821 --->
+	    a role_name "results" const_relation private
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	      classrelation_ref 138821 // results (<unidirectional association>)
+	    b parent class_ref 141637 // ResultSet
+	end
+
+	operation 153541 "ResultRow"
+	  private explicit_return_type ""
+	  nparams 2
+	    param inout name "project" type class_ref 140101 // Project
+	    param inout name "results" type class_ref 141637 // ResultSet
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	end
+
+	operation 153669 "getResults"
+	  public return_type class_ref 141637 // ResultSet
+	  nparams 0
+	  
+	  preserve_java_body_indent final java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	  comment "@return Results present in row
+"
+	end
+
+	operation 153797 "getProject"
+	  public return_type class_ref 140101 // Project
+	  nparams 0
+	  
+	  preserve_java_body_indent final java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	  comment "@return Project associated with this row
+"
+	end
+      end
+
+      classrelation 138437 // <realization>
+	relation 138437 -_-|>
+	  a public
+	    java "${type}<ProjectsCorrelationMatrix.ResultRow>"
+	    classrelation_ref 138437 // <realization>
+	  b parent class_ref 136389 // Iterable
+      end
+
+      classrelation 138565 // rows (<unidirectional association>)
+	relation 138565 --->
+	  stereotype "Collection"
+	  a role_name "rows" const_relation private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${stereotype}<${type}> ${name}${value};
+"
+	    classrelation_ref 138565 // rows (<unidirectional association>)
+	  b parent class_ref 141509 // ResultRow
+      end
+
+      operation 153157 "ProjectsCorrelationMatrix"
+	private explicit_return_type ""
+	nparams 1
+	  param inout name "rows" explicit_type "Collection<ResultRow>"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 153285 "getRows"
+	public return_type class_ref 141509 // ResultRow
+	nparams 0
+	
+	preserve_java_body_indent final java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}Collection<${type}> ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@return A collection of <b>ResultRow</b>s, which contain immutable information about each row of results
+"
+      end
+
+      operation 153413 "iterator"
+	public return_type class_ref 141509 // ResultRow
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}Iterator<${type}> ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+	comment "@return An iterator for result rows
+"
+      end
+
+      class 141637 "ResultSet"
+	visibility package 
+	cpp_decl ""
+	final static java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+	class 141765 "ResultRecord"
+	  visibility package 
+	  cpp_decl ""
+	  final static java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+	  php_decl ""
+	  python_2_2 python_decl ""
+	  idl_decl ""
+	  explicit_switch_type ""
+	  mysql_decl ""
+	  
+	  classrelation 139205 // projectComparedAgainst (<unidirectional association>)
+	    relation 139205 --->
+	      a role_name "projectComparedAgainst" const_relation private
+		java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+		classrelation_ref 139205 // projectComparedAgainst (<unidirectional association>)
+	      b parent class_ref 140101 // Project
+	  end
+
+	  attribute 142405 "score"
+	    const_attribute private explicit_type "double"
+	    cpp_decl ""
+	    java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    php_decl ""
+	    python_decl ""
+	    idl_decl ""
+	    mysql_decl ""
+	    MysqlColumn
+	  end
+
+	  operation 154437 "ResultRecord"
+	    private explicit_return_type ""
+	    nparams 2
+	      param inout name "projectComparedAgainst" type class_ref 140101 // Project
+	      param in name "score" explicit_type "double"
+	    
+	    preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	    
+	    
+	    
+	  end
+
+	  operation 154565 "getProject"
+	    public return_type class_ref 140101 // Project
+	    nparams 0
+	    
+	    preserve_java_body_indent final java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	    
+	    
+	    
+	  end
+
+	  operation 154693 "getScore"
+	    public explicit_return_type "double"
+	    nparams 0
+	    
+	    preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	    
+	    
+	    
+	  end
+	end
+
+	classrelation 138949 // <realization>
+	  relation 138949 -_-|>
+	    a public
+	      java "${type}<ResultSet.ResultRecord>"
+	      classrelation_ref 138949 // <realization>
+	    b parent class_ref 136389 // Iterable
+	end
+
+	classrelation 139077 // results (<unidirectional association>)
+	  relation 139077 --->
+	    stereotype "Collection"
+	    a role_name "results" init_value " new ArrayList<>()" private
+	      comment "this class does not know about the existence of the project every other project here was compared to.
+this is knowledge that the instantiator of the correlation matrix must track himself
+"
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${stereotype}<${type}> ${name}${value};
+"
+	      classrelation_ref 139077 // results (<unidirectional association>)
+	    b parent class_ref 141765 // ResultRecord
+	end
+
+	operation 153925 "ResultSet"
+	  private explicit_return_type ""
+	  nparams 0
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	  comment "Collects all results of a comparison before compiling them into an immutable results object
+"
+	end
+
+	operation 154053 "add"
+	  private explicit_return_type "void"
+	  nparams 1
+	    param inout name "resultRecord" type class_ref 141765 // ResultRecord
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	  comment "@param resultRecord result record to be added to the set
+"
+	end
+
+	operation 154181 "containsResultFor"
+	  public explicit_return_type "boolean"
+	  nparams 1
+	    param inout name "project" type class_ref 140101 // Project
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	  comment "@param project Project to be checked
+@return True if there is already a result for the given project
+"
+	end
+
+	operation 154309 "iterator"
+	  public return_type class_ref 141765 // ResultRecord
+	  nparams 0
+	  
+	  preserve_java_body_indent final java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}Iterator<${type}> ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  java_annotation "@Override
+"
+	  
+	  
+	  
+	  comment "@return Returns the iterator for this set
+"
+	end
+      end
+
+      class 141893 "ProjectsCorrelationMatrixBuilder"
+	visibility package 
+	cpp_decl ""
+	static java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+	php_decl ""
+	python_2_2 python_decl ""
+	idl_decl ""
+	explicit_switch_type ""
+	mysql_decl ""
+	
+	classrelation 139333 // resultTable (<unidirectional association>)
+	  relation 139333 --->
+	    stereotype "LinkedHashMap"
+	    a role_name "resultTable" init_value " new LinkedHashMap<>()" private
+	      comment "I have made explicit use of a linked hash map here because it maintains the order things were put in
+"
+	      java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${stereotype}<${type}, ResultSet> ${name}${value};
+"
+	      classrelation_ref 139333 // resultTable (<unidirectional association>)
+	    b parent class_ref 140101 // Project
+	end
+
+	operation 154821 "createMatrix"
+	  package return_type class_ref 141381 // ProjectsCorrelationMatrix
+	  nparams 0
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	  comment "@return The matrix built from the added results
+"
+	end
+
+	operation 154949 "addResultOneWay"
+	  private explicit_return_type "void"
+	  nparams 3
+	    param inout name "projectComparedTo" type class_ref 140101 // Project
+	    param inout name "projectComparedAgainst" type class_ref 140101 // Project
+	    param in name "result" explicit_type "double"
+	  
+	  preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	  comment "[HELPER FUNCTION]
+Adds a result record in only one direction of comparison
+
+@param projectComparedTo      project where the result is added
+@param projectComparedAgainst project that the other project was compared against
+@param result                 result of their comparison
+"
+	end
+
+	operation 155077 "addRecordIfNone"
+	  package explicit_return_type "void"
+	  nparams 3
+	    param inout name "firstProjectCompared" type class_ref 140101 // Project
+	    param inout name "secondProjectCompared" type class_ref 140101 // Project
+	    param in name "result" explicit_type "double"
+	  
+	  preserve_java_body_indent final java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${throws}${staticnl}{
+  ${body}}
+"
+	  
+	  
+	  
+	  comment "Adds result to table symmetrically
+
+@param firstProjectCompared  First project compared
+@param secondProjectCompared Second project compared
+@param result                Result of their comparison
+"
+	end
+      end
+    end
+
+    class 142021 "SimpleMultiProjectComparison"
+      visibility package 
+      cpp_decl ""
+      final java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      comment "Compares multiple projects pair-wise
+"
+      classrelation 139589 // strategy (<unidirectional association>)
+	relation 139589 --->
+	  a role_name "strategy" const_relation private
+	    comment "
+TODO: Issues with the new refactor:
+1. With the new abstractions, the matrix is, for some reason, not entirely symmetrical
+
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 139589 // strategy (<unidirectional association>)
+	  b parent class_ref 138565 // ComparisonStrategy
+      end
+
+      operation 155205 "SimpleMultiProjectComparison"
+	package explicit_return_type ""
+	nparams 1
+	  param inout name "strategy" type class_ref 138565 // ComparisonStrategy
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@param strategy Algorithm to be used for comparison
+"
+      end
+
+      operation 155333 "compareAll"
+	public return_type class_ref 141381 // ProjectsCorrelationMatrix
+	nparams 1
+	  param inout name "projects" type class_ref 139973 // MultiProjectStorage
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+      end
+
+      operation 155461 "compareAgainstAll"
+	private return_type class_ref 140101 // Project
+	nparams 2
+	  param inout name "project" type class_ref 140101 // Project
+	  param inout name "allProjects" type class_ref 139973 // MultiProjectStorage
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}Hashtable<${type}, Double> ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@param project Project to be compared against all stored projects
+@param allProjects Other projects to be compared against <i>project</i>
+@return A hashtable containing the MOSS of the passed project against all projects stored in this class
+"
+      end
+
+      classrelation 139845 // <dependency>
+	relation 139845 -_->
+	  a public
+	    classrelation_ref 139845 // <dependency>
+	  b parent class_ref 141381 // ProjectsCorrelationMatrix
+      end
+
+      classrelation 139973 // <generalisation>
+	relation 139973 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 139973 // <generalisation>
+	  b parent class_ref 141253 // MultiProjectComparison
+      end
+    end
+
+    class 142149 "SimpleMultiProjectComparisonTest"
+      visibility public 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      operation 155589 "compareAgainstAll"
+	public explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Test
+"
+	
+	
+	
+      end
+
+      operation 155717 "module0SubmissionsTest"
+	public explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Test
+"
+	
+	
+	
+      end
+    end
+  end
+
+  deploymentview 135365 "projectpairmachine"
+    //deployment diagram settings
+    deploymentdiagramsettings
+     end
+    artifact 139717 "MultiProjectComparison"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+import moss.project.MultiProjectStorage;
+${definition}"
+      associated_elems
+      end
+    end
+
+    artifact 139845 "ProjectsCorrelationMatrix"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+import moss.project.Project;
+import java.util.*;
+${definition}"
+      associated_elems
+	class_ref 141381 // ProjectsCorrelationMatrix
+      end
+    end
+
+    artifact 139973 "SimpleMultiProjectComparison"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+import moss.algorithm.ComparisonStrategy;
+import moss.project.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Hashtable;
+import java.util.stream.Stream;
+${definition}"
+      associated_elems
+	class_ref 142021 // SimpleMultiProjectComparison
+      end
+    end
+
+    artifact 140101 "SimpleMultiProjectComparisonTest"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+import moss.algorithm.TokenHashingStrategy;
+import moss.project.MultiProjectStorage;
+import moss.project.Project;
+import moss.project.Projects;
+import moss.project.TestObjects;
+import org.junit.Test;
+import java.util.Hashtable;
+import java.util.Map;
+${definition}"
+      associated_elems
+	class_ref 142149 // SimpleMultiProjectComparisonTest
+      end
+    end
+  end
+
+  simplerelation 134725
+    -_->
+      on class_ref 140869 // Projects
+  end
+end

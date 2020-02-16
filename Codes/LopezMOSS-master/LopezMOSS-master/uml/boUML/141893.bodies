@@ -1,0 +1,25 @@
+class ProjectsCorrelationMatrixBuilder
+!!!154821.java!!!	createMatrix() : ProjectsCorrelationMatrix
+            //the only role of this function is to create the matrix by taking the values in the result table
+            //and putting it in a collection of result rows, the format the actual matrix uses
+            Collection<ResultRow> rows = new ArrayList<>();
+            for (Map.Entry<Project, ResultSet> resultTableEntry : resultTable.entrySet()){
+                rows.add(new ResultRow(resultTableEntry.getKey(), resultTableEntry.getValue()));
+            }
+            return new ProjectsCorrelationMatrix(rows);
+
+!!!154949.java!!!	addResultOneWay(inout projectComparedTo : Project, inout projectComparedAgainst : Project, in result : double) : void
+            //this will add the result to the table asymmetrically
+            resultTable.putIfAbsent(projectComparedTo, new ResultSet());
+            ResultSet projectResults = resultTable.get(projectComparedTo);
+
+            //PHASE 2: If this comparison is already in the table, we will refrain from putting it again
+            if (projectResults.containsResultFor(projectComparedAgainst)) return;
+
+
+            projectResults.add(new ResultSet.ResultRecord(projectComparedAgainst, result));
+!!!155077.java!!!	addRecordIfNone(inout firstProjectCompared : Project, inout secondProjectCompared : Project, in result : double) : void
+            //TWO-WAY adding
+            //All operations are only done on a single direction
+            this.addResultOneWay(firstProjectCompared, secondProjectCompared, result);
+            this.addResultOneWay(secondProjectCompared, firstProjectCompared, result);

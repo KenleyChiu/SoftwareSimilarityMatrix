@@ -1,0 +1,18 @@
+format 222
+
+classinstancecanvas 128069 classinstance_ref 134597 // 
+  xyz 222 140 2000
+end
+classinstancecanvas 128197 classinstance_ref 134725 // 
+  xyz 348 248 2000
+end
+classinstancecanvas 128325 classinstance_ref 134853 // 
+  xyz 332 386 2000
+end
+classinstancecanvas 128453 classinstance_ref 134981 // 
+  xyz 602 203 2000
+end
+classinstancecanvas 128581 classinstance_ref 135109 // 
+  xyz 205 303 2000
+end
+end

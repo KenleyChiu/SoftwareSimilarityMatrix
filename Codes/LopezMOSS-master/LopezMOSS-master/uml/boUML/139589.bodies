@@ -1,0 +1,20 @@
+class TokenClusterOccurrenceTable
+!!!148165.java!!!	TokenClusterOccurrenceTable()
+        occurrences = new HashMap<>();
+!!!148293.java!!!	addOccurred(inout tokenCluster : TokenCluster) : void
+        occurrences.putIfAbsent(tokenCluster, 0);
+        occurrences.put(tokenCluster,
+                occurrences.get(tokenCluster) + 1);
+!!!148421.java!!!	tabulate(inout reader : Reader) : void
+        HashingTokenizer tokenizer = new HashingTokenizer(reader);
+        for (TokenCluster cluster : tokenizer.remainingTokenClusters(DEFAULT_CLUSTER_SIZE)){
+            this.addOccurred(cluster);
+        }
+!!!148549.java!!!	collisionCount() : int
+        int count = 0;
+        for (Integer singleCount : this.occurrences.values()){
+            if (singleCount >= 2) count++;
+        }
+        return count;
+!!!148677.java!!!	total() : int
+        return this.occurrences.size();

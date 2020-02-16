@@ -1,0 +1,13 @@
+class MultiStreamReaderGeneratorTest
+!!!150341.java!!!	testGenerate() : void
+    //TODO: Test goes here...
+            ByteArrayInputStream byteStream1 = new ByteArrayInputStream("A".getBytes());
+            ByteArrayInputStream byteStream2 = new ByteArrayInputStream("B".getBytes());
+            Collection<InputStream> streams = new ArrayList<>();
+            streams.add(byteStream1);
+            streams.add(byteStream2);
+            MultiStreamReaderGenerator generator = new MultiStreamReaderGenerator(streams);
+            Reader reader = generator.generate();
+            assert(reader.read() == 'A');
+            assert(reader.read() == 'B');
+

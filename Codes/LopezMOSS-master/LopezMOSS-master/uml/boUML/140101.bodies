@@ -1,0 +1,11 @@
+class Project
+!!!150469.java!!!	Project(inout path : Path, in name : String, in globFilter : String)
+        this.name = name;
+        this.path = path;
+        readerDistributor = new ProjectFlatReaderDistributor(this.path, globFilter);
+!!!150597.java!!!	getConcatenatedReader() : Reader
+        return readerDistributor.distribute();
+!!!150725.java!!!	getPath() : Path
+        return this.path;
+!!!150853.java!!!	getName() : String
+        return this.name;

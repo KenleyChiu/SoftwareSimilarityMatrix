@@ -1,0 +1,1105 @@
+format 222
+"project" // project
+  revision 2
+  modified_by 69 "ACER"
+  // class settings
+  
+  classdiagramsettings member_max_width 0 end
+  
+  classcompositediagramsettings end
+  
+  usecasediagramsettings end
+  
+  sequencediagramsettings end
+  
+  collaborationdiagramsettings end
+  
+  objectdiagramsettings end
+  
+  objectcompositediagramsettings end
+  
+  componentdiagramsettings
+   end
+  
+  deploymentdiagramsettings
+   end
+  
+  statediagramsettings
+   end
+  
+  activitydiagramsettings
+   end
+  
+  java_dir "C:\\Users\\ACER\\LopezMOSS\\LopezMOSS\\src\\moss\\project/"
+  java_package "moss.project"
+  classview 135493 "project"
+    
+    classdiagramsettings member_max_width 0 end
+    
+    classcompositediagramsettings end
+    
+    collaborationdiagramsettings end
+    
+    objectdiagramsettings end
+    
+    objectcompositediagramsettings end
+    
+    sequencediagramsettings end
+    
+    statediagramsettings
+     end
+    
+    
+    activitydiagramsettings
+     end
+    class 139973 "MultiProjectStorage"
+      visibility public 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      comment "Class that stores multiple projects
+"
+      classrelation 137925 // <realization>
+	relation 137925 -_-|>
+	  a public
+	    java "${type}<Project>"
+	    classrelation_ref 137925 // <realization>
+	  b parent class_ref 136389 // Iterable
+      end
+
+      classrelation 138053 // projects (<unidirectional association>)
+	relation 138053 --->
+	  stereotype "Collection"
+	  a role_name "projects" const_relation private
+	    comment "NOTES on this iterator: The decision to make this project iterator is motivated mainly by the fact that
+I have observed that another module has become too dependent on multiple objects of this package.
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${stereotype}<${type}> ${name}${value};
+"
+	    classrelation_ref 138053 // projects (<unidirectional association>)
+	  b parent class_ref 140101 // Project
+      end
+
+      operation 149189 "iterator"
+	public return_type class_ref 140101 // Project
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}Iterator<${type}> ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+	comment "@return An iterator for all the contained projects
+"
+      end
+
+      operation 149317 "projectsIn"
+	class_operation public return_type class_ref 139973 // MultiProjectStorage
+	nparams 2
+	  param inout name "projectsFolder" explicit_type "Path"
+	  param in name "globFilter" explicit_type "String"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Takes projects from the subdirectories of a path and stores them
+@param projectsFolder Folder that contains the projects
+@param globFilter GLOB-based filter for files
+@return An iterable storage
+"
+      end
+
+      operation 149445 "fromCollection"
+	class_operation public return_type class_ref 139973 // MultiProjectStorage
+	nparams 1
+	  param inout name "projects" explicit_type "Collection<Project>"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Takes projects from a collection and stores them
+@param projects Collection of projects to be stored
+@return An iterable storage of projects
+"
+      end
+
+      operation 149573 "MultiProjectStorage"
+	private explicit_return_type ""
+	nparams 1
+	  param inout name "projects" explicit_type "Collection<Project>"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@param projects Collection of projects to be stored
+"
+      end
+
+      operation 149701 "MultiProjectStorage"
+	private explicit_return_type ""
+	nparams 2
+	  param inout name "projectsFolder" explicit_type "Path"
+	  param in name "globFilter" explicit_type "String"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@param projectsFolder Folder containing projects to be stored
+@param globFilter Filter for particular types of files
+"
+      end
+    end
+
+    class 140101 "Project"
+      visibility public 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      comment "Holds a programming project folder
+"
+      attribute 140741 "name"
+	const_attribute private explicit_type "String"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 140869 "path"
+	const_attribute private explicit_type "Path"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      classrelation 138181 // readerDistributor (<unidirectional association>)
+	relation 138181 --->
+	  a role_name "readerDistributor" const_relation private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 138181 // readerDistributor (<unidirectional association>)
+	  b parent class_ref 140485 // ProjectFlatReaderDistributor
+      end
+
+      operation 150469 "Project"
+	package explicit_return_type ""
+	nparams 3
+	  param inout name "path" explicit_type "Path"
+	  param in name "name" explicit_type "String"
+	  param in name "globFilter" explicit_type "String"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@param path Path to the project folder
+@param name Name of the project folder
+@param globFilter The GLOB-formatted filter text used to pick which files can be accessed from this object
+"
+      end
+
+      operation 150597 "getConcatenatedReader"
+	package explicit_return_type "Reader"
+	nparams 0
+	
+	preserve_java_body_indent final java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@return A <i>Reader</i> that spits out a concatenation of all files in the project.
+@see Reader
+"
+      end
+
+      operation 150725 "getPath"
+	public explicit_return_type "Path"
+	nparams 0
+	
+	preserve_java_body_indent final java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@return The path to the project
+@see Path
+"
+      end
+
+      operation 150853 "getName"
+	public explicit_return_type "String"
+	nparams 0
+	
+	preserve_java_body_indent final java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@return The name of the project
+"
+      end
+    end
+
+    class 140229 "MultiStreamReaderGenerator"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      comment "the purpose of this class is to collect
+a bunch of readers, combine them into a single
+buffer of memory, and generate a byte stream
+when necessary.
+The benefits of this class is that it minimizes the actual number of copies of the characters needed by the package.
+"
+      attribute 140613 "combinedByteArray"
+	const_attribute private explicit_type "byte"
+	multiplicity "[]"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type}${multiplicity} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      operation 149829 "MultiStreamReaderGenerator"
+	package explicit_return_type ""
+	nparams 1
+	  param inout name "streams" explicit_type "Collection<? extends InputStream>"
+	nexceptions 1
+	  explicit_exception "IOException"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@param streams Input streams to be combined
+@throws IOException Thrown when one input stream fails
+"
+      end
+
+      operation 149957 "generate"
+	package explicit_return_type "Reader"
+	nparams 0
+	
+	preserve_java_body_indent final java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "
+creates an independent reader to the collection of streams. This means that the generated readers are independent of one another.
+but at the same time, it does not distribute any unnecessary copies of the combined streams
+
+@return Reader generated from combining all the input streams
+"
+      end
+    end
+
+    class 140357 "MultiStreamReaderGeneratorTest"
+      visibility public 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      operation 150085 "before"
+	public explicit_return_type "void"
+	nparams 0
+	nexceptions 1
+	  explicit_exception "Exception"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Before
+"
+	
+	
+	
+      end
+
+      operation 150213 "after"
+	public explicit_return_type "void"
+	nparams 0
+	nexceptions 1
+	  explicit_exception "Exception"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@After
+"
+	
+	
+	
+      end
+
+      operation 150341 "testGenerate"
+	public explicit_return_type "void"
+	nparams 0
+	nexceptions 1
+	  explicit_exception "Exception"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Test
+"
+	
+	
+	
+	comment "
+Method: generate()
+@throws Exception All thrown exceptions
+"
+      end
+    end
+
+    class 140485 "ProjectFlatReaderDistributor"
+      visibility public 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      comment "Combines filtered files from a single path to a single reader.
+"
+      classrelation 138309 // generator (<unidirectional association>)
+	relation 138309 --->
+	  a role_name "generator" const_relation private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 138309 // generator (<unidirectional association>)
+	  b parent class_ref 140229 // MultiStreamReaderGenerator
+      end
+
+      operation 151621 "ProjectFlatReaderDistributor"
+	public explicit_return_type ""
+	nparams 1
+	  param inout name "projectPath" explicit_type "Path"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 151749 "ProjectFlatReaderDistributor"
+	public explicit_return_type ""
+	nparams 2
+	  param inout name "projectPath" explicit_type "Path"
+	  param in name "globFilter" explicit_type "String"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "if an empty string is passed to extension, this will not do any extension filtering
+the filter uses the GLOB syntax
+@param projectPath Path to the project
+@param globFilter GLOB filter for files to be combined
+"
+      end
+
+      operation 151877 "distribute"
+	package explicit_return_type "Reader"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@return A copy of the combined flat reader
+"
+      end
+    end
+
+    class 140613 "ProjectBuilder"
+      visibility public 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      comment "Builds <i>Project</i> objects.
+"
+      attribute 140997 "path"
+	private explicit_type "Path"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 141125 "name"
+	private explicit_type "String"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 141253 "globFilter"
+	private explicit_type "String"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      operation 150981 "ProjectBuilder"
+	public explicit_return_type ""
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Creates a builder for a <i>Project</i>
+No filter by default
+"
+      end
+
+      operation 151109 "setPath"
+	public return_type class_ref 140613 // ProjectBuilder
+	nparams 1
+	  param inout name "path" explicit_type "Path"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@param path Path to the project folder
+@return A builder for the project to be built
+"
+      end
+
+      operation 151237 "setName"
+	public return_type class_ref 140613 // ProjectBuilder
+	nparams 1
+	  param in name "name" explicit_type "String"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@param name Name of the project
+@return A builder for the project to be built
+"
+      end
+
+      operation 151365 "setGlobFilter"
+	public return_type class_ref 140613 // ProjectBuilder
+	nparams 1
+	  param in name "globFilter" explicit_type "String"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@param globFilter Text filter for the files that can be accessed from the project in GLOB format.
+@return A builder for the project to be built
+"
+      end
+
+      operation 151493 "createProject"
+	public return_type class_ref 140101 // Project
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@return The project generated with all values set.
+"
+      end
+
+      classrelation 140101 // <dependency>
+	relation 140101 -_->
+	  a public
+	    classrelation_ref 140101 // <dependency>
+	  b parent class_ref 140101 // Project
+      end
+    end
+
+    class 140741 "ProjectFlatReaderDistributorTest"
+      visibility public 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      operation 152005 "before"
+	public explicit_return_type "void"
+	nparams 0
+	nexceptions 1
+	  explicit_exception "Exception"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Before
+"
+	
+	
+	
+      end
+
+      operation 152133 "after"
+	public explicit_return_type "void"
+	nparams 0
+	nexceptions 1
+	  explicit_exception "Exception"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@After
+"
+	
+	
+	
+      end
+
+      operation 152261 "testDistribute"
+	public explicit_return_type "void"
+	nparams 0
+	nexceptions 1
+	  explicit_exception "Exception"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Test
+"
+	
+	
+	
+	comment "
+Method: distribute() 
+@throws Exception All thrown exceptions
+"
+      end
+    end
+
+    class 140869 "Projects"
+      visibility public 
+      cpp_decl ""
+      final java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      java_annotation "@SuppressWarnings(\"WeakerAccess\")
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      comment "A class containing many operations that can be done on <i>Project</i> objects
+"
+      attribute 141381 "CPP_FILTER"
+	class_attribute const_attribute public explicit_type "String"
+	init_value " \"**/*.cpp\""
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 141509 "JAVA_FILTER"
+	class_attribute const_attribute public explicit_type "String"
+	init_value " \"**/*.java\""
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 141637 "CPP_AND_JAVA_FILTER"
+	class_attribute const_attribute public explicit_type "String"
+	init_value " \"**/*.{java, cpp, h}\""
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 141765 "TXT_FILTER"
+	class_attribute const_attribute public explicit_type "String"
+	init_value " \"**/*.txt\""
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 141893 "NO_FILTER"
+	class_attribute const_attribute public explicit_type "String"
+	init_value " \"**/*\""
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      operation 152389 "Projects"
+	private explicit_return_type ""
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 152517 "compare"
+	class_operation public explicit_return_type "double"
+	nparams 3
+	  param inout name "first" type class_ref 140101 // Project
+	  param inout name "second" type class_ref 140101 // Project
+	  param inout name "strategy" type class_ref 138565 // ComparisonStrategy
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "cannot be instantiated
+
+Compares two <i>Project</i>s and returns a score from 0.0 to 1.0
+@param first First project to be compared
+@param second Second project to be compared
+@param strategy Algorithm to be used for comparison
+@return Score for comparison
+"
+      end
+
+      classrelation 140229 // <unidirectional association>
+	relation 140229 --->
+	  a role_name "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 140229 // <unidirectional association>
+	  b parent class_ref 140101 // Project
+      end
+
+      classrelation 140357 // <unidirectional association>
+	relation 140357 --->
+	  a role_name "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 140357 // <unidirectional association>
+	  b parent class_ref 140869 // Projects
+      end
+
+      simplerelation 134597
+	-_->
+	  on 
+	  package_ref 135237 // algorithm
+      end
+    end
+
+    class 140997 "ProjectsTest"
+      visibility public 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      operation 152645 "before"
+	public explicit_return_type "void"
+	nparams 0
+	nexceptions 1
+	  explicit_exception "Exception"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Before
+"
+	
+	
+	
+      end
+
+      operation 152773 "after"
+	public explicit_return_type "void"
+	nparams 0
+	nexceptions 1
+	  explicit_exception "Exception"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@After
+"
+	
+	
+	
+      end
+
+      operation 152901 "testCompare"
+	public explicit_return_type "void"
+	nparams 0
+	nexceptions 1
+	  explicit_exception "Exception"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Test
+"
+	
+	
+	
+	comment "
+Method: compare(Project first, Project second, ComparisonStrategy strategy)
+@throws Exception All caught exceptions
+
+"
+      end
+    end
+
+    class 141125 "TestObjects"
+      visibility public 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${static}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      java_annotation "@SuppressWarnings(\"WeakerAccess\")
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      mysql_decl ""
+      
+      attribute 142021 "TEST_PROJECT_1_PATH"
+	class_attribute const_attribute public explicit_type "Path"
+	init_value " Paths.get(new File(\"testfiles/project1\").getAbsolutePath())"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 142149 "TEST_PROJECT_2_PATH"
+	class_attribute const_attribute public explicit_type "Path"
+	init_value " Paths.get(new File(\"testfiles/project2\").getAbsolutePath())"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+
+      attribute 142277 "SUBMISSIONS_PATH"
+	class_attribute const_attribute public explicit_type "Path"
+	init_value " Paths.get(new File(\"test_submissions\").getAbsolutePath())"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	mysql_decl ""
+	MysqlColumn
+      end
+    end
+  end
+
+  deploymentview 135237 "project"
+    //deployment diagram settings
+    deploymentdiagramsettings
+     end
+    artifact 138437 "MultiProjectStorage"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.stream.Stream;
+${definition}"
+      associated_elems
+	class_ref 139973 // MultiProjectStorage
+      end
+    end
+
+    artifact 138565 "MultiStreamReaderGenerator"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+import org.apache.commons.io.IOUtils;
+import java.io.*;
+import java.util.Collection;
+import java.util.Collections;
+${definition}"
+      associated_elems
+	class_ref 140229 // MultiStreamReaderGenerator
+      end
+    end
+
+    artifact 138693 "MultiStreamReaderGeneratorTest"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+import org.junit.Test;
+import org.junit.Before;
+import org.junit.After;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.io.Reader;
+import java.util.ArrayList;
+import java.util.Collection;
+${definition}"
+      associated_elems
+	class_ref 140357 // MultiStreamReaderGeneratorTest
+      end
+    end
+
+    artifact 138821 "Project"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+import java.io.Reader;
+import java.nio.file.Path;
+${definition}"
+      associated_elems
+	class_ref 140101 // Project
+      end
+    end
+
+    artifact 138949 "ProjectBuilder"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+import java.nio.file.Path;
+${definition}"
+      associated_elems
+	class_ref 140613 // ProjectBuilder
+      end
+    end
+
+    artifact 139077 "ProjectFlatReaderDistributor"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+import java.io.*;
+import java.nio.file.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.stream.Stream;
+${definition}"
+      associated_elems
+	class_ref 140485 // ProjectFlatReaderDistributor
+      end
+    end
+
+    artifact 139205 "ProjectFlatReaderDistributorTest"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+import org.junit.Test;
+import org.junit.Before;
+import org.junit.After;
+import java.io.Reader;
+${definition}"
+      associated_elems
+	class_ref 140741 // ProjectFlatReaderDistributorTest
+      end
+    end
+
+    artifact 139333 "Projects"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+import moss.algorithm.ComparisonStrategy;
+import java.io.IOException;
+${definition}"
+      associated_elems
+	class_ref 140869 // Projects
+      end
+    end
+
+    artifact 139461 "ProjectsTest"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+import moss.algorithm.TokenHashingStrategy;
+import org.junit.Test;
+import org.junit.Before;
+import org.junit.After;
+${definition}"
+      associated_elems
+	class_ref 140997 // ProjectsTest
+      end
+    end
+
+    artifact 139589 "TestObjects"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+${definition}"
+      associated_elems
+	class_ref 141125 // TestObjects
+      end
+    end
+  end
+end

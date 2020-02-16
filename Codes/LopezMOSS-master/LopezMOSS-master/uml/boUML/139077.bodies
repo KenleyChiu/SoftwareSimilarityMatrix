@@ -1,0 +1,10 @@
+class TokenCluster
+!!!147397.java!!!	equals(inout o : Object) : boolean
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TokenCluster that = (TokenCluster) o;
+        return tokens.equals(that.tokens);
+!!!147525.java!!!	hashCode() : int
+        return Objects.hash(tokens);
+!!!148037.java!!!	TokenCluster(inout tokens : Collection<Token>)
+        this.tokens = tokens;

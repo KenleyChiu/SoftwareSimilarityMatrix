@@ -3,16 +3,15 @@ package Backend;
 import java.io.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Similarity {
     private float  percentage = 0;
     private Scanner checkerScan, comparisonScan;
     private Matrix data = new Matrix();
-
-    private SystemMetrics metrics = new SystemMetrics();
-    private ArrayList<File> listFiles;
-
+    private int fileFilter =0;
+    private String[] filter= new String[2];
 
     public void ReadCodeLine() {
         float sameLines=0,totalLines=0;
@@ -80,89 +79,125 @@ public class Similarity {
         //percentage = (float)((sameLines/totalLines)-0.5) * 2; //testing for negatives
     }
 
-    public void ReadCodeCharacter() {
-        int countChar = 0;
+    public void ReadCodeString() {
+        int countString = 0;
         int countTotal = 0;
-        while (true) {
-            if (checkerScan.hasNext() && comparisonScan.hasNext()) {
-                String data1 = checkerScan.nextLine();
-                String data2 = comparisonScan.nextLine();
-                int i = 0;
-                while (true) {
-                    if (i < data1.length() && i < data2.length()) {
-                        if (data1.charAt(i) == data2.charAt(i)) {
-                            countChar++;
-                            countTotal++;
-                        }
-                        i++;
-                    } else if (i < data2.length()) {
-                        countTotal++;
-                        i++;
-                    } else if (i < data1.length()) {
-                        countTotal++;
-                        i++;
-                    } else {
-                        break;
-                    }
-                }
-
-            } else if (checkerScan.hasNext()) {
-                countTotal = countTotal + checkerScan.nextLine().length();
-            } else if (comparisonScan.hasNext()) {
-                countTotal = countTotal + comparisonScan.nextLine().length();
-            } else {
-                break;
-            }
-
+        int j=0;
+        ArrayList<String> firstCode= new ArrayList<>();
+        ArrayList<String> secondCode= new ArrayList<>();
+        while(checkerScan.hasNext())
+        {
+            String[] line= checkerScan.nextLine().split(" ");
+            firstCode.addAll(Arrays.asList(line));
         }
+        while(comparisonScan.hasNext())
+        {
+            String[] line= comparisonScan.nextLine().split(" ");
+            secondCode.addAll(Arrays.asList(line));
+        }
+
+        if(firstCode.size()>=secondCode.size()) countTotal=firstCode.size();
+        else countTotal=secondCode.size();
+        while(true)
+        {
+            for(int i=0; i<secondCode.size(); i++)
+            {
+                if(firstCode.get(j).equals(secondCode.get(i)))
+                {
+                    countString++;
+                    firstCode.remove(j);
+                    secondCode.remove(i);
+                }
+            }
+        }
+
+//        while (true) {
+//            if (checkerScan.hasNext() && comparisonScan.hasNext()) {
+//                String data1 = checkerScan.nextLine();
+//                String data2 = comparisonScan.nextLine();
+//                int i = 0;
+//                while (true) {
+//                    if (i < data1.length() && i < data2.length()) {
+//                        if (data1.charAt(i) == data2.charAt(i)) {
+//                            countString++;
+//                            countTotal++;
+//                        }
+//                        i++;
+//                    } else if (i < data2.length()) {
+//                        countTotal++;
+//                        i++;
+//                    } else if (i < data1.length()) {
+//                        countTotal++;
+//                        i++;
+//                    } else {
+//                        break;
+//                    }
+//                }
+//
+//            } else if (checkerScan.hasNext()) {
+//                countTotal = countTotal + checkerScan.nextLine().length();
+//            } else if (comparisonScan.hasNext()) {
+//                countTotal = countTotal + comparisonScan.nextLine().length();
+//            } else {
+//                break;
+//            }
+//
+//        }
         checkerScan.close();
         comparisonScan.close();
-        percentage = ((float) countChar / (float) countTotal);
+        percentage = ((float) countString / (float) countTotal);
         //percentage = (float)((countChar/countTotal)-0.5) * 2; //testing for negatives
 
     }
 
+
+
     //creating the correlation Matrix
     public void creationMatrix(String comparison,String type) throws IOException {
-        listFiles = new ArrayList<>();
         File checkerFile, comparisonFile; //storing for files when comparing
         File prog1File = new File("Codes");
         File[] dir = prog1File.listFiles(); // getting all file in the Codes directory
         data.newMatrix(); // creating a new correlation matrix
+        data.newUsers(); // clearing all of the data in the userArrayList
 
-        //FOR USER FILE NAMES
-        data.newUsers();
+        //Delete the files inside the mergedCodes directory to avoid duplication
+        File mergeFile= new File("MergedCodes");
+        deleteFilesMerge(mergeFile);
 
-        getAllFiles(dir,type);
+        if(type.equals("java"))
+        {
+            filter[0]=".java";
+            filter[1]=".java";
+        }
+        else if(type.equals("cpp"))
+        {
+            filter[0]=".cpp";
+            filter[1]=".cpp";
+        }
+        else
+        {
+            filter[0]=".java";
+            filter[1]=".cpp";
+        }
+
+        getAllFiles(dir);// starts to recursively check all of the codes in the folder
+
+        //gets all of the merged files
+        File[] codes= mergeFile.listFiles();
 
         //comparing files
-        for(int i=0; i<listFiles.size(); i++)
+        for(int i=0; i<codes.length; i++)
         {
             data.setNewArray();// creating a new array for the checker file
-            checkerFile=listFiles.get(i);
-
-            //FOR SPECIFIC FILE TYPES
-            /*if(type.equals("java") && listFiles.get(i).getName().contains(type))
-                checkerFile=listFiles.get(i);
-            else if(type.equals("cpp") && listFiles.get(i).getName().contains(type))
-                checkerFile=listFiles.get(i);
-            else checkerFile=listFiles.get(i);*/
-
-            for(int j=0; j<listFiles.size();j++)
+            checkerFile=codes[i];
+            for(int j=0; j<codes.length;j++)
             {
-                //FOR SPECIFIC FILE TYPES
-                /*if(type.equals("java") && listFiles.get(i).getName().contains(type))
-                    comparisonFile=listFiles.get(j);
-                else if(type.equals("cpp") && listFiles.get(i).getName().contains(type))
-                    comparisonFile=listFiles.get(j);
-                else comparisonFile=listFiles.get(j);*/
-
-                comparisonFile=listFiles.get(j);
+                comparisonFile=codes[j];
                 checkerScan = new Scanner(checkerFile);
                 comparisonScan = new Scanner(comparisonFile);
                 //checks whether the user chose the to compare by line or by character
                 if(comparison.equals("line")) ReadCodeLine();
-                else ReadCodeCharacter();
+                else ReadCodeString();
                 data.addArray((float)(Math.round(percentage*100.0)/100.0));  //two decimal points
             }
             data.setMatrix();//saving the data gathered to another array list for the correlation matrix
@@ -170,34 +205,24 @@ public class Similarity {
 
     }
 
-    private void getAllFiles(File[] dir,String type) throws IOException //get all files recursively
-    {
-        for(File files: dir)
-        {
-            if(files.isDirectory())// if the list found is a directory
-            {
-                File[] newDir=files.listFiles(); //gets the filename of the files inside the directory
-//<<<<<<< HEAD
-
-                data.addUser(files.getName());
-//                System.out.println(files.getName());
-
-                getAllFiles(newDir,type);// recursive
+    private void deleteFilesMerge(File mergeFile) {
+        String[]entries = mergeFile.list();
+        if (entries != null) {
+            for(String s: entries){
+                File currentFile = new File(mergeFile.getPath(),s);
+                currentFile.delete();
             }
-            else
-            {
-                //FOR SPECIFIC FILE TYPES
-                /*if(type.equals("java") && files.getName().contains("." + type)) {
-                    listFiles.add(files);
-                    System.out.println(files.getCanonicalPath());
-                }
-                else if (type.equals("cpp") && files.getName().contains("." + type))listFiles.add(files);
-                else listFiles.add(files);*/
+        }
+    }
 
-                listFiles.add(files); // add to the Array List of all files
-//                System.out.println(files.getCanonicalPath());
-//=======
-//                getFilesRecursively(newDir,files.getName());// going to the method that will check every file recursively
+    private void getAllFiles(File[] dir) throws IOException //get all files recursively
+    {
+        for (File files : dir) {
+            if (files.isDirectory())// if the list found is a directory
+            {
+                File[] newDir = files.listFiles(); //gets the filename of the files inside the directory
+                getFilesRecursively(newDir, files.getName());// goes to the file method to recursively merge all of the codes
+                fileFilter = 0;
             }
         }
     }
@@ -212,9 +237,16 @@ public class Similarity {
             }
             else
             {
-                if(files.getName().contains(".java") || files.getName().contains(".cpp"))
+                if(files.getName().contains(filter[0]) || files.getName().contains(filter[1])) // checks whether the file is a .java or .ccp
                 {
                     FileWriter fstream = new FileWriter("MergedCodes/"+fileName+".txt",true);
+                    //To get the file names of the users that satisfied the filter option
+                    if(fileFilter ==0)
+                    {
+                        data.addUser(fileName);//add the names for the GUI
+                        fileFilter =1;
+                    }
+                    //writes the files into a text file for comparison
                     BufferedWriter writing = new BufferedWriter(fstream);
                     Scanner input = new Scanner(files);
                     while(input.hasNext())
@@ -225,8 +257,6 @@ public class Similarity {
                     writing.close();
                 }
 
-
-//>>>>>>> 13256f519e7c08d8a515f916668f01debc2aacd0
             }
         }
     }

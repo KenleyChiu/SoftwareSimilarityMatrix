@@ -1,0 +1,30 @@
+class SimpleMultiProjectComparison
+!!!155205.java!!!	SimpleMultiProjectComparison(inout strategy : ComparisonStrategy)
+        //CHANGE: This class will no longer have the ability to create projects; instead,
+        //a new object dependency (MultiProjectStorage) will be used to contain all the projects
+        //before it is sent here
+        this.strategy = strategy;
+!!!155333.java!!!	compareAll(inout projects : MultiProjectStorage) : ProjectsCorrelationMatrix
+        //CHANGE: The result of this comparison has been refactored to a single less verbose class for correlation matrices
+        //         This is to reduce the verbosity of the results' type
+        ProjectsCorrelationMatrix.ProjectsCorrelationMatrixBuilder results =
+                new ProjectsCorrelationMatrix.ProjectsCorrelationMatrixBuilder();
+        Collection<Project> completedProjects = new ArrayList<>();
+        for (Project firstProject : projects){
+            for (Project secondProject : projects){
+                if (completedProjects.contains(secondProject)) continue;
+                results.addRecordIfNone(firstProject, secondProject,
+                        Projects.compare(firstProject, secondProject, strategy));
+            }
+            completedProjects.add(firstProject);
+        }
+
+        return results.createMatrix();
+!!!155461.java!!!	compareAgainstAll(inout project : Project, inout allProjects : MultiProjectStorage) : Project
+        Hashtable<Project, Double> scores = new Hashtable<>();
+        for (Project comparedProject : allProjects){
+            //Projects.compare (a static class) is called here to get the score of the comparison against the passed project
+            scores.putIfAbsent(comparedProject,
+                    Projects.compare(project, comparedProject, strategy));
+        }
+        return scores;

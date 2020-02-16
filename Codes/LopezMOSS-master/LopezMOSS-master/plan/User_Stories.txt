@@ -1,0 +1,10 @@
+As a professor, I would like to check if some of my students are sharing parts of their source code with one another faster so I can make assessments faster. As such, I would
+like to compare at least 10 projects pairwise so I don't have to do at least 100 comparisons.
+ 
+As a student, I would like to check if I unintentionally made my code too similar to that of my peers'.
+
+As a software client, I would like to know if the firm I've hired has produced legal, unplagiarized code to prevent stepping into illegal landmines
+
+As a class author, I would like to know if an organization or user 
+I am suspecting has used my code without permission (outside of the bounds of the code's license). 
+Thus, I would like to be able to run this on their entire repository against my repository.

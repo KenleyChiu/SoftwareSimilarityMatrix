@@ -1,0 +1,18 @@
+class TokenBuilder
+!!!146245.java!!!	setType(inout type : Token::TYPE) : Token::TokenBuilder
+            return setTypeWithValue(type, null);
+!!!146373.java!!!	setTypeWithValue(inout type : Token::TYPE, inout value : T) : Token::TokenBuilder
+            this.type = type;
+            this.value = value;
+            //NOTE: this null check is necessary because if there is no SPECIFIC value for a particular token,
+            //it is unnecessary to separate its identity from other already existing tokens of precisely the same type
+            if (this.value == null)
+                this.id = this.type.hashCode();
+            else
+                this.id = this.value.hashCode();
+            return this;
+!!!146501.java!!!	setLineNo(in lineNo : int) : Token::TokenBuilder
+            this.lineNo = lineNo;
+            return this;
+!!!146629.java!!!	createToken() : Token
+            return new Token(id, lineNo, value);

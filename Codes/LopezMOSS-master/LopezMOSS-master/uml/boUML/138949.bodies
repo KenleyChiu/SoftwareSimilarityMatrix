@@ -1,0 +1,16 @@
+class Token
+!!!146757.java!!!	Token(in hash : int, in lineNo : int, inout value : Object)
+        this.id = hash;
+        this.lineNo = lineNo;
+        this.value = value;
+!!!146885.java!!!	getLineNo() : int
+        return lineNo;
+!!!147013.java!!!	getId() : int
+        return id;
+!!!147141.java!!!	equals(inout other : Object) : boolean
+        //TODO: Write motivation for using only id as the identifier of the class
+        if (!(other instanceof Token)) return false;
+        Token ref = (Token)other;
+        return ref.id == this.id;
+!!!147269.java!!!	hashCode() : int
+        return Objects.hash(id);

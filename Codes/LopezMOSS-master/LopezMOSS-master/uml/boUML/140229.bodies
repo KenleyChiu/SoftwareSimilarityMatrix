@@ -1,0 +1,11 @@
+class MultiStreamReaderGenerator
+!!!149829.java!!!	MultiStreamReaderGenerator(inout streams : Collection<? extends InputStream>)
+        SequenceInputStream combinedReaderStream =
+                new SequenceInputStream(Collections.enumeration(streams));
+        ByteArrayOutputStream byteos = new ByteArrayOutputStream();
+        IOUtils.copy(combinedReaderStream, byteos);
+        combinedByteArray = byteos.toByteArray();
+!!!149957.java!!!	generate() : Reader
+        return new BufferedReader(
+                new InputStreamReader(
+                        new ByteArrayInputStream(combinedByteArray)));

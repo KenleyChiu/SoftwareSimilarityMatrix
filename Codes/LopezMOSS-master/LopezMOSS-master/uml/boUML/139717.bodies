@@ -1,0 +1,9 @@
+class TokenHashingStrategy
+!!!148805.java!!!	TokenHashingStrategy()
+
+!!!148933.java!!!	compare(inout str1 : Reader, inout str2 : Reader) : Double
+        //CHANGE: The token cluster tables have been converted to a local variable to allow reusability of this class
+        TokenClusterOccurrenceTable table = new TokenClusterOccurrenceTable();
+        table.tabulate(str1);
+        table.tabulate(str2);
+        return (double) table.collisionCount() / (double) table.total();

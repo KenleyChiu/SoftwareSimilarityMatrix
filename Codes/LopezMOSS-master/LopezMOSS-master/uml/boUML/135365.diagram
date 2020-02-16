@@ -1,0 +1,120 @@
+format 222
+
+classcanvas 128069 class_ref 138565 // ComparisonStrategy
+  classdiagramsettings member_max_width 0 end
+  xyzwh 327.637 647.248 2011 166 81
+end
+classcanvas 128197 class_ref 138949 // Token
+  classdiagramsettings member_max_width 0 end
+  xyzwh 480.537 382.854 2000 104 184
+end
+classcanvas 128325 class_ref 139717 // TokenHashingStrategy
+  classdiagramsettings member_max_width 0 end
+  xyzwh 86.617 384.481 2005 184 84
+end
+classcanvas 128453 class_ref 139589 // TokenClusterOccurrenceTable
+  classdiagramsettings member_max_width 0 end
+  xyzwh 144.437 180.808 2012 234 149
+end
+classcanvas 128581 class_ref 138693 // HashingTokenizer
+  classdiagramsettings member_max_width 0 end
+  xyzwh 122.192 548.644 2000 187 184
+end
+classcanvas 128709 class_ref 139077 // TokenCluster
+  classdiagramsettings member_max_width 0 end
+  xyzwh 475.238 203.766 2006 122 101
+end
+packagecanvas 129221 
+  package_ref 135237 // algorithm
+    xyzwh 73.92 121.7 2016 540 722
+end
+classcanvas 129989 class_ref 140869 // Projects
+  classdiagramsettings member_max_width 0 end
+  xyz 1112.18 329.24 2000
+end
+classcanvas 130117 class_ref 140613 // ProjectBuilder
+  classdiagramsettings member_max_width 0 end
+  xyz 1392.82 111.2 3011
+end
+classcanvas 130245 class_ref 139973 // MultiProjectStorage
+  classdiagramsettings member_max_width 0 end
+  xyz 819 134.02 2000
+end
+classcanvas 130373 class_ref 140101 // Project
+  classdiagramsettings member_max_width 0 end
+  xyz 1114.98 128.02 2006
+end
+packagecanvas 130757 
+  package_ref 135365 // project
+    xyzwh 744.44 31.38 2000 925 504
+end
+packagecanvas 132037 
+  package_ref 135493 // projectpairmachine
+    xyzwh 835.1 572.6 2000 725 404
+end
+classcanvas 132165 class_ref 141253 // MultiProjectComparison
+  classdiagramsettings member_max_width 0 end
+  xyz 1299.9 669.5 2005
+end
+classcanvas 132293 class_ref 141381 // ProjectsCorrelationMatrix
+  classdiagramsettings member_max_width 0 end
+  xyz 932.8 824.5 2005
+end
+classcanvas 132421 class_ref 142021 // SimpleMultiProjectComparison
+  classdiagramsettings member_max_width 0 end
+  xyz 915.72 652.5 2017
+end
+relationcanvas 128837 relation_ref 137669 // <unidirectional association>
+  decenter_end 483
+  from ref 128453 z 2013 stereotype "<<HashMap>>" xyz 382 251 2013 to ref 128709
+  role_a_pos 383 225 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 128965 relation_ref 137413 // <unidirectional association>
+  from ref 128709 z 2007 stereotype "<<Collection>>" xyz 495 306 2007 to ref 128197
+  role_a_pos 547 356 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 129093 relation_ref 137797 // <realization>
+  from ref 128325 z 2012 to ref 128069
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 130501 relation_ref 138053 // <unidirectional association>
+  from ref 130245 z 2007 stereotype "<<Collection>>" xyz 991 194 2007 to ref 130373
+  role_a_pos 1043 170 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 132549 relation_ref 139589 // <unidirectional association>
+  from ref 132421 z 2018 to ref 128069
+  role_a_pos 505 662 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 133061 relation_ref 139845 // <dependency>
+  from ref 132421 z 2018 to ref 132293
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 133189 relation_ref 139973 // <generalisation>
+  from ref 132421 z 2018 to ref 132165
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 133445 relation_ref 140101 // <dependency>
+  from ref 130117 z 3012 to ref 130373
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 133573 relation_ref 140229 // <unidirectional association>
+  from ref 129989 z 2007 to ref 130373
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+simplerelationcanvas 134853 simplerelation_ref 134597
+  from ref 129989 z 2017 to ref 129221
+end
+simplerelationcanvas 135749 simplerelation_ref 134725
+  from ref 132037 z 2001 to ref 129989
+end
+preferred_whz 1331 770 0.7
+end

@@ -1,0 +1,12 @@
+class ProjectFlatReaderDistributorTest
+!!!152005.java!!!	before() : void
+ 
+!!!152133.java!!!	after() : void
+ 
+!!!152261.java!!!	testDistribute() : void
+ 
+//TODO: Test goes here...
+    ProjectFlatReaderDistributor distributor = new ProjectFlatReaderDistributor(TestObjects.TEST_PROJECT_1_PATH,
+            Projects.TXT_FILTER);
+    Reader reader = distributor.distribute();
+    assert(reader.read() == 'c');

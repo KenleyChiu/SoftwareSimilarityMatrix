@@ -1,0 +1,60 @@
+format 222
+
+classinstancecanvas 128069 classinstance_ref 128069 // 
+  xyz 290 183 2000
+end
+classinstancecanvas 128197 classinstance_ref 128197 // 
+  xyz 329 300 2000
+end
+classinstancecanvas 128453 classinstance_ref 128325 // 
+  xyz 64 122 2000
+end
+classinstancecanvas 128581 classinstance_ref 128453 // 
+  xyz 71 230 2006
+end
+classinstancecanvas 129221 classinstance_ref 128709 // 
+  xyz 457 187 2000
+end
+classinstancecanvas 129733 classinstance_ref 128837 // 
+  xyz 313 436 2000
+end
+classinstancecanvas 129861 classinstance_ref 128965 // 
+  xyz 333 494 2000
+end
+classinstancecanvas 129989 classinstance_ref 129093 // 
+  xyz 264 383 2000
+end
+classinstancecanvas 130501 classinstance_ref 129221 // 
+  xyz 639 212 2000
+end
+classinstancecanvas 130629 classinstance_ref 129349 // 
+  xyz 480 265 2000
+end
+objectlinkcanvas 128325 norel
+  from ref 128069 z 2001 to ref 128197
+  no_role_a no_role_b
+objectlinkcanvas 128709 norel
+  from ref 128453 z 2007 to ref 128581
+  no_role_a no_role_b
+objectlinkcanvas 129605 norel
+  from ref 129221 z 2001 to ref 128197
+  no_role_a no_role_b
+objectlinkcanvas 130117 norel
+  from ref 128197 z 2001 to ref 129989
+  no_role_a no_role_b
+objectlinkcanvas 130245 norel
+  from ref 129989 z 2001 to ref 129733
+  no_role_a no_role_b
+objectlinkcanvas 130373 norel
+  from ref 129733 z 2001 to ref 129861
+  no_role_a no_role_b
+objectlinkcanvas 130757 norel
+  from ref 130501 z 2001 to ref 130629
+  no_role_a no_role_b
+objectlinkcanvas 130885 norel
+  from ref 130629 z 2001 to ref 128197
+  no_role_a no_role_b
+objectlinkcanvas 131013 norel
+  from ref 128581 z 2007 to ref 128197
+  no_role_a no_role_b
+end

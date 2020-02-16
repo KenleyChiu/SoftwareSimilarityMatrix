@@ -32,12 +32,12 @@
                                     <VBox alignment="CENTER" prefHeight="224.0" prefWidth="253.0" spacing="20.0">
                                        <children>
                                           <Label text="File Types:" />
-                                          <RadioButton fx:id="java" mnemonicParsing="false" selected="true" text="java">
+                                          <RadioButton fx:id="java" mnemonicParsing="false" onAction="#java" selected="true" text="java">
                                              <toggleGroup>
                                                 <ToggleGroup fx:id="type" />
                                              </toggleGroup></RadioButton>
-                                          <RadioButton fx:id="cpp" mnemonicParsing="false" text="cpp" toggleGroup="$type" />
-                                          <RadioButton fx:id="all" mnemonicParsing="false" text="all" toggleGroup="$type" />
+                                          <RadioButton fx:id="cpp" mnemonicParsing="false" onAction="#cpp" text="cpp" toggleGroup="$type" />
+                                          <RadioButton fx:id="all" mnemonicParsing="false" onAction="#all" text="all" toggleGroup="$type" />
                                        </children>
                                     </VBox>
                                     <VBox alignment="CENTER" prefHeight="194.0" prefWidth="156.0" spacing="20.0">

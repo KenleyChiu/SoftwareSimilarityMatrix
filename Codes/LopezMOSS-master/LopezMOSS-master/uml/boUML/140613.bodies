@@ -1,0 +1,17 @@
+class ProjectBuilder
+!!!150981.java!!!	ProjectBuilder()
+        //CHANGE: Recently made all methods here public to connect this to other modules
+        this.globFilter = Projects.NO_FILTER;
+        this.name = null;
+!!!151109.java!!!	setPath(inout path : Path) : ProjectBuilder
+        this.path = path;
+        return this;
+!!!151237.java!!!	setName(in name : String) : ProjectBuilder
+        this.name = name;
+        return this;
+!!!151365.java!!!	setGlobFilter(in globFilter : String) : ProjectBuilder
+        this.globFilter = globFilter;
+        return this;
+!!!151493.java!!!	createProject() : Project
+        if (name == null) this.name = this.path.getFileName().toString();
+        return new Project(path, name, globFilter);

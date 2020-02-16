@@ -1,0 +1,3 @@
+class TokenizerEndException
+!!!145349.java!!!	TokenizerEndException(in message : String)
+           super(message);
