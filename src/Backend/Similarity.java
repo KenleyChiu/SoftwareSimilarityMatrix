@@ -13,7 +13,7 @@ public class Similarity {
     private int fileFilter =0;
     private String[] filter= new String[2];
 
-    public void ReadCodeLine() {
+    private void ReadCodeLine() {
         float sameLines=0,totalLines=0;
 
         ArrayList<String> arrayA = new ArrayList<>();
@@ -52,8 +52,8 @@ public class Similarity {
 
 //        totalLines = arrayA.size() + arrayB.size();
 
-        System.out.println("\nNUMBER OF PROG1 LINES: " + arrayA.size());
-        System.out.println("NUMBER OF PROG2 LINES: " + arrayB.size() + "\n");
+//        System.out.println("\nNUMBER OF PROG1 LINES: " + arrayA.size());
+//        System.out.println("NUMBER OF PROG2 LINES: " + arrayB.size() + "\n");
 
 
         for(int x = 0; x< arrayA.size(); x++){  //arrayA.size()
@@ -63,10 +63,10 @@ public class Similarity {
 //                System.out.println("PROG 2 LINE: "+arrayB.get(y));
                 if(arrayA.get(x).equals(arrayB.get(y))){
                     if(!compared) {
-                        System.out.println("PROG 1 LINE #"+(x+1)+": "+ arrayA.get(x));
-                        System.out.println("PROG 2 LINE #"+(y+1)+": "+ arrayB.get(y));
+//                        System.out.println("PROG 1 LINE #"+(x+1)+": "+ arrayA.get(x));
+//                        System.out.println("PROG 2 LINE #"+(y+1)+": "+ arrayB.get(y));
                         sameLines++;
-                        System.out.println(sameLines);
+//                        System.out.println(sameLines);
                     }
                     compared = true;
                 }
@@ -81,30 +81,21 @@ public class Similarity {
         //percentage = (float)((sameLines/totalLines)-0.5) * 2; //testing for negatives
     }
 
-    public void ReadCodeString() {
+    private void ReadCodeString() {
         int countString = 0;
-        int countTotal= 0;
+        int countTotal;
         int j=0;
         boolean compare;
         ArrayList<String> firstCode= new ArrayList<>();
         ArrayList<String> secondCode= new ArrayList<>();
-        while(checkerScan.hasNext())
-        {
-            String[] line= checkerScan.nextLine().split(" ");
-            firstCode.addAll(Arrays.asList(line));
-        }
-        while(comparisonScan.hasNext())
-        {
-            String[] line= comparisonScan.nextLine().split(" ");
-            secondCode.addAll(Arrays.asList(line));
-        }
+        getAllStrings(checkerScan,firstCode);
+        getAllStrings(comparisonScan,secondCode);
 
         if(firstCode.size()>=secondCode.size()) countTotal=firstCode.size();
         else countTotal=secondCode.size();
 
         while(j<firstCode.size())
         {
-            System.out.println("comparing");
             compare=false;
             for(int i=0; i<secondCode.size(); i++)
             {
@@ -123,43 +114,25 @@ public class Similarity {
             }
         }
 
-//        while (true) {
-//            if (checkerScan.hasNext() && comparisonScan.hasNext()) {
-//                String data1 = checkerScan.nextLine();
-//                String data2 = comparisonScan.nextLine();
-//                int i = 0;
-//                while (true) {
-//                    if (i < data1.length() && i < data2.length()) {
-//                        if (data1.charAt(i) == data2.charAt(i)) {
-//                            countString++;
-//                            countTotal++;
-//                        }
-//                        i++;
-//                    } else if (i < data2.length()) {
-//                        countTotal++;
-//                        i++;
-//                    } else if (i < data1.length()) {
-//                        countTotal++;
-//                        i++;
-//                    } else {
-//                        break;
-//                    }
-//                }
-//
-//            } else if (checkerScan.hasNext()) {
-//                countTotal = countTotal + checkerScan.nextLine().length();
-//            } else if (comparisonScan.hasNext()) {
-//                countTotal = countTotal + comparisonScan.nextLine().length();
-//            } else {
-//                break;
-//            }
-//
-//        }
         checkerScan.close();
         comparisonScan.close();
         percentage = ((float) countString / (float) countTotal);
-        //percentage = (float)((countChar/countTotal)-0.5) * 2; //testing for negatives
+    }
 
+
+    private void getAllStrings(Scanner scan, ArrayList<String> code)
+    {
+        while(scan.hasNext())
+        {
+            String[] line= scan.nextLine().split(" ");
+            for(String s :line)
+            {
+                if(!s.equals(""))
+                {
+                    code.add(s);
+                }
+            }
+        }
     }
 
 
