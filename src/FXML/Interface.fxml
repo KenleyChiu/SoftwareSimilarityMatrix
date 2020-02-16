@@ -89,7 +89,7 @@
                                                 <Button fx:id="compare" mnemonicParsing="false" onAction="#compareFiles" text="Compare" />
                                              </children>
                                           </HBox>
-                                          <Button fx:id="exit" layoutX="395.0" layoutY="592.0" mnemonicParsing="false" onAction="#exitProg" text="Exit" />
+                                          <Button fx:id="exit" layoutX="845.0" layoutY="499.0" mnemonicParsing="false" onAction="#exitProg" text="Quit Program" />
                                        </children>
                                     </Pane>
                                  </children>
