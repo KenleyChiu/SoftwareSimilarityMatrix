@@ -73,6 +73,8 @@ public class Similarity {
             }
         }
 
+        checkerScan.close();
+        comparisonScan.close();
         System.out.println("\nNUMBER OF SAME LINES: " + sameLines);
         System.out.println("NUMBER OF TOTAL LINES: " + totalLines + "\n");
         percentage = (sameLines / totalLines);
@@ -81,8 +83,9 @@ public class Similarity {
 
     public void ReadCodeString() {
         int countString = 0;
-        int countTotal = 0;
+        int countTotal= 0;
         int j=0;
+        boolean compare;
         ArrayList<String> firstCode= new ArrayList<>();
         ArrayList<String> secondCode= new ArrayList<>();
         while(checkerScan.hasNext())
@@ -98,8 +101,11 @@ public class Similarity {
 
         if(firstCode.size()>=secondCode.size()) countTotal=firstCode.size();
         else countTotal=secondCode.size();
-        while(true)
+
+        while(j<firstCode.size())
         {
+            System.out.println("comparing");
+            compare=false;
             for(int i=0; i<secondCode.size(); i++)
             {
                 if(firstCode.get(j).equals(secondCode.get(i)))
@@ -107,7 +113,13 @@ public class Similarity {
                     countString++;
                     firstCode.remove(j);
                     secondCode.remove(i);
+                    compare=true;
+                    break;
                 }
+            }
+            if(!compare)
+            {
+                j++;
             }
         }
 
