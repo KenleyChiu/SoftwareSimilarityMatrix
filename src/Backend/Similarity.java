@@ -13,7 +13,7 @@ public class Similarity {
     private int fileFilter =0;
     private String[] filter= new String[2];
 
-    public void ReadCodeLine() {
+    private void ReadCodeLine() {
         float sameLines=0,totalLines=0;
 
         ArrayList<String> arrayA = new ArrayList<>();
@@ -52,8 +52,8 @@ public class Similarity {
 
 //        totalLines = arrayA.size() + arrayB.size();
 
-        System.out.println("\nNUMBER OF PROG1 LINES: " + arrayA.size());
-        System.out.println("NUMBER OF PROG2 LINES: " + arrayB.size() + "\n");
+//        System.out.println("\nNUMBER OF PROG1 LINES: " + arrayA.size());
+//        System.out.println("NUMBER OF PROG2 LINES: " + arrayB.size() + "\n");
 
 
         for(int x = 0; x< arrayA.size(); x++){  //arrayA.size()
@@ -63,93 +63,77 @@ public class Similarity {
 //                System.out.println("PROG 2 LINE: "+arrayB.get(y));
                 if(arrayA.get(x).equals(arrayB.get(y))){
                     if(!compared) {
-                        System.out.println("PROG 1 LINE #"+(x+1)+": "+ arrayA.get(x));
-                        System.out.println("PROG 2 LINE #"+(y+1)+": "+ arrayB.get(y));
+//                        System.out.println("PROG 1 LINE #"+(x+1)+": "+ arrayA.get(x));
+//                        System.out.println("PROG 2 LINE #"+(y+1)+": "+ arrayB.get(y));
                         sameLines++;
-                        System.out.println(sameLines);
+//                        System.out.println(sameLines);
                     }
                     compared = true;
                 }
             }
         }
 
+        checkerScan.close();
+        comparisonScan.close();
         System.out.println("\nNUMBER OF SAME LINES: " + sameLines);
         System.out.println("NUMBER OF TOTAL LINES: " + totalLines + "\n");
         percentage = (sameLines / totalLines);
         //percentage = (float)((sameLines/totalLines)-0.5) * 2; //testing for negatives
     }
 
-//    public void ReadCodeString() {
-//        int countString = 0;
-//        int countTotal = 0;
-//        int j=0;
-//        ArrayList<String> firstCode= new ArrayList<>();
-//        ArrayList<String> secondCode= new ArrayList<>();
-//        while(checkerScan.hasNext())
-//        {
-//            String[] line= checkerScan.nextLine().split(" ");
-//            firstCode.addAll(Arrays.asList(line));
-//        }
-//        while(comparisonScan.hasNext())
-//        {
-//            String[] line= comparisonScan.nextLine().split(" ");
-//            secondCode.addAll(Arrays.asList(line));
-//        }
-//
-//        if(firstCode.size()>=secondCode.size()) countTotal=firstCode.size();
-//        else countTotal=secondCode.size();
-//        while(true)
-//        {
-//            for(int i=0; i<secondCode.size(); i++)
-//            {
-//                if(firstCode.get(j).equals(secondCode.get(i)))
-//                {
-//                    countString++;
-//                    firstCode.remove(j);
-//                    secondCode.remove(i);
-//                }
-//            }
-//        }
-//
-////        while (true) {
-////            if (checkerScan.hasNext() && comparisonScan.hasNext()) {
-////                String data1 = checkerScan.nextLine();
-////                String data2 = comparisonScan.nextLine();
-////                int i = 0;
-////                while (true) {
-////                    if (i < data1.length() && i < data2.length()) {
-////                        if (data1.charAt(i) == data2.charAt(i)) {
-////                            countString++;
-////                            countTotal++;
-////                        }
-////                        i++;
-////                    } else if (i < data2.length()) {
-////                        countTotal++;
-////                        i++;
-////                    } else if (i < data1.length()) {
-////                        countTotal++;
-////                        i++;
-////                    } else {
-////                        break;
-////                    }
-////                }
-////
-////            } else if (checkerScan.hasNext()) {
-////                countTotal = countTotal + checkerScan.nextLine().length();
-////            } else if (comparisonScan.hasNext()) {
-////                countTotal = countTotal + comparisonScan.nextLine().length();
-////            } else {
-////                break;
-////            }
-////
-////        }
-//        checkerScan.close();
-//        comparisonScan.close();
-//        percentage = ((float) countString / (float) countTotal);
-//        //percentage = (float)((countChar/countTotal)-0.5) * 2; //testing for negatives
-//
-//    }
+    private void ReadCodeString() {
+        int countString = 0;
+        int countTotal;
+        int j=0;
+        boolean compare;
+        ArrayList<String> firstCode= new ArrayList<>();
+        ArrayList<String> secondCode= new ArrayList<>();
+        getAllStrings(checkerScan,firstCode);
+        getAllStrings(comparisonScan,secondCode);
 
+        if(firstCode.size()>=secondCode.size()) countTotal=firstCode.size();
+        else countTotal=secondCode.size();
+
+        while(j<firstCode.size())
+        {
+            compare=false;
+            for(int i=0; i<secondCode.size(); i++)
+            {
+                if(firstCode.get(j).equals(secondCode.get(i)))
+                {
+                    countString++;
+                    firstCode.remove(j);
+                    secondCode.remove(i);
+                    compare=true;
+                    break;
+                }
+            }
+            if(!compare)
+            {
+                j++;
+            }
+        }
+
+        checkerScan.close();
+        comparisonScan.close();
+        percentage = ((float) countString / (float) countTotal);
+    }
+
+
+    private void getAllStrings(Scanner scan, ArrayList<String> code)
+    {
+        while(scan.hasNext())
+        {
+            String[] line= scan.nextLine().split(" ");
+            for(String s :line)
+            {
+                if(!s.equals(""))
+                {
+                    code.add(s);
+                }
+            }
+        }
+    }
 
 
     //creating the correlation Matrix
@@ -197,7 +181,7 @@ public class Similarity {
                 comparisonScan = new Scanner(comparisonFile);
                 //checks whether the user chose the to compare by line or by character
                 if(comparison.equals("line")) ReadCodeLine();
-//                else ReadCodeString();
+                else ReadCodeString();
                 data.addArray((float)(Math.round(percentage*100.0)/100.0));  //two decimal points
             }
             data.setMatrix();//saving the data gathered to another array list for the correlation matrix
@@ -241,11 +225,11 @@ public class Similarity {
                 {
                     FileWriter fstream = new FileWriter("MergedCodes/"+fileName+".txt",true);
                     //To get the file names of the users that satisfied the filter option
-//                    if(fileFilter ==0)
-//                    {
+                    if(fileFilter ==0)
+                    {
                         data.addUser(fileName);//add the names for the GUI
                         fileFilter =1;
-//                    }
+                    }
                     //writes the files into a text file for comparison
                     BufferedWriter writing = new BufferedWriter(fstream);
                     Scanner input = new Scanner(files);
