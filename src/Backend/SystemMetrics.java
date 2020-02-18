@@ -206,6 +206,13 @@ public class SystemMetrics {
         return totalOps * (int)(Math.log(totalCnt)/Math.log(2));
     }
 
+    public int length() {
+        return totalOps;
+    }
+
+    public int vocab() {
+        return totalCnt;
+    }
 
 
     public void createSystemMetricsTable(File directory) throws IOException {
