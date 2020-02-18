@@ -79,76 +79,76 @@ public class Similarity {
         //percentage = (float)((sameLines/totalLines)-0.5) * 2; //testing for negatives
     }
 
-    public void ReadCodeString() {
-        int countString = 0;
-        int countTotal = 0;
-        int j=0;
-        ArrayList<String> firstCode= new ArrayList<>();
-        ArrayList<String> secondCode= new ArrayList<>();
-        while(checkerScan.hasNext())
-        {
-            String[] line= checkerScan.nextLine().split(" ");
-            firstCode.addAll(Arrays.asList(line));
-        }
-        while(comparisonScan.hasNext())
-        {
-            String[] line= comparisonScan.nextLine().split(" ");
-            secondCode.addAll(Arrays.asList(line));
-        }
-
-        if(firstCode.size()>=secondCode.size()) countTotal=firstCode.size();
-        else countTotal=secondCode.size();
-        while(true)
-        {
-            for(int i=0; i<secondCode.size(); i++)
-            {
-                if(firstCode.get(j).equals(secondCode.get(i)))
-                {
-                    countString++;
-                    firstCode.remove(j);
-                    secondCode.remove(i);
-                }
-            }
-        }
-
-//        while (true) {
-//            if (checkerScan.hasNext() && comparisonScan.hasNext()) {
-//                String data1 = checkerScan.nextLine();
-//                String data2 = comparisonScan.nextLine();
-//                int i = 0;
-//                while (true) {
-//                    if (i < data1.length() && i < data2.length()) {
-//                        if (data1.charAt(i) == data2.charAt(i)) {
-//                            countString++;
-//                            countTotal++;
-//                        }
-//                        i++;
-//                    } else if (i < data2.length()) {
-//                        countTotal++;
-//                        i++;
-//                    } else if (i < data1.length()) {
-//                        countTotal++;
-//                        i++;
-//                    } else {
-//                        break;
-//                    }
-//                }
-//
-//            } else if (checkerScan.hasNext()) {
-//                countTotal = countTotal + checkerScan.nextLine().length();
-//            } else if (comparisonScan.hasNext()) {
-//                countTotal = countTotal + comparisonScan.nextLine().length();
-//            } else {
-//                break;
-//            }
-//
+//    public void ReadCodeString() {
+//        int countString = 0;
+//        int countTotal = 0;
+//        int j=0;
+//        ArrayList<String> firstCode= new ArrayList<>();
+//        ArrayList<String> secondCode= new ArrayList<>();
+//        while(checkerScan.hasNext())
+//        {
+//            String[] line= checkerScan.nextLine().split(" ");
+//            firstCode.addAll(Arrays.asList(line));
 //        }
-        checkerScan.close();
-        comparisonScan.close();
-        percentage = ((float) countString / (float) countTotal);
-        //percentage = (float)((countChar/countTotal)-0.5) * 2; //testing for negatives
-
-    }
+//        while(comparisonScan.hasNext())
+//        {
+//            String[] line= comparisonScan.nextLine().split(" ");
+//            secondCode.addAll(Arrays.asList(line));
+//        }
+//
+//        if(firstCode.size()>=secondCode.size()) countTotal=firstCode.size();
+//        else countTotal=secondCode.size();
+//        while(true)
+//        {
+//            for(int i=0; i<secondCode.size(); i++)
+//            {
+//                if(firstCode.get(j).equals(secondCode.get(i)))
+//                {
+//                    countString++;
+//                    firstCode.remove(j);
+//                    secondCode.remove(i);
+//                }
+//            }
+//        }
+//
+////        while (true) {
+////            if (checkerScan.hasNext() && comparisonScan.hasNext()) {
+////                String data1 = checkerScan.nextLine();
+////                String data2 = comparisonScan.nextLine();
+////                int i = 0;
+////                while (true) {
+////                    if (i < data1.length() && i < data2.length()) {
+////                        if (data1.charAt(i) == data2.charAt(i)) {
+////                            countString++;
+////                            countTotal++;
+////                        }
+////                        i++;
+////                    } else if (i < data2.length()) {
+////                        countTotal++;
+////                        i++;
+////                    } else if (i < data1.length()) {
+////                        countTotal++;
+////                        i++;
+////                    } else {
+////                        break;
+////                    }
+////                }
+////
+////            } else if (checkerScan.hasNext()) {
+////                countTotal = countTotal + checkerScan.nextLine().length();
+////            } else if (comparisonScan.hasNext()) {
+////                countTotal = countTotal + comparisonScan.nextLine().length();
+////            } else {
+////                break;
+////            }
+////
+////        }
+//        checkerScan.close();
+//        comparisonScan.close();
+//        percentage = ((float) countString / (float) countTotal);
+//        //percentage = (float)((countChar/countTotal)-0.5) * 2; //testing for negatives
+//
+//    }
 
 
 
@@ -197,7 +197,7 @@ public class Similarity {
                 comparisonScan = new Scanner(comparisonFile);
                 //checks whether the user chose the to compare by line or by character
                 if(comparison.equals("line")) ReadCodeLine();
-                else ReadCodeString();
+//                else ReadCodeString();
                 data.addArray((float)(Math.round(percentage*100.0)/100.0));  //two decimal points
             }
             data.setMatrix();//saving the data gathered to another array list for the correlation matrix
@@ -241,11 +241,11 @@ public class Similarity {
                 {
                     FileWriter fstream = new FileWriter("MergedCodes/"+fileName+".txt",true);
                     //To get the file names of the users that satisfied the filter option
-                    if(fileFilter ==0)
-                    {
+//                    if(fileFilter ==0)
+//                    {
                         data.addUser(fileName);//add the names for the GUI
                         fileFilter =1;
-                    }
+//                    }
                     //writes the files into a text file for comparison
                     BufferedWriter writing = new BufferedWriter(fstream);
                     Scanner input = new Scanner(files);
