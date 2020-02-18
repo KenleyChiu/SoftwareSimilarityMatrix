@@ -24,8 +24,9 @@ public class InterfaceController {
     public AnchorPane matrixAnchor;
     public ListView list;
     public VBox vboxMain;
-    public Label vol;
+    public Label vol,length,vocab;
     private String comparison = "line",type = "java";
+    private boolean makeTextFile = false;
     private Similarity similarity = new Similarity();
     private DataObject dataObj;
 
@@ -34,12 +35,11 @@ public class InterfaceController {
     public void line() {
         comparison = "line";
     }
-    public void character() {
-        comparison = "character";
+    public void string() {
+        comparison = "string";
     }
 
     //FILE TYPES
-
     public void java() {
         type = "java";
     }
@@ -49,6 +49,15 @@ public class InterfaceController {
     public void all() {
         type = "all";
     }
+
+    //FOR TEXT FILE
+    public void no() {
+        makeTextFile = false;
+    }
+    public void yes() {
+        makeTextFile = true;
+    }
+
 
 
     public void compareFiles() throws IOException {
@@ -64,6 +73,9 @@ public class InterfaceController {
         metrics.createSystemMetricsTable(masterFile);  //check this for other's files
 
         vol.setText(Integer.toString(metrics.volume()));
+        length.setText(Integer.toString(metrics.length()));
+        vocab.setText(Integer.toString(metrics.vocab()));
+
     }
 
     public void createMatrix() {
