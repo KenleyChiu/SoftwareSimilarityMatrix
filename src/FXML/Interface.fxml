@@ -44,7 +44,7 @@
                                     <VBox alignment="CENTER" prefHeight="92.0" prefWidth="161.0" spacing="20.0">
                                        <children>
                                           <Label text="Others:" />
-                                          <TextField fx:id="filesTextField" alignment="CENTER" maxWidth="130.0" prefHeight="31.0" prefWidth="63.0" promptText="enter any file type" />
+                                          <TextField fx:id="filesTextField" alignment="CENTER" maxWidth="135.0" prefHeight="31.0" prefWidth="63.0" promptText="enter any file type" />
                                        </children>
                                     </VBox>
                                     <VBox alignment="CENTER" prefHeight="147.0" prefWidth="161.0" spacing="20.0">
@@ -95,12 +95,12 @@
                                           <Label layoutX="829.0" layoutY="77.0" text="Top 5 Similarity Scores" />
                                           <HBox alignment="CENTER" layoutX="14.0" layoutY="5.0" prefHeight="100.0" prefWidth="666.0" spacing="20.0">
                                              <children>
-                                                <Label text="Data Log Filename:" />
-                                                <TextField fx:id="logFilename" promptText="enter filename" />
+                                                <Label text="Folder File Path:" />
+                                                <TextField fx:id="filePath" promptText="enter file path" />
                                                 <Button fx:id="compare" mnemonicParsing="false" onAction="#compareFiles" text="Compare" />
                                              </children>
                                           </HBox>
-                                          <Button fx:id="exit" layoutX="849.0" layoutY="418.0" mnemonicParsing="false" onAction="#exitProg" text="Quit Program" />
+                                          <Button fx:id="exit" layoutX="849.0" layoutY="419.0" mnemonicParsing="false" onAction="#exitProg" text="Quit Program" />
                                           <TableView fx:id="similaritiesTable" layoutX="728.0" layoutY="105.0" prefHeight="276.0" prefWidth="351.0">
                                             <columns>
                                               <TableColumn fx:id="program1" prefWidth="124.0" text="Program 1" />
@@ -108,6 +108,12 @@
                                                 <TableColumn fx:id="score" prefWidth="104.0" text="Score" />
                                             </columns>
                                           </TableView>
+                                          <VBox alignment="CENTER" layoutX="769.0" layoutY="508.0" prefHeight="117.0" prefWidth="269.0" spacing="20.0">
+                                             <children>
+                                                <Label text="Status:" />
+                                                <Label fx:id="statusMessage" text="-" />
+                                             </children>
+                                          </VBox>
                                        </children>
                                     </Pane>
                                  </children>
