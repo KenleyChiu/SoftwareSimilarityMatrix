@@ -13,6 +13,7 @@ public class Similarity {
     private int fileFilter =0;
     private String[] filter= new String[2];
     private String similarString = "";
+    private FileHandling files= new FileHandling();
 
     private void ReadCodeLine() {
         float sameLines=0,totalLines=0,longestLength=0;
@@ -137,7 +138,6 @@ public class Similarity {
             {
                 if(!s.equals(""))
                 {
-                    System.out.println("Hello");
                     code.add(s);
                 }
             }
@@ -146,7 +146,7 @@ public class Similarity {
 
 
     //creating the correlation Matrix
-    public void creationMatrix(String comparison,String type,String filePath) throws IOException {
+    public void creationMatrix(String comparison,ArrayList<String> type,String filePath) throws IOException, NullPointerException {
         File checkerFile, comparisonFile; //storing for files when comparing
         File prog1File;
         if(filePath.equals("")) {
@@ -164,25 +164,10 @@ public class Similarity {
 
         //Delete the files inside the mergedCodes directory to avoid duplication
         File mergeFile= new File("MergedCodes");
-        deleteFilesMerge(mergeFile);
+        files.deleteFilesMerge(mergeFile);
 
-        if(type.equals("java"))
-        {
-            filter[0]=".java";
-            filter[1]=".java";
-        }
-        else if(type.equals("cpp"))
-        {
-            filter[0]=".cpp";
-            filter[1]=".cpp";
-        }
-        else
-        {
-            filter[0]=".java";
-            filter[1]=".cpp";
-        }
-
-        getAllFiles(dir);// starts to recursively check all of the codes in the folder
+        files.setFilter(type);
+        files.getAllFiles(dir,data);// starts to recursively check all of the codes in the folder
 
         //gets all of the merged files
         File[] codes= mergeFile.listFiles();
@@ -206,64 +191,6 @@ public class Similarity {
         }
 
     }
-
-    private void deleteFilesMerge(File mergeFile) {
-        String[]entries = mergeFile.list();
-        if (entries != null) {
-            for(String s: entries){
-                File currentFile = new File(mergeFile.getPath(),s);
-                currentFile.delete();
-            }
-        }
-    }
-
-    private void getAllFiles(File[] dir) throws IOException //get all files recursively
-    {
-        for (File files : dir) {
-            if (files.isDirectory())// if the list found is a directory
-            {
-                File[] newDir = files.listFiles(); //gets the filename of the files inside the directory
-                getFilesRecursively(newDir, files.getName());// goes to the file method to recursively merge all of the codes
-                fileFilter = 0;
-            }
-        }
-    }
-
-    private void getFilesRecursively(File[] dir,String fileName) throws IOException {
-        for(File files: dir)
-        {
-            if(files.isDirectory())// if the list found is a directory
-            {
-                File[] newDir=files.listFiles(); //gets the filename of the files inside the directory
-                getFilesRecursively(newDir,fileName);// going to the method that will check every file recursively
-            }
-            else
-            {
-                if(files.getName().contains(filter[0]) || files.getName().contains(filter[1])) // checks whether the file is a .java or .ccp
-                {
-                    FileWriter fstream = new FileWriter("MergedCodes/"+fileName+".txt",true);
-                    //To get the file names of the users that satisfied the filter option
-                    if(fileFilter ==0)
-                    {
-                        data.addUser(fileName);//add the names for the GUI
-                        fileFilter =1;
-                    }
-                    //writes the files into a text file for comparison
-                    BufferedWriter writing = new BufferedWriter(fstream);
-                    Scanner input = new Scanner(files);
-                    while(input.hasNext())
-                    {
-                        writing.write(input.nextLine());
-                        writing.newLine();
-                    }
-                    writing.close();
-                }
-
-            }
-        }
-    }
-
-
 
     public Matrix getMatrix(){
         return data;

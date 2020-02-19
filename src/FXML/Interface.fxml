@@ -39,12 +39,12 @@
                                           <Label text="File Types:" />
                                           <CheckBox fx:id="javaOp" mnemonicParsing="false" selected="true" text="java" />
                                           <CheckBox fx:id="cppOp" mnemonicParsing="false" text="cpp" />
+                                          <CheckBox fx:id="othersOp1" mnemonicParsing="false" onAction="#otherOperation" text="Others" />
                                        </children>
                                     </VBox>
                                     <VBox alignment="CENTER" prefHeight="92.0" prefWidth="161.0" spacing="20.0">
                                        <children>
-                                          <Label text="Others:" />
-                                          <TextField fx:id="filesTextField" alignment="CENTER" maxWidth="135.0" prefHeight="31.0" prefWidth="63.0" promptText="enter any file type" />
+                                          <TextField fx:id="filesTextField" alignment="CENTER" disable="true" maxWidth="135.0" prefHeight="31.0" prefWidth="63.0" promptText="enter any file type" />
                                        </children>
                                     </VBox>
                                     <VBox alignment="CENTER" prefHeight="147.0" prefWidth="161.0" spacing="20.0">
