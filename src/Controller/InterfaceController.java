@@ -32,9 +32,10 @@ public class InterfaceController implements Initializable {
     public Label vol,length,vocab,longestSimilarString,difficulty,effort,intelligence,time;
     public TableView<DataEntry> similaritiesTable;
     public TableColumn<DataEntry,String> program1,program2,score;
+    public CheckBox saveAsTextFile;
     private GridPane gridPane;
     private String comparison = "line",type = "java",folder = "src";
-    private boolean makeTextFile = false,onlySourceFiles = true;
+    private boolean onlySourceFiles = true;
     private Similarity similarity = new Similarity();
     private DataObject dataObj;
 
@@ -58,14 +59,6 @@ public class InterfaceController implements Initializable {
         type = "all";
     }
 
-    //FOR TEXT FILE
-    public void no() {
-        makeTextFile = false;
-    }
-    public void yes() {
-        makeTextFile = true;
-    }
-
     //FOLDER
     public void src(){
         folder = "src";
@@ -78,6 +71,8 @@ public class InterfaceController implements Initializable {
 
     public void compareFiles() throws IOException {
 
+        boolean makeTextFile = saveAsTextFile.isSelected();
+        
         similarity.creationMatrix(comparison,type);
 
         createMatrix();
