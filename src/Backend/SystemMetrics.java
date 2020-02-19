@@ -8,26 +8,32 @@ import java.util.Scanner;
 public class SystemMetrics {
     private File[] folders;
     private int numOfFiles=0;
-    private String[] filesArray = new String[35];
+    private String[] filesArray = new String[100];
     private String[] operators = {".","( )","if","for","=","+","while","!",";","==","<=","<","float","int",">",
     "++","new","&&","||","/","{ }"};
     private String[] operands = {"x","y","i","j"};
     private int dots,par,ifs,fors,equal,plus,whiles,not,colon,equals,lessEqual,less,
             floats,ints,greater,pluses,news,ands,ors,fslash,curly;
     private int xs,ys,is,js;
-    private int sum_operators,sum_operands,totalOps,count_operators,count_operands,totalCnt;
+    private int sum_operators,sum_operands,count_operators,count_operands;
     //private int[] operandsCount = new int[10];
 
-    public void getAllFiles(File directory) throws IOException {
+    public void getAllFiles(File directory,boolean onlySourceFiles) throws IOException {
         folders = directory.listFiles();
         for(File file : folders){  //folders.length
             if(file.isDirectory()){  //folders[x]
                 System.out.println("\nFOLDER: "+file.getCanonicalPath());
-                getAllFiles(file);
+                getAllFiles(file,onlySourceFiles);
             } else {
                 System.out.println("FILE: "+file.getCanonicalPath());
-                if(file.getCanonicalPath().contains(".java") || file.getCanonicalPath().contains(".cpp")){
-                    filesArray[numOfFiles++] = file.getCanonicalPath();
+                if(onlySourceFiles){
+                    if(file.getCanonicalPath().contains(".java") || file.getCanonicalPath().contains(".cpp")){
+                        filesArray[numOfFiles++] = file.getCanonicalPath();
+                    }
+                } else {
+                    if(file.getCanonicalPath().contains(".txt")){
+                        filesArray[numOfFiles++] = file.getCanonicalPath();
+                    }
                 }
             }
         }
@@ -51,9 +57,10 @@ public class SystemMetrics {
                     //OPERATORS
                     if(word.charAt(x) == '/'){
                         if(x==word.length()-1) continue;
-                        if(word.charAt(x+1) == '/') isComment = true;
-                        if(word.charAt(x+1) != '/'){
-                            if(word.charAt(x-1) != '/' && !isComment){
+                        if(word.charAt(x+1) == '/' || word.charAt(x+1) == '*') isComment = true;
+                        if(word.charAt(x+1) != '/' || word.charAt(x+1) != '*'){
+                            if(x==0) continue;
+                            if((word.charAt(x-1) != '/'  || word.charAt(x-1) != '*') && !isComment){
                                 System.out.println("SLASH: " + word.charAt(x));
                                 fslash++;
                             }
@@ -99,7 +106,10 @@ public class SystemMetrics {
                                 if (word.charAt(x + 1) == 'n' && word.charAt(x + 2) == 't') ints++;
                             }
                             if (word.charAt(x) == '>') greater++;
-                            if (word.charAt(x) == '+' && word.charAt(x + 1) == '+') pluses++;
+                            if (word.charAt(x) == '+'){
+                                if (x == word.length() - 1) continue;
+                                if(word.charAt(x + 1) == '+') pluses++;
+                            }
                             if (word.charAt(x) == 'n') {
                                 if (x == word.length() - 1) continue;
                                 if (x + 1 == word.length() - 1) continue;
@@ -156,11 +166,11 @@ public class SystemMetrics {
 
 
         sum_operators = dots+par+ifs+fors+equal+plus+whiles+not+colon+equals+lessEqual+less+floats+ints+greater+pluses+news+ands+ors+fslash+curly;
-        sum_operands = xs+ys+is+js;
-        totalOps = sum_operators + sum_operands;
-        count_operators = operators.length;
-        count_operands = operands.length;
-        totalCnt = count_operators + count_operands;
+        sum_operands = xs+ys+is+js; //N2
+
+        count_operators = operators.length; //n1
+        count_operands = operands.length;   //n2
+
     }
 
 
@@ -203,21 +213,36 @@ public class SystemMetrics {
     }
 
     public int volume(){
-        return totalOps * (int)(Math.log(totalCnt)/Math.log(2));
+        return length() * (int)(Math.log(vocab())/Math.log(2)); //N*log base 2(n)
     }
 
     public int length() {
-        return totalOps;
+        return sum_operators + sum_operands;    //formula: N1+N2    THIS IS N
     }
 
     public int vocab() {
-        return totalCnt;
+        return count_operators + count_operands;    //formula: n1+n2    THIS IS n
     }
 
+    public int difficulty(){
+        return (count_operators/2)*(sum_operands/count_operands);   //formula: (n1/2)*(N2/n2)
+    }
 
-    public void createSystemMetricsTable(File directory) throws IOException {
+    public int effort(){
+        return difficulty() * volume(); //formula: D*V
+    }
 
-        getAllFiles(directory);
+    public int intelligence(){
+        return volume()/difficulty();   //formula: V/D
+    }
+
+    public int time(){
+        return effort()/(60*18);    // formula: E/(f*S) where f=60mins and S=18 halst. num
+    }
+
+    public void createSystemMetricsTable(File directory,boolean onlySourceFiles) throws IOException {
+
+        getAllFiles(directory,onlySourceFiles);
 
         searchOperationsAndOperands();
 
