@@ -2,10 +2,11 @@ package Backend;
 
 
 import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.ObservableList;
 
 public class DataEntry {
 
-    private final SimpleStringProperty progName1,progName2,percentage;
+    private SimpleStringProperty progName1,progName2,percentage;
 //    private double percentage;
 
 
