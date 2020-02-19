@@ -10,8 +10,6 @@ public class Similarity {
     private float  percentage = 0;
     private Scanner checkerScan, comparisonScan;
     private Matrix data = new Matrix();
-    private int fileFilter =0;
-    private String[] filter= new String[2];
     private String similarString = "";
     private FileHandling files= new FileHandling();
 
@@ -152,11 +150,7 @@ public class Similarity {
         if(filePath.equals("")) {
             prog1File = new File("Codes");
         } else {
-//            try{
-                prog1File = new File(filePath);
-//            } catch(FileNotFoundException){
-//
-//            }
+            prog1File = new File(filePath);
         }
         File[] dir = prog1File.listFiles(); // getting all file in the Codes directory
         data.newMatrix(); // creating a new correlation matrix
