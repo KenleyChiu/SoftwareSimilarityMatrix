@@ -145,9 +145,18 @@ public class Similarity {
 
 
     //creating the correlation Matrix
-    public void creationMatrix(String comparison,String type) throws IOException {
+    public void creationMatrix(String comparison,String type,String filePath) throws IOException {
         File checkerFile, comparisonFile; //storing for files when comparing
-        File prog1File = new File("Codes");
+        File prog1File;
+        if(filePath.equals("")) {
+            prog1File = new File("Codes");
+        } else {
+//            try{
+                prog1File = new File(filePath);
+//            } catch(FileNotFoundException){
+//
+//            }
+        }
         File[] dir = prog1File.listFiles(); // getting all file in the Codes directory
         data.newMatrix(); // creating a new correlation matrix
         data.newUsers(); // clearing all of the data in the userArrayList
