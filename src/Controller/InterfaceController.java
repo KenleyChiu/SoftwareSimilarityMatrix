@@ -29,11 +29,11 @@ public class InterfaceController implements Initializable {
     public Button compare, exit;
     public AnchorPane matrixAnchor;
     public ListView list;
-    public Label vol,length,vocab,longestSimilarString,difficulty,effort,intelligence,time;
+    public Label vol,length,vocab,longestSimilarString,difficulty,effort,intelligence,time,statusMessage;
     public TableView<DataEntry> similaritiesTable;
     public TableColumn<DataEntry,String> program1,program2,score;
     public CheckBox javaOp,cppOp,allOp,saveAsTextFile;
-    public TextField logFilename,filesTextField;
+    public TextField filePath,filesTextField;
     private GridPane gridPane;
     private String comparison = "line",type = "java",folder = "src";
     private boolean onlySourceFiles = true;
@@ -69,9 +69,10 @@ public class InterfaceController implements Initializable {
         if(!cppOp.isSelected() && !javaOp.isSelected()) type = filesTextField.getText();
 
 
-        similarity.creationMatrix(comparison,type);
+        similarity.creationMatrix(comparison,type,filePath.getText());
 
         createMatrix();
+        statusMessage.setText("Matrix Created!");
 
         longestSimilarString.setText(similarity.getSimilarString());
 
