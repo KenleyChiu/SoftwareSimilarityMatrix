@@ -101,6 +101,12 @@
                                              </children>
                                           </HBox>
                                           <Button fx:id="exit" layoutX="849.0" layoutY="419.0" mnemonicParsing="false" onAction="#exitProg" text="Quit Program" />
+                                          <VBox alignment="CENTER" layoutX="769.0" layoutY="508.0" prefHeight="117.0" prefWidth="269.0" spacing="20.0">
+                                             <children>
+                                                <Label text="Status:" />
+                                                <Label fx:id="statusMessage" text="-" />
+                                             </children>
+                                          </VBox>
                                           <TableView fx:id="similaritiesTable" layoutX="728.0" layoutY="105.0" prefHeight="276.0" prefWidth="351.0">
                                             <columns>
                                               <TableColumn fx:id="program1" prefWidth="124.0" text="Program 1" />
@@ -108,12 +114,6 @@
                                                 <TableColumn fx:id="score" prefWidth="104.0" text="Score" />
                                             </columns>
                                           </TableView>
-                                          <VBox alignment="CENTER" layoutX="769.0" layoutY="508.0" prefHeight="117.0" prefWidth="269.0" spacing="20.0">
-                                             <children>
-                                                <Label text="Status:" />
-                                                <Label fx:id="statusMessage" text="-" />
-                                             </children>
-                                          </VBox>
                                        </children>
                                     </Pane>
                                  </children>
