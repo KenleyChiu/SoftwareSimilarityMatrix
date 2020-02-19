@@ -34,8 +34,9 @@ public class InterfaceController implements Initializable {
     public ListView list;
     public Label vol,length,vocab,longestSimilarString,difficulty,effort,intelligence,time,statusMessage;
     public Label apiLength,apiVocab,apiDifficulty,apiEffort,apiTime,apiVolume,apiBugs;
-    public TableView<DataEntry> similaritiesTable;
-    public TableColumn<DataEntry,String> program1,program2,score;
+//    public TableView<DataEntry> similaritiesTable;
+//    public TableColumn<DataEntry,String> program1,program2,score;
+    public ListView<String> program1,program2,score;
     public CheckBox javaOp,cppOp,othersOp1,saveAsTextFile;
     public TextField filePath,filesTextField;
     private GridPane gridPane;
@@ -98,12 +99,26 @@ public class InterfaceController implements Initializable {
 
         longestSimilarString.setText(similarity.getSimilarString());
 
+        ObservableList<String> listView = FXCollections.observableArrayList(
+                "kenley"+"matthew"
 
+        );
+
+
+        program1.setItems(listView);
 
 //        createTop5();
     }
 
-    private void createTop5(){
+    private ObservableList<DataEntry> top5(){
+        ObservableList<DataEntry> entry = FXCollections.observableArrayList(
+                new DataEntry("KENLEY","MATTHEW","0.5")
+
+        );
+        return entry;
+    }
+
+    /*private void createTop5(){
         ArrayList<DataEntry> arrayEntry = new ArrayList<>();
         arrayEntry.add(new DataEntry("KENLEY", "MATTHEW", "0.5"));
 //
@@ -120,7 +135,7 @@ public class InterfaceController implements Initializable {
         score.setCellValueFactory(new PropertyValueFactory<>("Score"));
 
         similaritiesTable.setItems(entry);
-    }
+    }*/
 
     public void setMetricsTableApi(String pathDirectory) throws IOException {
         HalsteadMetrics hal = MetricMachine.getMetrics(pathDirectory);
@@ -231,18 +246,19 @@ public class InterfaceController implements Initializable {
             for(int y=0; y<similarity.getMatrix().matrixSize(); y++){
                 System.out.print(" " + similarity.getMatrix().getMatrix().get(y).get(x) + "  ");
 
-                dataObj = new DataObject(similarity.getMatrix().getMatrix().get(y).get(x),userFile);
-
                 //FOR SCORES
                 VBox vbox = new VBox();
                 vbox.setAlignment(Pos.CENTER);
-                vbox.getChildren().addAll(dataObj.getLabel());
+
+                dataObj = new DataObject(similarity.getMatrix().getMatrix().get(y).get(x),userFile,vbox);
+
+                dataObj.getVbox().getChildren().addAll(dataObj.getLabel());
 
                 StackPane pane = new StackPane();
                 pane.setAlignment(Pos.CENTER);
                 pane.getChildren().addAll(dataObj.getRect(),vbox);
 
-                gridPane.add(pane,y+1,x+1);
+                gridPane.add(dataObj.getVbox(),y+1,x+1);
 
             }
             System.out.println();
