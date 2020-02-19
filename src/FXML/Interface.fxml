@@ -32,7 +32,7 @@
                      <children>
                         <BorderPane prefHeight="763.0" prefWidth="1300.0">
                            <left>
-                              <VBox alignment="CENTER_RIGHT" prefHeight="675.0" prefWidth="161.0" BorderPane.alignment="CENTER">
+                              <VBox alignment="CENTER_RIGHT" prefHeight="675.0" prefWidth="196.0" BorderPane.alignment="CENTER">
                                  <children>
                                     <VBox alignment="CENTER" prefHeight="140.0" prefWidth="161.0" spacing="20.0">
                                        <children>
@@ -81,31 +81,31 @@
                                  <children>
                                     <Pane prefHeight="200.0" prefWidth="200.0">
                                        <children>
-                                          <VBox alignment="CENTER" layoutX="132.0" layoutY="529.0" prefHeight="117.0" prefWidth="659.0" spacing="20.0">
+                                          <VBox alignment="CENTER" layoutX="41.0" layoutY="508.0" prefHeight="117.0" prefWidth="659.0" spacing="20.0">
                                              <children>
                                                 <Label text="Longest Similar String:" />
                                                 <Label fx:id="longestSimilarString" text="-" />
                                              </children>
                                           </VBox>
-                                          <ScrollPane layoutX="11.0" layoutY="106.0" prefHeight="415.0" prefWidth="809.0">
+                                          <ScrollPane layoutX="39.0" layoutY="105.0" prefHeight="357.0" prefWidth="662.0">
                                              <content>
                                                 <AnchorPane fx:id="matrixAnchor" minHeight="0.0" minWidth="0.0" prefHeight="760.0" prefWidth="2195.0" />
                                              </content>
                                           </ScrollPane>
-                                          <Label layoutX="892.0" layoutY="81.0" text="Top 5 Similarity Scores" />
-                                          <HBox alignment="CENTER" layoutX="104.0" prefHeight="100.0" prefWidth="666.0" spacing="20.0">
+                                          <Label layoutX="829.0" layoutY="77.0" text="Top 5 Similarity Scores" />
+                                          <HBox alignment="CENTER" layoutX="14.0" layoutY="5.0" prefHeight="100.0" prefWidth="666.0" spacing="20.0">
                                              <children>
                                                 <Label text="Data Log Filename:" />
                                                 <TextField fx:id="logFilename" promptText="enter filename" />
                                                 <Button fx:id="compare" mnemonicParsing="false" onAction="#compareFiles" text="Compare" />
                                              </children>
                                           </HBox>
-                                          <Button fx:id="exit" layoutX="912.0" layoutY="433.0" mnemonicParsing="false" onAction="#exitProg" text="Quit Program" />
-                                          <TableView fx:id="similaritiesTable" layoutX="845.0" layoutY="106.0" prefHeight="276.0" prefWidth="254.0">
+                                          <Button fx:id="exit" layoutX="849.0" layoutY="418.0" mnemonicParsing="false" onAction="#exitProg" text="Quit Program" />
+                                          <TableView fx:id="similaritiesTable" layoutX="728.0" layoutY="105.0" prefHeight="276.0" prefWidth="351.0">
                                             <columns>
-                                              <TableColumn fx:id="program1" prefWidth="99.0" text="Program 1" />
-                                              <TableColumn fx:id="program2" prefWidth="95.0" text="Program 2" />
-                                                <TableColumn fx:id="score" prefWidth="59.0" text="Score" />
+                                              <TableColumn fx:id="program1" prefWidth="124.0" text="Program 1" />
+                                              <TableColumn fx:id="program2" prefWidth="121.0" text="Program 2" />
+                                                <TableColumn fx:id="score" prefWidth="104.0" text="Score" />
                                             </columns>
                                           </TableView>
                                        </children>
