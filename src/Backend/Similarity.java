@@ -12,9 +12,10 @@ public class Similarity {
     private Matrix data = new Matrix();
     private int fileFilter =0;
     private String[] filter= new String[2];
+    private String similarString = "";
 
     private void ReadCodeLine() {
-        float sameLines=0,totalLines=0;
+        float sameLines=0,totalLines=0,longestLength=0;
 
         ArrayList<String> arrayA = new ArrayList<>();
         ArrayList<String> arrayB = new ArrayList<>();
@@ -62,6 +63,9 @@ public class Similarity {
             for(int y = 0; y< arrayB.size(); y++){  //arrayB.size()
 //                System.out.println("PROG 2 LINE: "+arrayB.get(y));
                 if(arrayA.get(x).equals(arrayB.get(y))){
+                    int currentLength = arrayA.get(x).length();
+                    if(currentLength > longestLength) similarString = arrayA.get(x);
+
                     if(!compared) {
 //                        System.out.println("PROG 1 LINE #"+(x+1)+": "+ arrayA.get(x));
 //                        System.out.println("PROG 2 LINE #"+(y+1)+": "+ arrayB.get(y));
@@ -79,6 +83,10 @@ public class Similarity {
         System.out.println("NUMBER OF TOTAL LINES: " + totalLines + "\n");
         percentage = (sameLines / totalLines);
         //percentage = (float)((sameLines/totalLines)-0.5) * 2; //testing for negatives
+    }
+
+    public String getSimilarString(){
+        return similarString;
     }
 
     private void ReadCodeString() {
