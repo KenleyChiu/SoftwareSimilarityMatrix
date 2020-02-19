@@ -10,10 +10,10 @@ public class SystemMetrics {
     private int numOfFiles=0;
     private String[] filesArray = new String[100];
     private String[] operators = {".","( )","if","for","=","+","while","!",";","==","<=","<","float","int",">",
-    "++","new","&&","||","/","{ }"};
+    "++","new","&&","||","/","{ }","return"};
     private String[] operands = {"x","y","i","j"};
     private int dots,par,ifs,fors,equal,plus,whiles,not,colon,equals,lessEqual,less,
-            floats,ints,greater,pluses,news,ands,ors,fslash,curly;
+            floats,ints,greater,pluses,news,ands,ors,fslash,curly,returns;
     private int xs,ys,is,js;
     private int sum_operators,sum_operands,count_operators,count_operands;
     //private int[] operandsCount = new int[10];
@@ -123,9 +123,18 @@ public class SystemMetrics {
                                 if (x == word.length() - 1) continue;
                                 if (word.charAt(x + 1) == '|') ors++;
                             }
-//                    if(word.charAt(x) == '/') fslash++;
                             if (word.charAt(x) == '{') curly++;
-
+                            if (word.charAt(x) == 'r') {
+                                if (x == word.length() - 1) continue;
+                                if (word.charAt(x+1) == 'e'){
+                                    if (x+1 == word.length() - 1) continue;
+                                    if(word.charAt(x+2) == 't') {
+                                        if (x == word.length() - 1) continue;
+                                        if(word.charAt(x+3) == 'u' && word.charAt(x+4) == 'r' && word.charAt(x+5) == 'n')
+                                            returns++;
+                                    }
+                                }
+                            }
                             //OPERATORS
                     /*if(word.charAt(x) == 'x') xs++;    //considers all x,y,i,j
                     if(word.charAt(x) == 'y') ys++;
@@ -198,6 +207,7 @@ public class SystemMetrics {
         System.out.println("\t" + operators[18] + " -> " + ors);
         System.out.println("\t" + operators[19] + " -> " + fslash);
         System.out.println("\t" + operators[20] + " -> " + curly);
+        System.out.println("\t" + operators[21] + " -> " + returns);
         System.out.print("\tSUM -> " + sum_operators);       System.out.println("\t\tSUM -> " + sum_operands);
 
         //METRICS OMSIM
