@@ -1,7 +1,0 @@
-class ProjectsCorrelationMatrix
-!!!153157.java!!!	ProjectsCorrelationMatrix(inout rows : Collection<ResultRow>)
-        this.rows = rows;
-!!!153285.java!!!	getRows() : ProjectsCorrelationMatrix::ResultRow
-        return rows;
-!!!153413.java!!!	iterator() : ProjectsCorrelationMatrix::ResultRow
-        return rows.iterator();

@@ -1,8 +1,0 @@
-class ResultRecord
-!!!154437.java!!!	ResultRecord(inout projectComparedAgainst : Project, in score : double)
-                this.projectComparedAgainst = projectComparedAgainst;
-                this.score = score;
-!!!154565.java!!!	getProject() : Project
-                return projectComparedAgainst;
-!!!154693.java!!!	getScore() : double
-                return score;

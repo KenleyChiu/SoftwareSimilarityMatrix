@@ -1,7 +1,0 @@
-class TokenClusterBuilder
-!!!147653.java!!!	TokenClusterBuilder()
- this.tokens = new ArrayList<>();
-!!!147781.java!!!	addNext(inout tok : Token) : void
- tokens.add(tok);
-!!!147909.java!!!	cluster() : TokenCluster
- return new TokenCluster(tokens);
