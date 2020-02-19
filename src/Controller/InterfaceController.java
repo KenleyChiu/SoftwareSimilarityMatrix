@@ -32,7 +32,8 @@ public class InterfaceController implements Initializable {
     public Label vol,length,vocab,longestSimilarString,difficulty,effort,intelligence,time;
     public TableView<DataEntry> similaritiesTable;
     public TableColumn<DataEntry,String> program1,program2,score;
-    public CheckBox saveAsTextFile;
+    public CheckBox javaOp,cppOp,allOp,saveAsTextFile;
+    public TextField logFilename,filesTextField;
     private GridPane gridPane;
     private String comparison = "line",type = "java",folder = "src";
     private boolean onlySourceFiles = true;
@@ -48,17 +49,6 @@ public class InterfaceController implements Initializable {
         comparison = "string";
     }
 
-    //FILE TYPES
-    public void java() {
-        type = "java";
-    }
-    public void cpp() {
-        type = "cpp";
-    }
-    public void all() {
-        type = "all";
-    }
-
     //FOLDER
     public void src(){
         folder = "src";
@@ -72,7 +62,13 @@ public class InterfaceController implements Initializable {
     public void compareFiles() throws IOException {
 
         boolean makeTextFile = saveAsTextFile.isSelected();
-        
+
+        if(javaOp.isSelected() && !cppOp.isSelected()) type = "java";
+        if(cppOp.isSelected() && !javaOp.isSelected()) type = "cpp";
+        if(cppOp.isSelected() && javaOp.isSelected()) type = "all";
+        if(!cppOp.isSelected() && !javaOp.isSelected()) type = filesTextField.getText();
+
+
         similarity.creationMatrix(comparison,type);
 
         createMatrix();
