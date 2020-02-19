@@ -22,6 +22,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLOutput;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class InterfaceController implements Initializable {
@@ -77,23 +78,29 @@ public class InterfaceController implements Initializable {
         longestSimilarString.setText(similarity.getSimilarString());
 
 
-//        createTop5();
+        createTop5();
     }
 
-//    private void createTop5(){
+    private void createTop5(){
+        ArrayList<DataEntry> arrayEntry = new ArrayList<>();
+        arrayEntry.add(new DataEntry("KENLEY", "MATTHEW", "0.5"));
+//
 //    ObservableList<DataEntry> entry = FXCollections.observableArrayList(
 //            new DataEntry("KENLEY", "MATTHEW", "0.5"),
 //            new DataEntry("ee", "ii", "0.3")
 //    );
 
-//        program1.setCellValueFactory(new PropertyValueFactory<>("Program1"));
-//        program2.setCellValueFactory(new PropertyValueFactory<>("Program2"));
-//        score.setCellValueFactory(new PropertyValueFactory<>("Score"));
+        ObservableList<DataEntry> entry = FXCollections.observableArrayList();
+        entry.add(new DataEntry("KENLEY", "MATTHEW", "0.5"));
+
+        program1.setCellValueFactory(new PropertyValueFactory<>("Program1"));
+        program2.setCellValueFactory(new PropertyValueFactory<>("Program2"));
+        score.setCellValueFactory(new PropertyValueFactory<>("Score"));
+
+        similaritiesTable.setItems(entry);
+    }
+
 //
-//        similaritiesTable.setItems(getTop5());
-//    }
-
-
 //    public ObservableList<DataEntry> getTop5(){
 //        ObservableList<DataEntry> entry = FXCollections.observableArrayList();
 //        entry.add(new DataEntry("KENLEY","MATTHEW", "0.5"));
