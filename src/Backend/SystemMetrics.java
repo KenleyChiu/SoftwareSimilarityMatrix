@@ -200,15 +200,14 @@ public class SystemMetrics {
         System.out.println("\t" + operators[20] + " -> " + curly);
         System.out.print("\tSUM -> " + sum_operators);       System.out.println("\t\tSUM -> " + sum_operands);
 
-
-//        System.out.println("\n-- OPERANDS --");
-//        System.out.println(operands[0] + " -> " + xs);
-//        System.out.println(operands[1] + " -> " + ys);
-//        System.out.println(operands[2] + " -> " + is);
-//        System.out.println(operands[3] + " -> " + js);
-//        System.out.println("SUM -> " + sum_operands);
-
-        System.out.println("\nVolume -> " + volume());
+        //METRICS OMSIM
+        System.out.print("\nLength -> " + length());
+        System.out.print("\nVocabulary -> " + vocab());
+        System.out.print("\nVolume -> " + volume());
+        System.out.print("\nDifficulty -> " + difficulty());
+        System.out.print("\nEffort -> " + effort());
+        System.out.print("\nTime -> " + time());
+        System.out.print("\nIntelligence Content -> " + intelligence());
 
     }
 
