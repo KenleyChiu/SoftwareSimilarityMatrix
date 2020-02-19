@@ -64,7 +64,6 @@ public class Similarity {
                 if(arrayA.get(x).equals(arrayB.get(y))){
                     int currentLength = arrayA.get(x).length();
                     if(currentLength > longestLength) similarString = arrayA.get(x);
-
                     if(!compared) {
 //                        System.out.println("PROG 1 LINE #"+(x+1)+": "+ arrayA.get(x));
 //                        System.out.println("PROG 2 LINE #"+(y+1)+": "+ arrayB.get(y));
