@@ -22,6 +22,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLOutput;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class InterfaceController implements Initializable {
@@ -32,10 +33,11 @@ public class InterfaceController implements Initializable {
     public Label vol,length,vocab,longestSimilarString,difficulty,effort,intelligence,time,statusMessage;
     public TableView<DataEntry> similaritiesTable;
     public TableColumn<DataEntry,String> program1,program2,score;
-    public CheckBox javaOp,cppOp,allOp,saveAsTextFile;
+    public CheckBox javaOp,cppOp,othersOp1,saveAsTextFile;
     public TextField filePath,filesTextField;
     private GridPane gridPane;
-    private String comparison = "line",type = "java",folder = "src";
+    private String comparison = "line",folder = "src";
+    private ArrayList<String> type; //Kenley Edit
     private boolean onlySourceFiles = true;
     private Similarity similarity = new Similarity();
     private DataObject dataObj;
@@ -58,20 +60,37 @@ public class InterfaceController implements Initializable {
         folder = "mergedCodes";
         onlySourceFiles = false;
     }
+    public void otherOperation()
+    {
+        if(othersOp1.isSelected()) filesTextField.setDisable(false);
+        else filesTextField.setDisable(true);
+    }
+
 
     public void compareFiles() throws IOException {
 
         boolean makeTextFile = saveAsTextFile.isSelected();
 
-        if(javaOp.isSelected() && !cppOp.isSelected()) type = "java";
-        if(cppOp.isSelected() && !javaOp.isSelected()) type = "cpp";
-        if(cppOp.isSelected() && javaOp.isSelected()) type = "all";
-        if(!cppOp.isSelected() && !javaOp.isSelected()) type = filesTextField.getText();
+        //Kenley Edit
+        type= new ArrayList<>();
+        if(javaOp.isSelected()) type.add(".java");
+        if(cppOp.isSelected()) type.add(".cpp");
+        if(othersOp1.isSelected())
+        {
+            if (filesTextField.getText() == null || filesTextField.getText().trim().isEmpty())
+                throw new NullPointerException("Invalid Input");
+            else
+                type.add(filesTextField.getText());
 
+        }
+
+        filesTextField.clear();
+        //Kenley Edit
 
         similarity.creationMatrix(comparison,type,filePath.getText());
 
         createMatrix();
+
         statusMessage.setText("Matrix Created!");
 
         longestSimilarString.setText(similarity.getSimilarString());
