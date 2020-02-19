@@ -16,6 +16,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import metrics.HalsteadMetrics;
+import metrics.MetricMachine;
 
 import javax.xml.crypto.Data;
 import java.io.File;
@@ -31,6 +33,7 @@ public class InterfaceController implements Initializable {
     public AnchorPane matrixAnchor;
     public ListView list;
     public Label vol,length,vocab,longestSimilarString,difficulty,effort,intelligence,time,statusMessage;
+    public Label apiLength,apiVocab,apiDifficulty,apiEffort,apiTime,apiVolume,apiBugs;
     public TableView<DataEntry> similaritiesTable;
     public TableColumn<DataEntry,String> program1,program2,score;
     public CheckBox javaOp,cppOp,othersOp1,saveAsTextFile;
@@ -96,7 +99,8 @@ public class InterfaceController implements Initializable {
         longestSimilarString.setText(similarity.getSimilarString());
 
 
-        createTop5();
+
+//        createTop5();
     }
 
     private void createTop5(){
@@ -118,15 +122,17 @@ public class InterfaceController implements Initializable {
         similaritiesTable.setItems(entry);
     }
 
-//
-//    public ObservableList<DataEntry> getTop5(){
-//        ObservableList<DataEntry> entry = FXCollections.observableArrayList();
-//        entry.add(new DataEntry("KENLEY","MATTHEW", "0.5"));
-//        entry.add(new DataEntry("ee","ii", "0.3"));
-//
-//        return entry;
-//    }
+    public void setMetricsTableApi(String pathDirectory) throws IOException {
+        HalsteadMetrics hal = MetricMachine.getMetrics(pathDirectory);
 
+        apiLength.setText(Double.toString(hal.getProglen()));
+        apiVocab.setText(Double.toString(hal.getVocabulary()));
+        apiVolume.setText(Double.toString(hal.getVolume()));
+        apiDifficulty.setText(Double.toString(hal.getDifficulty()));
+        apiEffort.setText(Double.toString(hal.getEffort()));
+        apiTime.setText(Double.toString(hal.getTimeDelBugs()));
+        apiBugs.setText(Double.toString(hal.getTimeDelBugs()));
+    }
 
     public void setMetricsTable() throws IOException {
         SystemMetrics metrics = new SystemMetrics();
@@ -147,6 +153,9 @@ public class InterfaceController implements Initializable {
         effort.setText(Integer.toString(metrics.effort()));
         time.setText(Integer.toString(metrics.time()));
         intelligence.setText(Integer.toString(metrics.intelligence()));
+
+        //API METRICS
+        setMetricsTableApi(folder);
     }
 
     public void createMatrix() {
