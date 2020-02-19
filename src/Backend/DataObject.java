@@ -2,6 +2,7 @@ package Backend;
 
 
 import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
@@ -12,17 +13,20 @@ public class DataObject {
     private float data;
     private Label dataLabel;
     private Label name;
+    private VBox vbox;
 
-    public DataObject(float data, Label username) {
+    public DataObject(float data, Label username, VBox vbox) {
         this.data = data;
         name = username;
+        this.vbox = vbox;
 
         rect = new Rectangle();
 
 //        rect.setWidth(40);
 //        rect.setHeight(20);
 
-        if (data == 1.0) rect.setFill(Color.hsb(330, 1, 1));
+        if (data == 1.0) this.vbox.setStyle("-fx-background-color: #FF435F");
+            //rect.setFill(Color.hsb(330, 1, 1));
         if (0.90 <= data && data < 1.0) rect.setFill(Color.hsb(300, 1, 1));
         if (0.80 <= data && data < 0.90) rect.setFill(Color.hsb(270, 1, 1));
         if (0.70 <= data && data < 0.80) rect.setFill(Color.hsb(240, 1, 1));
@@ -38,6 +42,10 @@ public class DataObject {
 
         dataLabel = new Label(Float.toString(data));
 
+    }
+
+    public VBox getVbox() {
+        return this.vbox;
     }
 
     public Label getLabel() {

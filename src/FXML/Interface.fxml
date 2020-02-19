@@ -3,12 +3,11 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -106,13 +105,7 @@
                                                 <Label fx:id="statusMessage" text="-" />
                                              </children>
                                           </VBox>
-                                          <TableView fx:id="similaritiesTable" layoutX="728.0" layoutY="105.0" prefHeight="276.0" prefWidth="351.0">
-                                            <columns>
-                                              <TableColumn fx:id="program1" prefWidth="124.0" text="Program 1" />
-                                              <TableColumn fx:id="program2" prefWidth="121.0" text="Program 2" />
-                                                <TableColumn fx:id="score" prefWidth="104.0" text="Score" />
-                                            </columns>
-                                          </TableView>
+                                          <ListView fx:id="program1" layoutX="729.0" layoutY="105.0" prefHeight="294.0" prefWidth="343.0" />
                                        </children>
                                     </Pane>
                                  </children>
