@@ -1,9 +1,6 @@
 package Backend;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -21,6 +18,29 @@ public class FileHandling {
             }
         }
     }
+
+    public void gitFileRetriever() throws IOException
+    {
+        File codes= new File("Codes");
+        deleteCodes(codes);
+        Process p = Runtime.getRuntime().exec("python RepoGrabber.py");
+        BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()));
+        System.out.println("Completed:"+in.readLine());
+    }
+
+    private void deleteCodes(File codes)
+    {
+        String[]entries = codes.list();
+        if (entries != null) {
+            for(String s: entries){
+                File currentFile = new File(codes.getPath(),s);
+                if(currentFile.isDirectory()) deleteCodes(currentFile);
+                currentFile.delete();
+            }
+        }
+    }
+
+
 
     public void getAllFiles(File[] dir, Matrix data) throws IOException //get all files recursively
     {
