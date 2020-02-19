@@ -132,11 +132,12 @@ public class Similarity {
     {
         while(scan.hasNext())
         {
-            String[] line= scan.nextLine().split(" ");
+            String[] line= scan.nextLine().split("\\s");
             for(String s :line)
             {
                 if(!s.equals(""))
                 {
+                    System.out.println("Hello");
                     code.add(s);
                 }
             }
