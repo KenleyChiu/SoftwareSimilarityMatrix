@@ -1,32 +1,40 @@
 package Controller;
 
+import Backend.DataEntry;
 import Backend.DataObject;
 import Backend.Similarity;
 import Backend.SystemMetrics;
+import javafx.beans.property.ReadOnlyStringWrapper;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import javax.xml.crypto.Data;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLOutput;
+import java.util.ResourceBundle;
 
-public class InterfaceController {
+public class InterfaceController implements Initializable {
 
     public Button compare, exit;
-    public GridPane gridPane;
     public AnchorPane matrixAnchor;
     public ListView list;
-    public VBox vboxMain;
-    public Label vol,length,vocab;
-    private String comparison = "line",type = "java";
-    private boolean makeTextFile = false;
+    public Label vol,length,vocab,longestSimilarString,difficulty,effort,intelligence,time;
+    public TableView<DataEntry> similaritiesTable;
+    public TableColumn<DataEntry,String> program1,program2,score;
+    private GridPane gridPane;
+    private String comparison = "line",type = "java",folder = "src";
+    private boolean makeTextFile = false,onlySourceFiles = true;
     private Similarity similarity = new Similarity();
     private DataObject dataObj;
 
@@ -58,33 +66,75 @@ public class InterfaceController {
         makeTextFile = true;
     }
 
-
+    //FOLDER
+    public void src(){
+        folder = "src";
+        onlySourceFiles = true;
+    }
+    public void mergedCodes(){
+        folder = "mergedCodes";
+        onlySourceFiles = false;
+    }
 
     public void compareFiles() throws IOException {
 
         similarity.creationMatrix(comparison,type);
 
-//        list.setItems();
         createMatrix();
 
+        longestSimilarString.setText(similarity.getSimilarString());
+
+
+//        createTop5();
+    }
+
+//    private void createTop5(){
+//    ObservableList<DataEntry> entry = FXCollections.observableArrayList(
+//            new DataEntry("KENLEY", "MATTHEW", "0.5"),
+//            new DataEntry("ee", "ii", "0.3")
+//    );
+
+//        program1.setCellValueFactory(new PropertyValueFactory<>("Program1"));
+//        program2.setCellValueFactory(new PropertyValueFactory<>("Program2"));
+//        score.setCellValueFactory(new PropertyValueFactory<>("Score"));
+//
+//        similaritiesTable.setItems(getTop5());
+//    }
+
+
+//    public ObservableList<DataEntry> getTop5(){
+//        ObservableList<DataEntry> entry = FXCollections.observableArrayList();
+//        entry.add(new DataEntry("KENLEY","MATTHEW", "0.5"));
+//        entry.add(new DataEntry("ee","ii", "0.3"));
+//
+//        return entry;
+//    }
+
+
+    public void setMetricsTable() throws IOException {
         SystemMetrics metrics = new SystemMetrics();
+        File masterFile;
 
-        File masterFile = new File("src");  //for our files [Codes or src only]
-        metrics.createSystemMetricsTable(masterFile);  //check this for other's files
+        if(folder.equals("src")) {
+            masterFile = new File("src");  //for our files [Codes or src only]
+        } else {
+            masterFile = new File("MergedCodes");
+        }
 
-        vol.setText(Integer.toString(metrics.volume()));
+        metrics.createSystemMetricsTable(masterFile,onlySourceFiles);  //check this for other's files
+
         length.setText(Integer.toString(metrics.length()));
         vocab.setText(Integer.toString(metrics.vocab()));
-
+        vol.setText(metrics.volume() + " bits");
+        difficulty.setText(Integer.toString(metrics.difficulty()));
+        effort.setText(Integer.toString(metrics.effort()));
+        time.setText(Integer.toString(metrics.time()));
+        intelligence.setText(Integer.toString(metrics.intelligence()));
     }
 
     public void createMatrix() {
-
         addRowsColumns();
-
         MatrixToGridpane();
-
-
     }
 
     public void addRowsColumns(){
@@ -177,5 +227,11 @@ public class InterfaceController {
         Stage stage = (Stage) exit.getScene().getWindow();
         stage.close();
     }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+    }
+
 
 }
