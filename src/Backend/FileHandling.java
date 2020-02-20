@@ -92,7 +92,7 @@ public class FileHandling {
     private boolean filtering(File files)
     {
         for (String s : type) {
-            if (files.getName().contains(s)) return true;
+            if (files.getName().endsWith(s)) return true;
         }
         return false;
     }
