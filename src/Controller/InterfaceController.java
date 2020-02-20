@@ -32,7 +32,7 @@ public class InterfaceController implements Initializable {
 //    public TableColumn<DataEntry,String> program1,program2,score;
     public ListView<String> program1,program2,score;
     public CheckBox javaOp,cppOp,othersOp1,saveAsTextFile;
-    public TextField filesTextField;
+    public TextField filePath,filesTextField;
     private GridPane gridPane;
     private String comparison = "line",folder = "src";
     private ArrayList<String> type; //Kenley Edit
@@ -89,7 +89,7 @@ public class InterfaceController implements Initializable {
         filesTextField.clear();
         //Kenley Edit
 
-        similarity.creationMatrix(comparison,type);
+        similarity.creationMatrix(comparison,type,filePath.getText());
 
         createMatrix();
 
@@ -98,7 +98,7 @@ public class InterfaceController implements Initializable {
         longestSimilarString.setText(similarity.longestString());
 
         ObservableList<String> listView = FXCollections.observableArrayList(
-                "kenley"+"matthew"
+                "kenley"//+"matthew"
 
         );
 
@@ -168,7 +168,7 @@ public class InterfaceController implements Initializable {
         intelligence.setText(Integer.toString(metrics.intelligence()));
 
         //API METRICS
-        setMetricsTableApi(folder);
+        if(folder.equals("src")) setMetricsTableApi(folder);
     }
 
     public void createMatrix() {
