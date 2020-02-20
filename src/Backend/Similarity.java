@@ -150,11 +150,15 @@ public class Similarity {
 
 
     //creating the correlation Matrix
-    public void creationMatrix(String comparison,ArrayList<String> type) throws IOException, NullPointerException {
+    public void creationMatrix(String comparison,ArrayList<String> type,String filePath) throws IOException, NullPointerException {
         similarString=" ";
         File checkerFile, comparisonFile; //storing for files when comparing
         File prog1File;
-        prog1File = new File("Codes");
+        if(filePath.equals("")) {
+            prog1File = new File("Codes");
+        } else {
+            prog1File = new File(filePath);
+        }
         File[] dir = prog1File.listFiles(); // getting all file in the Codes directory
         data.newMatrix(); // creating a new correlation matrix
         data.newUsers(); // clearing all of the data in the userArrayList
