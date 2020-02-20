@@ -2,6 +2,7 @@ package Backend;
 
 import java.io.*;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -14,10 +15,11 @@ public class Similarity {
     private FileHandling files= new FileHandling();
 
     private void ReadCodeLine() {
-        float sameLines=0,totalLines=0,longestLength=0;
+        int sameLines=0,totalLines=0,longestLength=0;
+        ProgramLine progLine;
 
-        ArrayList<String> arrayA = new ArrayList<>();
-        ArrayList<String> arrayB = new ArrayList<>();
+        ArrayList<ProgramLine> arrayA = new ArrayList<>();
+        ArrayList<ProgramLine> arrayB = new ArrayList<>();
 
         while(checkerScan.hasNextLine() || comparisonScan.hasNextLine()) {
 
@@ -25,7 +27,8 @@ public class Similarity {
                 String line2 = comparisonScan.nextLine();
 
                 if(!line2.trim().isEmpty()) {
-                    arrayB.add(line2);
+                    progLine = new ProgramLine(line2,false);
+                    arrayB.add(progLine);
                     totalLines++;
                 }
             }
@@ -33,7 +36,8 @@ public class Similarity {
                 String line1 = checkerScan.nextLine();
 
                 if(!line1.trim().isEmpty()) {
-                    arrayA.add(line1);
+                    progLine = new ProgramLine(line1,false);
+                    arrayA.add(progLine);
                     totalLines++;
                 }
             }
@@ -41,8 +45,14 @@ public class Similarity {
                 String line1 = checkerScan.nextLine();
                 String line2 = comparisonScan.nextLine();
 
-                if(!line1.trim().isEmpty()) arrayA.add(line1);
-                if(!line2.trim().isEmpty()) arrayB.add(line2);
+                if(!line1.trim().isEmpty()) {
+                    progLine = new ProgramLine(line1,false);
+                    arrayA.add(progLine);
+                }
+                if(!line2.trim().isEmpty()) {
+                    progLine = new ProgramLine(line2,false);
+                    arrayB.add(progLine);
+                }
                 //if(!line1.trim().isEmpty() && !line2.trim().isEmpty()) totalLines++;
             }
         }
@@ -57,20 +67,16 @@ public class Similarity {
 
 
         for(int x = 0; x< arrayA.size(); x++){  //arrayA.size()
-//            System.out.println("PROG 1 LINE: "+arrayA.get(x));
-            boolean compared = false;
             for(int y = 0; y< arrayB.size(); y++){  //arrayB.size()
-//                System.out.println("PROG 2 LINE: "+arrayB.get(y));
-                if(arrayA.get(x).equals(arrayB.get(y))){
-                    int currentLength = arrayA.get(x).length();
-                    if(currentLength > longestLength) similarString = arrayA.get(x);
-                    if(!compared) {
-//                        System.out.println("PROG 1 LINE #"+(x+1)+": "+ arrayA.get(x));
-//                        System.out.println("PROG 2 LINE #"+(y+1)+": "+ arrayB.get(y));
+                if(arrayA.get(x).getLine().equals(arrayB.get(y).getLine())){
+                    System.out.println("Prog1 X: "+arrayA.get(x).getLine()+"\n"+"Prog2 Y: "+arrayB.get(y).getLine());
+                    int currentLength = arrayA.get(x).getLine().length();
+                    if(currentLength > longestLength) similarString = arrayA.get(x).getLine();
+                    if(!arrayB.get(y).getBoolean()&&!arrayA.get(x).getBoolean()) {
+                        arrayB.get(y).setBoolean(true);
+                        arrayA.get(x).setBoolean(true);
                         sameLines++;
-//                        System.out.println(sameLines);
                     }
-                    compared = true;
                 }
             }
         }
@@ -79,7 +85,7 @@ public class Similarity {
         comparisonScan.close();
         System.out.println("\nNUMBER OF SAME LINES: " + sameLines);
         System.out.println("NUMBER OF TOTAL LINES: " + totalLines + "\n");
-        percentage = (sameLines / totalLines);
+        percentage = ((float)sameLines / (float)totalLines);
         //percentage = (float)((sameLines/totalLines)-0.5) * 2; //testing for negatives
     }
 
@@ -144,11 +150,15 @@ public class Similarity {
 
 
     //creating the correlation Matrix
-    public void creationMatrix(String comparison,ArrayList<String> type) throws IOException, NullPointerException {
+    public void creationMatrix(String comparison,ArrayList<String> type,String filePath) throws IOException, NullPointerException {
         similarString=" ";
         File checkerFile, comparisonFile; //storing for files when comparing
         File prog1File;
-        prog1File = new File("Codes");
+        if(filePath.equals("")) {
+            prog1File = new File("Codes");
+        } else {
+            prog1File = new File(filePath);
+        }
         File[] dir = prog1File.listFiles(); // getting all file in the Codes directory
         data.newMatrix(); // creating a new correlation matrix
         data.newUsers(); // clearing all of the data in the userArrayList
@@ -164,11 +174,11 @@ public class Similarity {
         File[] codes= mergeFile.listFiles();
 
         //comparing files
-        for(int i=0; i<codes.length; i++)
+        for(int i=0; i<codes.length; i++)   //codes.length
         {
             data.setNewArray();// creating a new array for the checker file
             checkerFile=codes[i];
-            for(int j=0; j<codes.length;j++)
+            for(int j=0; j<codes.length;j++)   //codes.length
             {
                 comparisonFile=codes[j];
                 checkerScan = new Scanner(checkerFile);

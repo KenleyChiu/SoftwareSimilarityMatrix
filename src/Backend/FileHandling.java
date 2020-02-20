@@ -51,6 +51,25 @@ public class FileHandling {
                 getFilesRecursively(newDir, files.getName(), data);// goes to the file method to recursively merge all of the codes
                 fileFilter = 0;
             }
+            else
+            {
+                if(filtering(files)) // checks whether the file is a .java or .ccp
+                {
+                    FileWriter fstream = new FileWriter("MergedCodes/"+files.getName(),true);
+                    //To get the file names of the users that satisfied the filter option
+                    data.addUser(files.getName());//add the names for the GUI
+
+                    //writes the files into a text file for comparison
+                    BufferedWriter writing = new BufferedWriter(fstream);
+                    Scanner input = new Scanner(files);
+                    while(input.hasNext())
+                    {
+                        writing.write(input.nextLine());
+                        writing.newLine();
+                    }
+                    writing.close();
+                }
+            }
         }
     }
 
