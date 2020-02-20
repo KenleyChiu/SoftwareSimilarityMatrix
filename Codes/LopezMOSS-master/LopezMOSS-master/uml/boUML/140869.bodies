@@ -1,7 +1,0 @@
-class Projects
-!!!152517.java!!!	compare(inout first : Project, inout second : Project, inout strategy : ComparisonStrategy) : double
-        try {
-            return strategy.compare(first.getConcatenatedReader(), second.getConcatenatedReader());
-        } catch (IOException e) {
-            return 0.0; //CHANGE: The protocol when a file cannot be read is to just return a score of 0.0
-        }

@@ -94,9 +94,8 @@
                                           <Label layoutX="829.0" layoutY="77.0" text="Top 5 Similarity Scores" />
                                           <HBox alignment="CENTER" layoutX="14.0" layoutY="5.0" prefHeight="100.0" prefWidth="666.0" spacing="20.0">
                                              <children>
-                                                <Label text="Folder File Path:" />
-                                                <TextField fx:id="filePath" promptText="enter file path" />
-                                                <Button fx:id="compare" mnemonicParsing="false" onAction="#compareFiles" text="Compare" />
+                                                <Button fx:id="btnRetrieveGit" mnemonicParsing="false" onAction="#retrieveGit" text="Retrieve GitHub" />
+                                                <Button fx:id="compare1" layoutX="303.0" layoutY="45.0" mnemonicParsing="false" onAction="#compareFiles" text="Compare" />
                                              </children>
                                           </HBox>
                                           <Button fx:id="exit" layoutX="849.0" layoutY="419.0" mnemonicParsing="false" onAction="#exitProg" text="Quit Program" />

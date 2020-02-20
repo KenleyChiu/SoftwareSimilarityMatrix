@@ -1,10 +1,6 @@
 package Controller;
 
-import Backend.DataEntry;
-import Backend.DataObject;
-import Backend.Similarity;
-import Backend.SystemMetrics;
-import javafx.beans.property.ReadOnlyStringWrapper;
+import Backend.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
@@ -19,11 +15,9 @@ import javafx.stage.Stage;
 import metrics.HalsteadMetrics;
 import metrics.MetricMachine;
 
-import javax.xml.crypto.Data;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -38,13 +32,14 @@ public class InterfaceController implements Initializable {
 //    public TableColumn<DataEntry,String> program1,program2,score;
     public ListView<String> program1,program2,score;
     public CheckBox javaOp,cppOp,othersOp1,saveAsTextFile;
-    public TextField filePath,filesTextField;
+    public TextField filesTextField;
     private GridPane gridPane;
     private String comparison = "line",folder = "src";
     private ArrayList<String> type; //Kenley Edit
     private boolean onlySourceFiles = true;
     private Similarity similarity = new Similarity();
     private DataObject dataObj;
+    private FileHandling files= new FileHandling();
 
 
     //COMPARISONS
@@ -70,6 +65,9 @@ public class InterfaceController implements Initializable {
         else filesTextField.setDisable(true);
     }
 
+    public void retrieveGit() throws IOException {
+        files.gitFileRetriever();
+    }
 
     public void compareFiles() throws IOException {
 
@@ -91,13 +89,13 @@ public class InterfaceController implements Initializable {
         filesTextField.clear();
         //Kenley Edit
 
-        similarity.creationMatrix(comparison,type,filePath.getText());
+        similarity.creationMatrix(comparison,type);
 
         createMatrix();
 
         statusMessage.setText("Matrix Created!");
 
-        longestSimilarString.setText(similarity.getSimilarString());
+        longestSimilarString.setText(similarity.longestString());
 
         ObservableList<String> listView = FXCollections.observableArrayList(
                 "kenley"+"matthew"

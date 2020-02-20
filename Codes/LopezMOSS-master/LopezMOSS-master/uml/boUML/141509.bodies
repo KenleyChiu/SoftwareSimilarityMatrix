@@ -1,8 +1,0 @@
-class ResultRow
-!!!153541.java!!!	ResultRow(inout project : Project, inout results : ProjectsCorrelationMatrix::ResultSet)
-            this.rowProject = project;
-            this.results = results;
-!!!153669.java!!!	getResults() : ProjectsCorrelationMatrix::ResultSet
-            return results;
-!!!153797.java!!!	getProject() : Project
-            return rowProject;

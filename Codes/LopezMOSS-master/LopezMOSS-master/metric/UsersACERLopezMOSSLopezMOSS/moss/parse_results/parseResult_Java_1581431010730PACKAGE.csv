@@ -1,7 +1,0 @@
-Package Name,Package Id,Cyclometric Density,Decision Density,Essential Density,Branch Count,Condition Count,Cyclometric Complexity,Decision Count,Essential Complexity,LOC,Total Operands,Total Operators,Unique Operands Count,Unique Operators Count,Halstead Difficulty,Halstead Length,Halstead Level,Halstead Programming Effort,Halstead Programming Time,Halstead Volume,Maintenance Severity,Defected?(false/true)
-moss.algorithm,0,106,1.9,0.9,14,19,1.79,10,96,190,106,134,53,24,25.0,240,0.04,2.0,0.11,0.08,0.91,false
-moss.gui.CorrelationMatrixMenu,47,11,0.0,1.0,0,0,3.45,0,11,38,6,6,5,3,1.79,12,0.56,0.91,0.05,0.51,1.0,false
-moss.gui.MultiProjectMenu,59,38,0.0,1.0,0,1,1.74,0,38,66,17,19,12,6,4.17,36,0.24,1.25,0.07,0.3,1.0,false
-moss.gui.utilities,80,9,0.0,0.88,1,0,1.78,0,8,16,2,5,1,4,4.0,7,0.25,0.68,0.04,0.17,0.89,false
-moss.project,89,110,3.5,0.96,3,7,1.85,2,106,204,120,101,49,13,16.67,221,0.06,1.83,0.1,0.11,0.96,false
-moss.projectpairmachine,146,25,1.0,0.92,2,2,1.6,2,23,40,18,18,9,4,4.0,36,0.25,1.12,0.06,0.28,0.92,false

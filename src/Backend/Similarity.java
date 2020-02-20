@@ -89,7 +89,7 @@ public class Similarity {
         //percentage = (float)((sameLines/totalLines)-0.5) * 2; //testing for negatives
     }
 
-    public String getSimilarString(){
+    public String longestString(){
         return similarString;
     }
 
@@ -136,12 +136,13 @@ public class Similarity {
     {
         while(scan.hasNext())
         {
-            String[] line= scan.nextLine().split("\\s");
+            String[] line= scan.nextLine().split("^[a-zA-Z]+$");
             for(String s :line)
             {
                 if(!s.equals(""))
                 {
                     code.add(s);
+                    if(s.length()>=similarString.length()) similarString=s;
                 }
             }
         }
@@ -149,14 +150,11 @@ public class Similarity {
 
 
     //creating the correlation Matrix
-    public void creationMatrix(String comparison,ArrayList<String> type,String filePath) throws IOException, NullPointerException {
+    public void creationMatrix(String comparison,ArrayList<String> type) throws IOException, NullPointerException {
+        similarString=" ";
         File checkerFile, comparisonFile; //storing for files when comparing
         File prog1File;
-        if(filePath.equals("")) {
-            prog1File = new File("Codes");
-        } else {
-            prog1File = new File(filePath);
-        }
+        prog1File = new File("Codes");
         File[] dir = prog1File.listFiles(); // getting all file in the Codes directory
         data.newMatrix(); // creating a new correlation matrix
         data.newUsers(); // clearing all of the data in the userArrayList
