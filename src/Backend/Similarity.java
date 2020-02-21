@@ -69,7 +69,7 @@ public class Similarity {
         for(int x = 0; x< arrayA.size(); x++){  //arrayA.size()
             for(int y = 0; y< arrayB.size(); y++){  //arrayB.size()
                 if(arrayA.get(x).getLine().equals(arrayB.get(y).getLine())){
-                    System.out.println("Prog1 X: "+arrayA.get(x).getLine()+"\n"+"Prog2 Y: "+arrayB.get(y).getLine());
+//                    System.out.println("Prog1 X: "+arrayA.get(x).getLine()+"\n"+"Prog2 Y: "+arrayB.get(y).getLine());
                     int currentLength = arrayA.get(x).getLine().length();
                     if(currentLength > longestLength) similarString = arrayA.get(x).getLine();
                     if(!arrayB.get(y).getBoolean()&&!arrayA.get(x).getBoolean()) {
