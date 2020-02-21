@@ -122,7 +122,7 @@ public class FileHandling {
     }
 
 
-    public void createScore(Matrix matrix, String fileName) throws IOException {
+    public void writeScoreFile(Matrix matrix, String fileName) throws IOException {
         BufferedWriter out = new BufferedWriter(new FileWriter("Logs/"+fileName+".txt",false));
         out.write("No.\tRepository 1\t\tRepoitory 2\t\tScores");
         out.newLine();

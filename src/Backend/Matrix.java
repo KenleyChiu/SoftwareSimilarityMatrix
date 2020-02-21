@@ -59,6 +59,13 @@ public class Matrix {
     }
 
     //for the storing and retrieving of scores data
+    public void newRepo()
+    {
+        rowRepo = new ArrayList<>();
+        columnRepo = new ArrayList<>();
+        result = new ArrayList<>();
+    }
+
     public String getRowRepo(int i) {
         return rowRepo.get(i);
     }
@@ -119,6 +126,7 @@ public class Matrix {
                 result.set(i,result.get(j));
                 row.set(i,row.get(j));
                 col.set(i,col.get(j));
+                System.out.println(result.get(i));
                 result.set(j,resultTemp);
                 row.set(j,rowTemp);
                 col.set(j,colTemp);

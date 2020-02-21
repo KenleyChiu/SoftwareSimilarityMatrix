@@ -163,6 +163,7 @@ public class Similarity {
         File[] dir = prog1File.listFiles(); // getting all file in the Codes directory
         data.newMatrix(); // creating a new correlation matrix
         data.newUsers(); // clearing all of the data in the userArrayList
+        data.newRepo();
 
         //Delete the files inside the mergedCodes directory to avoid duplication
         File mergeFile= new File("MergedCodes");
@@ -191,13 +192,14 @@ public class Similarity {
             }
             data.setMatrix();//saving the data gathered to another array list for the correlation matrix
         }
+        generateScores();
 
         createScores();
         data.sortData();
 
     }
 
-    public void createScores()
+    public void generateScores()
     {
         for(int i=0; i<data.matrixSize(); i++)
         {
@@ -208,6 +210,7 @@ public class Similarity {
                 data.setResults(data.getMatrix().get(i).get(j));
             }
         }
+        data.sortData();
     }
 
     public Matrix getMatrix(){
