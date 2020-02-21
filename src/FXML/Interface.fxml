@@ -108,7 +108,7 @@
                                              <children>
                                                 <Button fx:id="btnRetrieveGit" mnemonicParsing="false" onAction="#retrieveGit" styleClass="labelSmall" stylesheets="@bg.css" text="Retrieve GitHub" />
                                                 <Label styleClass="labelHeader" stylesheets="@bg.css" text="Folder File Path:" />
-                                                <TextField fx:id="filePath" promptText="enter file path" styleClass="labelSmall" />
+                                                <TextField fx:id="filePath" promptText="Codes (Default)" styleClass="labelSmall" />
                                                 <Button fx:id="compare1" layoutX="303.0" layoutY="45.0" mnemonicParsing="false" onAction="#compareFiles" styleClass="labelSmall" text="Compare" />
                                              </children>
                                           </HBox>
