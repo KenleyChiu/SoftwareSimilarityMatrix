@@ -27,11 +27,7 @@ public class SystemMetrics {
             } else {
                 System.out.println("FILE: "+file.getCanonicalPath());
                 if(onlySourceFiles){
-                    if(file.getCanonicalPath().contains(".java") || file.getCanonicalPath().contains(".cpp")){
-                        filesArray[numOfFiles++] = file.getCanonicalPath();
-                    }
-                } else {
-                    if(file.getCanonicalPath().contains(".txt")){
+                    if(file.getCanonicalPath().endsWith(".java")){
                         filesArray[numOfFiles++] = file.getCanonicalPath();
                     }
                 }
