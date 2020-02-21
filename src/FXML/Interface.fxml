@@ -334,7 +334,7 @@
                               </Pane>
                            </center>
                            <top>
-                              <HBox alignment="CENTER_LEFT" prefHeight="148.0" prefWidth="1300.0" spacing="150.0" BorderPane.alignment="CENTER">
+                              <HBox alignment="CENTER_LEFT" prefHeight="152.0" prefWidth="1300.0" spacing="150.0" BorderPane.alignment="CENTER">
                                  <children>
                                     <ImageView fitHeight="135.0" fitWidth="309.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
