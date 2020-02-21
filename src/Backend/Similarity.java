@@ -158,6 +158,7 @@ public class Similarity {
         if(filePath.equals("")) {
             prog1File = new File("Codes");
         } else {
+            filePath=filePath.replaceAll("\\\\", "\\\\\\\\");
             prog1File = new File(filePath);
         }
         File[] dir = prog1File.listFiles(); // getting all file in the Codes directory

@@ -87,12 +87,19 @@ public class InterfaceController implements Initializable {
                 statusMessage.setText("Others textfield is Empty!");
                 return;
 //                throw new NullPointerException("Invalid Input");
-
             }
-//            else if (javaOp.isSelected() && cppOp.isSelected() && filesTextField.getText() == null || filesTextField.getText().trim().isEmpty())
-//                throw new NullPointerException("Invalid Input");
             else
-                //if(filesTextField.getText() == null || filesTextField.getText().trim().isEmpty()) return;
+                type.add(filesTextField.getText());
+
+        }
+        if(saveAsTextFile.isSelected())
+        {
+            if (logFileName.getText() == null || logFileName.getText().trim().isEmpty()) {
+                statusMessage.setText("Enter a text file name!");
+                return;
+//                throw new NullPointerException("Invalid Input");
+            }
+            else
                 type.add(filesTextField.getText());
 
         }
@@ -114,26 +121,11 @@ public class InterfaceController implements Initializable {
     }
 
     private void setTop10Listview(){
-        top10Listview.setItems(top10());
+        for(int i=0; i<similarity.getMatrix().getResultsSize(); i++)
+        {
+            top10Listview.getItems().add(similarity.getMatrix().getRowRepo(i)+ " and " + similarity.getMatrix().getColumnRepo(i)+": " + similarity.getMatrix().getResults(i));
+        }
     }
-
-    private ObservableList<String> top10(){
-        ObservableList<String> listView = FXCollections.observableArrayList(
-                "1. " + similarity.getMatrix().getRowRepo(0)+ " and " + similarity.getMatrix().getColumnRepo(0)+": " + similarity.getMatrix().getResults(0),
-                "2. " + similarity.getMatrix().getRowRepo(1)+ " and " + similarity.getMatrix().getColumnRepo(1)+": " + similarity.getMatrix().getResults(1),
-                "3. " + similarity.getMatrix().getRowRepo(2)+ " and " + similarity.getMatrix().getColumnRepo(2)+": " + similarity.getMatrix().getResults(2),
-                "4. " + similarity.getMatrix().getRowRepo(3)+ " and " + similarity.getMatrix().getColumnRepo(3)+": " + similarity.getMatrix().getResults(3),
-                "5. " + similarity.getMatrix().getRowRepo(4)+ " and " + similarity.getMatrix().getColumnRepo(4)+": " + similarity.getMatrix().getResults(4),
-                "6. " + similarity.getMatrix().getRowRepo(5)+ " and " + similarity.getMatrix().getColumnRepo(5)+": " + similarity.getMatrix().getResults(5),
-                "7. " + similarity.getMatrix().getRowRepo(6)+ " and " + similarity.getMatrix().getColumnRepo(6)+": " + similarity.getMatrix().getResults(6),
-                "8. " + similarity.getMatrix().getRowRepo(7)+ " and " + similarity.getMatrix().getColumnRepo(7)+": " + similarity.getMatrix().getResults(7),
-                "9. " + similarity.getMatrix().getRowRepo(8)+ " and " + similarity.getMatrix().getColumnRepo(8)+": " + similarity.getMatrix().getResults(8),
-                "10. " + similarity.getMatrix().getRowRepo(9)+ " and " + similarity.getMatrix().getColumnRepo(9)+": " + similarity.getMatrix().getResults(9)
-
-        );
-        return listView;
-    }
-
 
     public void setMetricsTableApi(String pathDirectory) throws IOException {
         HalsteadMetrics hal = MetricMachine.getMetrics(pathDirectory);
@@ -151,7 +143,7 @@ public class InterfaceController implements Initializable {
         SystemMetrics metrics = new SystemMetrics();
         File masterFile;
 
-        folder = folderTextfield.getText();
+        folder = folderTextfield.getText().replaceAll("\\\\","\\\\\\\\");
         masterFile = new File(folder);  //enter src for our files [API only works for java files
 
         metrics.createSystemMetricsTable(masterFile,onlySourceFiles);  //check this for other's files
@@ -165,7 +157,7 @@ public class InterfaceController implements Initializable {
         intelligence.setText(Integer.toString(metrics.intelligence()));
 
         //API METRICS
-        if(folder.equals("src")) setMetricsTableApi(folder);
+        setMetricsTableApi(folder);
     }
 
     public void createMatrix() {
