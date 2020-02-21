@@ -83,9 +83,16 @@ public class InterfaceController implements Initializable {
         if(cppOp.isSelected()) type.add(".cpp");
         if(othersOp1.isSelected())
         {
-            if (filesTextField.getText() == null || filesTextField.getText().trim().isEmpty())
-                throw new NullPointerException("Invalid Input");
+            if (filesTextField.getText() == null || filesTextField.getText().trim().isEmpty()) {                statusMessage.setText("Textfield is Empty!");
+                statusMessage.setText("Others textfield is Empty!");
+                return;
+//                throw new NullPointerException("Invalid Input");
+
+            }
+//            else if (javaOp.isSelected() && cppOp.isSelected() && filesTextField.getText() == null || filesTextField.getText().trim().isEmpty())
+//                throw new NullPointerException("Invalid Input");
             else
+                //if(filesTextField.getText() == null || filesTextField.getText().trim().isEmpty()) return;
                 type.add(filesTextField.getText());
 
         }
@@ -112,16 +119,16 @@ public class InterfaceController implements Initializable {
 
     private ObservableList<String> top10(){
         ObservableList<String> listView = FXCollections.observableArrayList(
-                similarity.getMatrix().getRowRepo(0)+ " and " + similarity.getMatrix().getColumnRepo(0)+": " + similarity.getMatrix().getResults(0),
-                similarity.getMatrix().getRowRepo(1)+ " and " + similarity.getMatrix().getColumnRepo(1)+": " + similarity.getMatrix().getResults(1),
-                similarity.getMatrix().getRowRepo(2)+ " and " + similarity.getMatrix().getColumnRepo(2)+": " + similarity.getMatrix().getResults(2),
-                similarity.getMatrix().getRowRepo(3)+ " and " + similarity.getMatrix().getColumnRepo(3)+": " + similarity.getMatrix().getResults(3),
-                similarity.getMatrix().getRowRepo(4)+ " and " + similarity.getMatrix().getColumnRepo(4)+": " + similarity.getMatrix().getResults(4),
-                similarity.getMatrix().getRowRepo(5)+ " and " + similarity.getMatrix().getColumnRepo(5)+": " + similarity.getMatrix().getResults(5),
-                similarity.getMatrix().getRowRepo(6)+ " and " + similarity.getMatrix().getColumnRepo(6)+": " + similarity.getMatrix().getResults(6),
-                similarity.getMatrix().getRowRepo(7)+ " and " + similarity.getMatrix().getColumnRepo(7)+": " + similarity.getMatrix().getResults(7),
-                similarity.getMatrix().getRowRepo(8)+ " and " + similarity.getMatrix().getColumnRepo(8)+": " + similarity.getMatrix().getResults(8),
-                similarity.getMatrix().getRowRepo(9)+ " and " + similarity.getMatrix().getColumnRepo(9)+": " + similarity.getMatrix().getResults(9)
+                "1. " + similarity.getMatrix().getRowRepo(0)+ " and " + similarity.getMatrix().getColumnRepo(0)+": " + similarity.getMatrix().getResults(0),
+                "2. " + similarity.getMatrix().getRowRepo(1)+ " and " + similarity.getMatrix().getColumnRepo(1)+": " + similarity.getMatrix().getResults(1),
+                "3. " + similarity.getMatrix().getRowRepo(2)+ " and " + similarity.getMatrix().getColumnRepo(2)+": " + similarity.getMatrix().getResults(2),
+                "4. " + similarity.getMatrix().getRowRepo(3)+ " and " + similarity.getMatrix().getColumnRepo(3)+": " + similarity.getMatrix().getResults(3),
+                "5. " + similarity.getMatrix().getRowRepo(4)+ " and " + similarity.getMatrix().getColumnRepo(4)+": " + similarity.getMatrix().getResults(4),
+                "6. " + similarity.getMatrix().getRowRepo(5)+ " and " + similarity.getMatrix().getColumnRepo(5)+": " + similarity.getMatrix().getResults(5),
+                "7. " + similarity.getMatrix().getRowRepo(6)+ " and " + similarity.getMatrix().getColumnRepo(6)+": " + similarity.getMatrix().getResults(6),
+                "8. " + similarity.getMatrix().getRowRepo(7)+ " and " + similarity.getMatrix().getColumnRepo(7)+": " + similarity.getMatrix().getResults(7),
+                "9. " + similarity.getMatrix().getRowRepo(8)+ " and " + similarity.getMatrix().getColumnRepo(8)+": " + similarity.getMatrix().getResults(8),
+                "10. " + similarity.getMatrix().getRowRepo(9)+ " and " + similarity.getMatrix().getColumnRepo(9)+": " + similarity.getMatrix().getResults(9)
 
         );
         return listView;
@@ -164,7 +171,10 @@ public class InterfaceController implements Initializable {
     public void createMatrix() {
         addRowsColumns();
         MatrixToGridpane();
+
+        matrixAnchor.setPrefSize(gridPane.getMaxHeight(),gridPane.getMaxHeight());
     }
+
 
     public void addRowsColumns(){
 
