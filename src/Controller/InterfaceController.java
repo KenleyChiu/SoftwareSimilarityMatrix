@@ -7,10 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import metrics.HalsteadMetrics;
 import metrics.MetricMachine;
@@ -29,11 +26,11 @@ public class InterfaceController implements Initializable {
     public Label apiLength,apiVocab,apiDifficulty,apiEffort,apiTime,apiVolume,apiBugs;
 //    public TableView<DataEntry> similaritiesTable;
 //    public TableColumn<DataEntry,String> program1,program2,score;
-    public ListView<String> top5Listview;
+    public ListView<String> top10Listview;
     public CheckBox javaOp,cppOp,othersOp1,saveAsTextFile;
-    public TextField filePath,filesTextField,logFileName;
+    public TextField filePath,filesTextField,logFileName,folderTextfield;
     private GridPane gridPane;
-    private String comparison = "line",folder = "src";
+    private String comparison = "line",folder;
     private ArrayList<String> type; //Kenley Edit
     private boolean onlySourceFiles = true;
     private Similarity similarity = new Similarity();
@@ -76,7 +73,7 @@ public class InterfaceController implements Initializable {
 
     public void compareFiles() throws IOException {
 
-
+//        statusMessage.setText("Loading");
 
         //Kenley Edit
         type= new ArrayList<>();
@@ -99,70 +96,54 @@ public class InterfaceController implements Initializable {
         createMatrix();
 
         statusMessage.setText("Matrix Created!");
-
         longestSimilarString.setText(similarity.longestString());
 
-        if(saveAsTextFile.isSelected()) files.createScore(similarity.getMatrix(),logFileName.getText());
+        if(saveAsTextFile.isSelected()) files.writeScoreFile(similarity.getMatrix(),logFileName.getText());
 
+        setTop10Listview();
+
+    }
+
+    private void setTop10Listview(){
+        top10Listview.setItems(top10());
+    }
+
+    private ObservableList<String> top10(){
         ObservableList<String> listView = FXCollections.observableArrayList(
-                similarity.getMatrix().getRowRepo(0)+similarity.getMatrix().getColumnRepo(0)+similarity.getMatrix().getResults(0)
+                similarity.getMatrix().getRowRepo(0)+ " and " + similarity.getMatrix().getColumnRepo(0)+": " + similarity.getMatrix().getResults(0),
+                similarity.getMatrix().getRowRepo(1)+ " and " + similarity.getMatrix().getColumnRepo(1)+": " + similarity.getMatrix().getResults(1),
+                similarity.getMatrix().getRowRepo(2)+ " and " + similarity.getMatrix().getColumnRepo(2)+": " + similarity.getMatrix().getResults(2),
+                similarity.getMatrix().getRowRepo(3)+ " and " + similarity.getMatrix().getColumnRepo(3)+": " + similarity.getMatrix().getResults(3),
+                similarity.getMatrix().getRowRepo(4)+ " and " + similarity.getMatrix().getColumnRepo(4)+": " + similarity.getMatrix().getResults(4),
+                similarity.getMatrix().getRowRepo(5)+ " and " + similarity.getMatrix().getColumnRepo(5)+": " + similarity.getMatrix().getResults(5),
+                similarity.getMatrix().getRowRepo(6)+ " and " + similarity.getMatrix().getColumnRepo(6)+": " + similarity.getMatrix().getResults(6),
+                similarity.getMatrix().getRowRepo(7)+ " and " + similarity.getMatrix().getColumnRepo(7)+": " + similarity.getMatrix().getResults(7),
+                similarity.getMatrix().getRowRepo(8)+ " and " + similarity.getMatrix().getColumnRepo(8)+": " + similarity.getMatrix().getResults(8),
+                similarity.getMatrix().getRowRepo(9)+ " and " + similarity.getMatrix().getColumnRepo(9)+": " + similarity.getMatrix().getResults(9)
 
         );
-
-
-        top5Listview.setItems(listView);
-
-//        createTop5();
+        return listView;
     }
 
-    private ObservableList<DataEntry> top5(){
-        ObservableList<DataEntry> entry = FXCollections.observableArrayList(
-                new DataEntry("KENLEY","MATTHEW","0.5")
-
-        );
-        return entry;
-    }
-
-    /*private void createTop5(){
-        ArrayList<DataEntry> arrayEntry = new ArrayList<>();
-        arrayEntry.add(new DataEntry("KENLEY", "MATTHEW", "0.5"));
-//
-//    ObservableList<DataEntry> entry = FXCollections.observableArrayList(
-//            new DataEntry("KENLEY", "MATTHEW", "0.5"),
-//            new DataEntry("ee", "ii", "0.3")
-//    );
-
-        ObservableList<DataEntry> entry = FXCollections.observableArrayList();
-        entry.add(new DataEntry("KENLEY", "MATTHEW", "0.5"));
-
-        program1.setCellValueFactory(new PropertyValueFactory<>("Program1"));
-        program2.setCellValueFactory(new PropertyValueFactory<>("Program2"));
-        score.setCellValueFactory(new PropertyValueFactory<>("Score"));
-
-        similaritiesTable.setItems(entry);
-    }*/
 
     public void setMetricsTableApi(String pathDirectory) throws IOException {
         HalsteadMetrics hal = MetricMachine.getMetrics(pathDirectory);
 
-        apiLength.setText(Double.toString(hal.getProglen()));
-        apiVocab.setText(Double.toString(hal.getVocabulary()));
-        apiVolume.setText(Double.toString(hal.getVolume()));
-        apiDifficulty.setText(Double.toString(hal.getDifficulty()));
-        apiEffort.setText(Double.toString(hal.getEffort()));
-        apiTime.setText(Double.toString(hal.getTimeDelBugs()));
-        apiBugs.setText(Double.toString(hal.getTimeDelBugs()));
+        apiLength.setText(Double.toString(Math.round(hal.getProglen())));
+        apiVocab.setText(Double.toString(Math.round(hal.getVocabulary())));
+        apiVolume.setText(Double.toString(Math.round(hal.getVolume())) + " bits");
+        apiDifficulty.setText(Double.toString(Math.round(hal.getDifficulty())));
+        apiEffort.setText(Double.toString(Math.round(hal.getEffort())));
+        apiTime.setText(Double.toString(Math.round(hal.getTimeDelBugs())));
+        apiBugs.setText(Double.toString(Math.round(hal.getTimeDelBugs())));
     }
 
     public void setMetricsTable() throws IOException {
         SystemMetrics metrics = new SystemMetrics();
         File masterFile;
 
-        if(folder.equals("src")) {
-            masterFile = new File("src");  //for our files [Codes or src only]
-        } else {
-            masterFile = new File("MergedCodes");
-        }
+        folder = folderTextfield.getText();
+        masterFile = new File(folder);  //enter src for our files [API only works for java files
 
         metrics.createSystemMetricsTable(masterFile,onlySourceFiles);  //check this for other's files
 
@@ -188,7 +169,7 @@ public class InterfaceController implements Initializable {
         removeRowsColumns();
 
         gridPane = new GridPane();
-        gridPane.setVgap(-1);
+//        gridPane.setVgap(1);
 //        gridPane.setHgap(1);
         gridPane.setGridLinesVisible(true);
         matrixAnchor.getChildren().add(gridPane);
@@ -200,6 +181,7 @@ public class InterfaceController implements Initializable {
                 gridPane.addColumn(y);
             }
         }
+
 
     }
 
