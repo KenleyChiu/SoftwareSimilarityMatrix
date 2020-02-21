@@ -32,7 +32,7 @@ public class InterfaceController implements Initializable {
 //    public TableColumn<DataEntry,String> program1,program2,score;
     public ListView<String> program1,program2,score;
     public CheckBox javaOp,cppOp,othersOp1,saveAsTextFile;
-    public TextField filePath,filesTextField;
+    public TextField filePath,filesTextField,logFileName;
     private GridPane gridPane;
     private String comparison = "line",folder = "src";
     private ArrayList<String> type; //Kenley Edit
@@ -71,7 +71,7 @@ public class InterfaceController implements Initializable {
 
     public void compareFiles() throws IOException {
 
-        boolean makeTextFile = saveAsTextFile.isSelected();
+
 
         //Kenley Edit
         type= new ArrayList<>();
@@ -96,6 +96,8 @@ public class InterfaceController implements Initializable {
         statusMessage.setText("Matrix Created!");
 
         longestSimilarString.setText(similarity.longestString());
+
+        if(saveAsTextFile.isSelected()) files.createScore(similarity.getMatrix(),logFileName.getText());
 
         ObservableList<String> listView = FXCollections.observableArrayList(
                 "kenley"//+"matthew"

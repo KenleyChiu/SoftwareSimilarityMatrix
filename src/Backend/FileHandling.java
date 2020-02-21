@@ -111,7 +111,7 @@ public class FileHandling {
     private boolean filtering(File files)
     {
         for (String s : type) {
-            if (files.getName().contains(s)) return true;
+            if (files.getName().endsWith(s)) return true;
         }
         return false;
     }
@@ -122,6 +122,15 @@ public class FileHandling {
     }
 
 
-
-
+    public void createScore(Matrix matrix, String fileName) throws IOException {
+        BufferedWriter out = new BufferedWriter(new FileWriter("Logs/"+fileName+".txt",false));
+        out.write("No.\tRepository 1\t\tRepoitory 2\t\tScores");
+        out.newLine();
+        for(int i=0; i<matrix.getResultsSize(); i++)
+        {
+            out.write((i+1)+"\t"+matrix.getRowRepo(i)+"\t\t"+matrix.getColumnRepo(i)+"\t\t"+matrix.getResults(i));
+            out.newLine();
+        }
+        out.close();
+    }
 }
