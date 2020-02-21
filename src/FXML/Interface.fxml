@@ -59,6 +59,7 @@
                                     <VBox alignment="BASELINE_CENTER" prefHeight="129.0" prefWidth="161.0" spacing="20.0">
                                        <children>
                                           <CheckBox fx:id="saveAsTextFile" mnemonicParsing="false" text="Save to Text File" />
+                                          <TextField fx:id="logFileName" />
                                        </children>
                                     </VBox>
                                  </children>
