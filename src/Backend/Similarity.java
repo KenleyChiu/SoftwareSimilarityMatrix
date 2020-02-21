@@ -11,9 +11,7 @@ public class Similarity {
     private Matrix data = new Matrix();
     private String similarString = "";
     private FileHandling files= new FileHandling();
-    private ArrayList<String> rowRepo = new ArrayList<>();
-    private ArrayList<String> columnRepo = new ArrayList<>();
-    private ArrayList<Float> result = new ArrayList<>();
+
 
     private void ReadCodeLine() {
         int sameLines=0,totalLines=0,longestLength=0;
@@ -54,23 +52,16 @@ public class Similarity {
                     progLine = new ProgramLine(line2,false);
                     arrayB.add(progLine);
                 }
-                //if(!line1.trim().isEmpty() && !line2.trim().isEmpty()) totalLines++;
             }
         }
 
         if(arrayA.size() > arrayB.size()) totalLines = arrayA.size();
         else totalLines = arrayB.size();
 
-//        totalLines = arrayA.size() + arrayB.size();
-
-//        System.out.println("\nNUMBER OF PROG1 LINES: " + arrayA.size());
-//        System.out.println("NUMBER OF PROG2 LINES: " + arrayB.size() + "\n");
-
 
         for(int x = 0; x< arrayA.size(); x++){  //arrayA.size()
             for(int y = 0; y< arrayB.size(); y++){  //arrayB.size()
                 if(arrayA.get(x).getLine().equals(arrayB.get(y).getLine())){
-//                    System.out.println("Prog1 X: "+arrayA.get(x).getLine()+"\n"+"Prog2 Y: "+arrayB.get(y).getLine());
                     int currentLength = arrayA.get(x).getLine().length();
                     if(currentLength > longestLength) similarString = arrayA.get(x).getLine();
                     if(!arrayB.get(y).getBoolean()&&!arrayA.get(x).getBoolean()) {
@@ -84,10 +75,7 @@ public class Similarity {
 
         checkerScan.close();
         comparisonScan.close();
-        System.out.println("\nNUMBER OF SAME LINES: " + sameLines);
-        System.out.println("NUMBER OF TOTAL LINES: " + totalLines + "\n");
         percentage = ((float)sameLines / (float)totalLines);
-        //percentage = (float)((sameLines/totalLines)-0.5) * 2; //testing for negatives
     }
 
     public String longestString(){
@@ -153,6 +141,7 @@ public class Similarity {
     //creating the correlation Matrix
     public void creationMatrix(String comparison,ArrayList<String> type,String filePath) throws IOException, NullPointerException {
         similarString=" ";
+
         File checkerFile, comparisonFile; //storing for files when comparing
         File prog1File;
         if(filePath.equals("")) {
