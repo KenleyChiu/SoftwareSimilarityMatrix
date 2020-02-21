@@ -8,6 +8,7 @@ public class FileHandling {
 
     private int fileFilter=0;
     private ArrayList<String> type= new ArrayList<>();
+    private PythonScript scripting = new PythonScript();
 
     public void deleteFilesMerge(File mergeFile) {
         String[]entries = mergeFile.list();
@@ -21,6 +22,7 @@ public class FileHandling {
 
     public void gitFileRetriever() throws IOException
     {
+        scripting.changeScript();
         File codes= new File("Codes");
         deleteCodes(codes);
         Process p = Runtime.getRuntime().exec("python RepoGrabber.py"); //python RepoGrabber.py
