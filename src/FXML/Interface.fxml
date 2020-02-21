@@ -223,20 +223,15 @@
                                           </VBox>
                                        </children>
                                     </GridPane>
-                                    <VBox alignment="CENTER" layoutX="441.0" layoutY="28.0" prefHeight="123.0" prefWidth="418.0" spacing="20.0">
+                                    <VBox alignment="CENTER" layoutX="441.0" layoutY="14.0" prefHeight="123.0" prefWidth="418.0" spacing="20.0">
                                        <children>
                                           <HBox alignment="CENTER" prefHeight="44.0" prefWidth="404.0" spacing="20.0">
                                              <children>
                                                 <Label text="Folders:" />
-                                                <RadioButton fx:id="srcFolder" mnemonicParsing="false" onAction="#src" selected="true" text="src">
-                                                   <toggleGroup>
-                                                      <ToggleGroup fx:id="folders" />
-                                                   </toggleGroup>
-                                                </RadioButton>
-                                                <RadioButton fx:id="mergedCodesFolder" mnemonicParsing="false" onAction="#mergedCodes" text="MergedCodes" toggleGroup="$folders" />
+                                                <TextField fx:id="folderTextfield" />
+                                                <Button fx:id="compute" mnemonicParsing="false" onAction="#setMetricsTable" text="Compute" />
                                              </children>
                                           </HBox>
-                                          <Button fx:id="compute" mnemonicParsing="false" onAction="#setMetricsTable" text="Compute" />
                                        </children>
                                     </VBox>
                                     <GridPane gridLinesVisible="true" layoutX="724.0" layoutY="174.0" prefHeight="339.0" prefWidth="417.0">
@@ -326,6 +321,8 @@
                                           </VBox>
                                        </children>
                                     </GridPane>
+                                    <Label layoutX="324.0" layoutY="130.0" text="Local" />
+                                    <Label layoutX="859.0" layoutY="130.0" text="API (online) - Halstead" />
                                  </children>
                               </Pane>
                            </center>
