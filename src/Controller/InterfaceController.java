@@ -6,10 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import metrics.HalsteadMetrics;
 import metrics.MetricMachine;
@@ -179,7 +176,7 @@ public class InterfaceController implements Initializable {
         addRowsColumns();
         MatrixToGridpane();
 
-        matrixAnchor.setPrefSize(gridPane.getMaxHeight(),gridPane.getMaxHeight());
+        matrixAnchor.setPrefSize(gridPane.getMaxWidth(),gridPane.getMaxHeight());
     }
 
 
@@ -222,8 +219,15 @@ public class InterfaceController implements Initializable {
         vb.getChildren().addAll(a);
 
         gridPane.add(vb,0,0);
-        gridPane.getChildren().get(0).maxWidth(10);
-        gridPane.getChildren().get(0).maxHeight(10);
+
+        ColumnConstraints column = new ColumnConstraints();
+        column.setPrefWidth(column.getPercentWidth() + 55);
+        gridPane.getColumnConstraints().addAll(column);
+
+        RowConstraints row = new RowConstraints();
+        row.setPrefHeight(row.getPercentHeight() + 40);
+        gridPane.getRowConstraints().addAll(row);
+
         for(int v=0;v<similarity.getMatrix().matrixSize();v++){
 //            System.out.print(similarity.getMatrix().getUserFileNames().get(v));
             //FOR LABELS
@@ -261,15 +265,23 @@ public class InterfaceController implements Initializable {
 
                 dataObj.getVbox().getChildren().addAll(dataObj.getLabel());
 
-                StackPane pane = new StackPane();
-                pane.setAlignment(Pos.CENTER);
-                pane.getChildren().addAll(dataObj.getRect(),vbox);
+//                StackPane pane = new StackPane();
+//                pane.setAlignment(Pos.CENTER);
+//                pane.getChildren().addAll(dataObj.getRect(),vbox);
 
                 gridPane.add(dataObj.getVbox(),y+1,x+1);
 
             }
+            ColumnConstraints columnNext = new ColumnConstraints();
+            columnNext.setPrefWidth(columnNext.getPercentWidth() + 55);
+            gridPane.getColumnConstraints().addAll(columnNext);
+
+            RowConstraints rowNext = new RowConstraints();
+            rowNext.setPrefHeight(rowNext.getPercentHeight() + 40);
+            gridPane.getRowConstraints().addAll(rowNext);
             System.out.println();
         }
+        System.out.println();
     }
 
     public void exitProg() {
