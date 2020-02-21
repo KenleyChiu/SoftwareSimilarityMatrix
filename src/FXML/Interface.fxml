@@ -56,10 +56,10 @@
                                           <RadioButton fx:id="byString" mnemonicParsing="false" onAction="#string" text="String" toggleGroup="$comparison" />
                                        </children>
                                     </VBox>
-                                    <VBox alignment="BASELINE_CENTER" prefHeight="129.0" prefWidth="161.0" spacing="20.0">
+                                    <VBox alignment="CENTER" prefHeight="115.0" prefWidth="196.0" spacing="20.0">
                                        <children>
-                                          <CheckBox fx:id="saveAsTextFile" mnemonicParsing="false" text="Save to Text File" />
-                                          <TextField fx:id="logFileName" />
+                                          <CheckBox fx:id="saveAsTextFile" mnemonicParsing="false" onAction="#textFile" text="Save to Text File" />
+                                          <TextField fx:id="logFileName" alignment="CENTER" disable="true" maxWidth="135.0" promptText="enter filename" />
                                        </children>
                                     </VBox>
                                  </children>
@@ -108,7 +108,7 @@
                                                 <Label fx:id="statusMessage" text="-" />
                                              </children>
                                           </VBox>
-                                          <ListView fx:id="program1" layoutX="729.0" layoutY="105.0" prefHeight="294.0" prefWidth="343.0" />
+                                          <ListView fx:id="top5Listview" layoutX="729.0" layoutY="105.0" prefHeight="294.0" prefWidth="343.0" />
                                        </children>
                                     </Pane>
                                  </children>
@@ -229,7 +229,7 @@
                                           <HBox alignment="CENTER" prefHeight="44.0" prefWidth="404.0" spacing="20.0">
                                              <children>
                                                 <Label text="Folders:" />
-                                                <TextField fx:id="folderTextfield" />
+                                                <TextField fx:id="folderTextfield" promptText="enter file path or folder" />
                                                 <Button fx:id="compute" mnemonicParsing="false" onAction="#setMetricsTable" text="Compute" />
                                              </children>
                                           </HBox>
