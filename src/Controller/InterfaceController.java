@@ -121,10 +121,19 @@ public class InterfaceController implements Initializable {
     }
 
     private void setTop10Listview(){
-        for(int i=0; i<similarity.getMatrix().getResultsSize(); i++)
-        {
-            top10Listview.getItems().add(similarity.getMatrix().getRowRepo(i)+ " and " + similarity.getMatrix().getColumnRepo(i)+": " + similarity.getMatrix().getResults(i));
+        if(similarity.getMatrix().getResultsSize()<10){
+            for(int i=0; i<similarity.getMatrix().getResultsSize(); i++)
+            {
+                top10Listview.getItems().add(i+1 + ". " + similarity.getMatrix().getRowRepo(i)+ " and " + similarity.getMatrix().getColumnRepo(i)+": " + similarity.getMatrix().getResults(i));
+            }
         }
+        else {
+            for(int i=0; i<10; i++)
+            {
+                top10Listview.getItems().add(i+1 + ". " + similarity.getMatrix().getRowRepo(i)+ " and " + similarity.getMatrix().getColumnRepo(i)+": " + similarity.getMatrix().getResults(i));
+            }
+        }
+
     }
 
     public void setMetricsTableApi(String pathDirectory) throws IOException {
@@ -192,7 +201,6 @@ public class InterfaceController implements Initializable {
             }
         }
 
-
     }
 
     public void removeRowsColumns(){
@@ -214,6 +222,8 @@ public class InterfaceController implements Initializable {
         vb.getChildren().addAll(a);
 
         gridPane.add(vb,0,0);
+        gridPane.getChildren().get(0).maxWidth(10);
+        gridPane.getChildren().get(0).maxHeight(10);
         for(int v=0;v<similarity.getMatrix().matrixSize();v++){
 //            System.out.print(similarity.getMatrix().getUserFileNames().get(v));
             //FOR LABELS
