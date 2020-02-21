@@ -61,7 +61,7 @@
                                     </VBox>
                                     <VBox alignment="CENTER" prefHeight="128.0" prefWidth="196.0" spacing="20.0">
                                        <children>
-                                          <CheckBox fx:id="saveAsTextFile" mnemonicParsing="false" onAction="#textFile" styleClass="labelSmall" stylesheets="@bg.css" text="Save to Text File" />
+                                          <CheckBox fx:id="saveAsTextFile" mnemonicParsing="false" onAction="#textFile" styleClass="labelSmall" stylesheets="@bg.css" text="Text File for Rankings" />
                                           <TextField fx:id="logFileName" alignment="CENTER" disable="true" maxWidth="135.0" promptText="enter filename" styleClass="labelSmall" />
                                        </children>
                                     </VBox>
