@@ -6,15 +6,17 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Similarity {
-    private float  percentage = 0;
+    private float  percentage=0,longestLength=0,currentLength=0;
     private Scanner checkerScan, comparisonScan;
     private Matrix data = new Matrix();
     private String similarString = "";
     private FileHandling files= new FileHandling();
 
+    private ArrayList<String> longestLineStrings = new ArrayList<>();
+
 
     private void ReadCodeLine() {
-        int sameLines=0,totalLines=0,longestLength=0;
+        int sameLines=0,totalLines=0;
         ProgramLine progLine;
 
         ArrayList<ProgramLine> arrayA = new ArrayList<>();
@@ -62,8 +64,15 @@ public class Similarity {
         for(int x = 0; x< arrayA.size(); x++){  //arrayA.size()
             for(int y = 0; y< arrayB.size(); y++){  //arrayB.size()
                 if(arrayA.get(x).getLine().equals(arrayB.get(y).getLine())){
-                    int currentLength = arrayA.get(x).getLine().length();
-                    if(currentLength > longestLength) similarString = arrayA.get(x).getLine();
+
+
+
+                    currentLength = arrayA.get(x).getLine().length();
+                    if(currentLength > longestLength) {
+                        similarString = arrayA.get(x).getLine();
+                        longestLength = currentLength;
+                    }
+
                     if(!arrayB.get(y).getBoolean()&&!arrayA.get(x).getBoolean()) {
                         arrayB.get(y).setBoolean(true);
                         arrayA.get(x).setBoolean(true);
@@ -76,7 +85,9 @@ public class Similarity {
         checkerScan.close();
         comparisonScan.close();
         percentage = ((float)sameLines / (float)totalLines);
+        longestLineStrings.add(similarString);
     }
+
 
     public String longestString(){
         return similarString;
@@ -183,7 +194,6 @@ public class Similarity {
             data.setMatrix();//saving the data gathered to another array list for the correlation matrix
         }
         generateScores();
-
     }
 
     public void generateScores()

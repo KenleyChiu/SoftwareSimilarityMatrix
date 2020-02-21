@@ -14,9 +14,10 @@ if not os.path.exists(path):
 os.chdir(path)
 
 # acquire repositories
+<<<<<<< HEAD
 with open("D:\\Downloads\\College stuff\\SoftwareSimilarityMatrix\\Repo.txt",'r') as repo_list:
     for count, repo in enumerate(repo_list):    
-       pair_id = "LBYCPD2_Pair" + str(count)
+       pair_id = "Pair " + str(count+1)
        print("Downloading ", pair_id)
        Repo.clone_from(repo.strip(), pair_id, branch='master')
    
