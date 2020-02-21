@@ -25,7 +25,7 @@ public class InterfaceController implements Initializable {
     public Button compare, exit;
     public AnchorPane matrixAnchor;
     public Label vol,length,vocab,longestSimilarString,difficulty,effort,intelligence,time,statusMessage;
-    public Label apiLength,apiVocab,apiDifficulty,apiEffort,apiTime,apiVolume,apiBugs;
+    public Label apiLength,apiVocab,apiDifficulty,apiEffort,apiTime,apiVolume,apiBugs,statusMessage2;
 //    public TableView<DataEntry> similaritiesTable;
 //    public TableColumn<DataEntry,String> program1,program2,score;
     public ListView<String> top10Listview;
@@ -84,7 +84,7 @@ public class InterfaceController implements Initializable {
         if(othersOp1.isSelected())
         {
             if (filesTextField.getText() == null || filesTextField.getText().trim().isEmpty()) {                statusMessage.setText("Textfield is Empty!");
-                statusMessage.setText("Others textfield is Empty!");
+                statusMessage.setText("Others Textfield is Empty!");
                 return;
 //                throw new NullPointerException("Invalid Input");
             }
@@ -95,7 +95,7 @@ public class InterfaceController implements Initializable {
         if(saveAsTextFile.isSelected())
         {
             if (logFileName.getText() == null || logFileName.getText().trim().isEmpty()) {
-                statusMessage.setText("Enter a text file name!");
+                statusMessage.setText("Enter a Text File Name!");
                 return;
 //                throw new NullPointerException("Invalid Input");
             }
@@ -143,8 +143,14 @@ public class InterfaceController implements Initializable {
         SystemMetrics metrics = new SystemMetrics();
         File masterFile;
 
-        folder = folderTextfield.getText().replaceAll("\\\\","\\\\\\\\");
-        masterFile = new File(folder);  //enter src for our files [API only works for java files
+        if(folderTextfield.getText() == null || folderTextfield.getText().trim().isEmpty()) {
+            statusMessage2.setText("Enter a Folder File Path!");
+            return;
+        }
+        else {
+            folder = folderTextfield.getText().replaceAll("\\\\", "\\\\\\\\");
+            masterFile = new File(folder);  //enter src for our files [API only works for java files
+        }
 
         metrics.createSystemMetricsTable(masterFile,onlySourceFiles);  //check this for other's files
 
