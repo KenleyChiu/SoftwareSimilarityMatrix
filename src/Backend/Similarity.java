@@ -194,9 +194,6 @@ public class Similarity {
         }
         generateScores();
 
-        createScores();
-        data.sortData();
-
     }
 
     public void generateScores()
@@ -211,6 +208,12 @@ public class Similarity {
             }
         }
         data.sortData();
+
+        for(int i=0; i<data.matrixSize(); i++) {
+            System.out.println();
+            System.out.print(data.getRowRepo(i) + " " + data.getColumnRepo(i) + " " + data.getResults(i));
+        }
+
     }
 
     public Matrix getMatrix(){
