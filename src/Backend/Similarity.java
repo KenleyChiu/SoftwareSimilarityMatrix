@@ -2,9 +2,7 @@ package Backend;
 
 import java.io.*;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Similarity {
@@ -13,6 +11,9 @@ public class Similarity {
     private Matrix data = new Matrix();
     private String similarString = "";
     private FileHandling files= new FileHandling();
+    private ArrayList<String> rowRepo = new ArrayList<>();
+    private ArrayList<String> columnRepo = new ArrayList<>();
+    private ArrayList<Float> result = new ArrayList<>();
 
     private void ReadCodeLine() {
         int sameLines=0,totalLines=0,longestLength=0;
@@ -193,10 +194,22 @@ public class Similarity {
 
     }
 
+    public void createScores()
+    {
+        for(int i=0; i<data.matrixSize(); i++)
+        {
+            for(int j=i+1; j<data.getMatrix().get(i).size(); j++)
+            {
+                data.setRowRepo(data.getUserFileNames().get(i));
+                data.setColumnRepo(data.getUserFileNames().get(j));
+                data.setResults(data.getMatrix().get(i).get(j));
+            }
+        }
+    }
+
     public Matrix getMatrix(){
         return data;
     }
-
 
 
 
