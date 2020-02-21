@@ -192,6 +192,9 @@ public class Similarity {
             data.setMatrix();//saving the data gathered to another array list for the correlation matrix
         }
 
+        createScores();
+        data.sortData();
+
     }
 
     public void createScores()
