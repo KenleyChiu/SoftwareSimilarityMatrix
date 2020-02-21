@@ -26,7 +26,7 @@ public class InterfaceController implements Initializable {
     public Button compare, exit;
     public AnchorPane matrixAnchor;
     public Label vol,length,vocab,longestSimilarString,difficulty,effort,intelligence,time,statusMessage;
-    public Label apiLength,apiVocab,apiDifficulty,apiEffort,apiTime,apiVolume,apiBugs;
+    public Label apiLength,apiVocab,apiDifficulty,apiEffort,apiTime,apiVolume,apiBugs,statusMessage2;
 //    public TableView<DataEntry> similaritiesTable;
 //    public TableColumn<DataEntry,String> program1,program2,score;
     public ListView<String> top10Listview;
@@ -83,16 +83,22 @@ public class InterfaceController implements Initializable {
         if(cppOp.isSelected()) type.add(".cpp");
         if(othersOp1.isSelected())
         {
-            if (filesTextField.getText() == null || filesTextField.getText().trim().isEmpty())
-                throw new NullPointerException("Invalid Input");
+            if (filesTextField.getText() == null || filesTextField.getText().trim().isEmpty()) {                statusMessage.setText("Textfield is Empty!");
+                statusMessage.setText("Others Textfield is Empty!");
+                return;
+//                throw new NullPointerException("Invalid Input");
+            }
             else
                 type.add(filesTextField.getText());
 
         }
         if(saveAsTextFile.isSelected())
         {
-            if (logFileName.getText() == null || logFileName.getText().trim().isEmpty())
-                throw new NullPointerException("Invalid Input");
+            if (logFileName.getText() == null || logFileName.getText().trim().isEmpty()) {
+                statusMessage.setText("Enter a Text File Name!");
+                return;
+//                throw new NullPointerException("Invalid Input");
+            }
             else
                 type.add(filesTextField.getText());
 
@@ -120,9 +126,8 @@ public class InterfaceController implements Initializable {
             if(i+1>similarity.getMatrix().getResultsSize()) break;
             top10Listview.getItems().add(similarity.getMatrix().getRowRepo(i)+ " and " + similarity.getMatrix().getColumnRepo(i)+": " + similarity.getMatrix().getResults(i));
         }
+
     }
-
-
 
     public void setMetricsTableApi(String pathDirectory) throws IOException {
         HalsteadMetrics hal = MetricMachine.getMetrics(pathDirectory);
@@ -140,8 +145,14 @@ public class InterfaceController implements Initializable {
         SystemMetrics metrics = new SystemMetrics();
         File masterFile;
 
-        folder = folderTextfield.getText().replaceAll("\\\\","\\\\\\\\");
-        masterFile = new File(folder);  //enter src for our files [API only works for java files
+        if(folderTextfield.getText() == null || folderTextfield.getText().trim().isEmpty()) {
+            statusMessage2.setText("Enter a Folder File Path!");
+            return;
+        }
+        else {
+            folder = folderTextfield.getText().replaceAll("\\\\", "\\\\\\\\");
+            masterFile = new File(folder);  //enter src for our files [API only works for java files
+        }
 
         metrics.createSystemMetricsTable(masterFile,onlySourceFiles);  //check this for other's files
 
@@ -160,7 +171,10 @@ public class InterfaceController implements Initializable {
     public void createMatrix() {
         addRowsColumns();
         MatrixToGridpane();
+
+        matrixAnchor.setPrefSize(gridPane.getMaxHeight(),gridPane.getMaxHeight());
     }
+
 
     public void addRowsColumns(){
 
@@ -179,7 +193,6 @@ public class InterfaceController implements Initializable {
                 gridPane.addColumn(y);
             }
         }
-
 
     }
 
@@ -202,6 +215,8 @@ public class InterfaceController implements Initializable {
         vb.getChildren().addAll(a);
 
         gridPane.add(vb,0,0);
+        gridPane.getChildren().get(0).maxWidth(10);
+        gridPane.getChildren().get(0).maxHeight(10);
         for(int v=0;v<similarity.getMatrix().matrixSize();v++){
 //            System.out.print(similarity.getMatrix().getUserFileNames().get(v));
             //FOR LABELS
