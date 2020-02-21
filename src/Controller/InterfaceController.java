@@ -25,12 +25,11 @@ public class InterfaceController implements Initializable {
 
     public Button compare, exit;
     public AnchorPane matrixAnchor;
-    public ListView list;
     public Label vol,length,vocab,longestSimilarString,difficulty,effort,intelligence,time,statusMessage;
     public Label apiLength,apiVocab,apiDifficulty,apiEffort,apiTime,apiVolume,apiBugs;
 //    public TableView<DataEntry> similaritiesTable;
 //    public TableColumn<DataEntry,String> program1,program2,score;
-    public ListView<String> program1,program2,score;
+    public ListView<String> top5Listview;
     public CheckBox javaOp,cppOp,othersOp1,saveAsTextFile;
     public TextField filePath,filesTextField,logFileName;
     private GridPane gridPane;
@@ -55,14 +54,20 @@ public class InterfaceController implements Initializable {
         folder = "src";
         onlySourceFiles = true;
     }
-    public void mergedCodes(){
-        folder = "mergedCodes";
-        onlySourceFiles = false;
-    }
+//    public void mergedCodes(){
+//        folder = "mergedCodes";
+//        onlySourceFiles = false;
+//    }
+
     public void otherOperation()
     {
         if(othersOp1.isSelected()) filesTextField.setDisable(false);
         else filesTextField.setDisable(true);
+    }
+
+    public void textFile(){
+        if(saveAsTextFile.isSelected()) logFileName.setDisable(false);
+        else logFileName.setDisable(true);
     }
 
     public void retrieveGit() throws IOException {
@@ -100,12 +105,12 @@ public class InterfaceController implements Initializable {
         if(saveAsTextFile.isSelected()) files.createScore(similarity.getMatrix(),logFileName.getText());
 
         ObservableList<String> listView = FXCollections.observableArrayList(
-                "kenley"//+"matthew"
+                similarity.getMatrix().getRowRepo(0)+similarity.getMatrix().getColumnRepo(0)+similarity.getMatrix().getResults(0)
 
         );
 
 
-        program1.setItems(listView);
+        top5Listview.setItems(listView);
 
 //        createTop5();
     }
