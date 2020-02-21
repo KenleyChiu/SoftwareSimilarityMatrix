@@ -135,21 +135,10 @@
               <AnchorPane fx:id="metricsAnchor" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <BorderPane prefHeight="769.0" prefWidth="1300.0">
-                           <top>
-                              <VBox alignment="CENTER" prefHeight="121.0" prefWidth="1300.0" BorderPane.alignment="CENTER">
-                                 <children>
-                                    <Label text="Software Metrics">
-                                       <font>
-                                          <Font size="37.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </VBox>
-                           </top>
                            <center>
-                              <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                              <Pane prefHeight="624.0" prefWidth="1300.0" BorderPane.alignment="CENTER">
                                  <children>
-                                    <GridPane gridLinesVisible="true" layoutX="133.0" layoutY="174.0" prefHeight="339.0" prefWidth="417.0" styleClass="labelSmall" stylesheets="@bg.css">
+                                    <GridPane gridLinesVisible="true" layoutX="147.0" layoutY="135.0" prefHeight="339.0" prefWidth="417.0" styleClass="labelSmall" stylesheets="@bg.css">
                                       <columnConstraints>
                                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -166,22 +155,22 @@
                                        <children>
                                           <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                                              <children>
-                                                <Label text="Program Length" />
+                                                <Label stylesheets="@bg.css" text="Program Length" />
                                              </children>
                                           </VBox>
                                           <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
                                              <children>
-                                                <Label text="Program Vocabulary" />
+                                                <Label stylesheets="@bg.css" text="Program Vocabulary" />
                                              </children>
                                           </VBox>
                                           <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2">
                                              <children>
-                                                <Label text="Volume" />
+                                                <Label stylesheets="@bg.css" text="Volume" />
                                              </children>
                                           </VBox>
                                           <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="3">
                                              <children>
-                                                <Label text="Program Difficulty" />
+                                                <Label stylesheets="@bg.css" text="Program Difficulty" />
                                              </children>
                                           </VBox>
                                           <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
@@ -205,7 +194,7 @@
                                              </children></VBox>
                                           <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="4">
                                              <children>
-                                                <Label text="Program Effort" />
+                                                <Label stylesheets="@bg.css" text="Program Effort" />
                                              </children>
                                           </VBox>
                                           <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
@@ -215,7 +204,7 @@
                                           </VBox>
                                           <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="6">
                                              <children>
-                                                <Label text="Intelligence Content" />
+                                                <Label stylesheets="@bg.css" text="Intelligence Content" />
                                              </children>
                                           </VBox>
                                           <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
@@ -225,7 +214,7 @@
                                           </VBox>
                                           <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="5">
                                              <children>
-                                                <Label text="Programming Time" />
+                                                <Label stylesheets="@bg.css" text="Programming Time" />
                                              </children>
                                           </VBox>
                                           <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
@@ -235,18 +224,18 @@
                                           </VBox>
                                        </children>
                                     </GridPane>
-                                    <VBox alignment="CENTER" layoutX="441.0" layoutY="14.0" prefHeight="123.0" prefWidth="418.0" spacing="20.0">
+                                    <VBox alignment="CENTER" layoutX="442.0" prefHeight="80.0" prefWidth="418.0" spacing="20.0">
                                        <children>
                                           <HBox alignment="CENTER" prefHeight="44.0" prefWidth="404.0" spacing="20.0">
                                              <children>
-                                                <Label styleClass="labelHeader" stylesheets="@bg.css" text="Folders:" />
+                                                <Label styleClass="labelHeader" stylesheets="@bg.css" text="Folder:" />
                                                 <TextField fx:id="folderTextfield" promptText="enter file path or folder" styleClass="labelSmall" stylesheets="@bg.css" />
                                                 <Button fx:id="compute" mnemonicParsing="false" onAction="#setMetricsTable" styleClass="labelSmall" stylesheets="@bg.css" text="Compute" />
                                              </children>
                                           </HBox>
                                        </children>
                                     </VBox>
-                                    <GridPane gridLinesVisible="true" layoutX="724.0" layoutY="174.0" prefHeight="339.0" prefWidth="417.0" styleClass="labelSmall" stylesheets="@bg.css">
+                                    <GridPane gridLinesVisible="true" layoutX="738.0" layoutY="135.0" prefHeight="339.0" prefWidth="417.0" styleClass="labelSmall" stylesheets="@bg.css">
                                        <columnConstraints>
                                           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -333,11 +322,36 @@
                                           </VBox>
                                        </children>
                                     </GridPane>
-                                    <Label layoutX="319.0" layoutY="130.0" styleClass="labelHeader" stylesheets="@bg.css" text="Local" />
-                                    <Label layoutX="838.0" layoutY="130.0" styleClass="labelHeader" stylesheets="@bg.css" text="API (online) - Halstead" />
+                                    <Label layoutX="333.0" layoutY="91.0" styleClass="labelHeader" stylesheets="@bg.css" text="Local" />
+                                    <Label layoutX="852.0" layoutY="91.0" styleClass="labelHeader" stylesheets="@bg.css" text="API (online) - Halstead" />
+                                    <VBox alignment="CENTER" layoutX="517.0" layoutY="489.0" prefHeight="88.0" prefWidth="269.0" spacing="20.0">
+                                       <children>
+                                          <Label styleClass="labelHeader" stylesheets="@bg.css" text="Status:" />
+                                          <Label fx:id="statusMessage2" styleClass="labelSmall" stylesheets="@bg.css" text="-" />
+                                       </children>
+                                    </VBox>
                                  </children>
                               </Pane>
                            </center>
+                           <top>
+                              <HBox alignment="CENTER_LEFT" prefHeight="148.0" prefWidth="1300.0" spacing="150.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <ImageView fitHeight="135.0" fitWidth="309.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../fxml%20images/LOGO%20PNG%20v2.png" />
+                                       </image>
+                                       <HBox.margin>
+                                          <Insets left="40.0" />
+                                       </HBox.margin>
+                                    </ImageView>
+                                    <Label styleClass="labelTitle" stylesheets="@bg.css" text="Software Metrics">
+                                       <font>
+                                          <Font size="37.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </top>
                         </BorderPane>
                      </children>
                   </AnchorPane>
