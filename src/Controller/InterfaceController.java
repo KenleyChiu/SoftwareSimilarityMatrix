@@ -6,7 +6,6 @@ import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
@@ -71,8 +70,6 @@ public class InterfaceController implements Initializable {
 
     public void compareFiles() throws IOException {
 
-
-
         //Kenley Edit
         type= new ArrayList<>();
         if(javaOp.isSelected()) type.add(".java");
@@ -97,7 +94,7 @@ public class InterfaceController implements Initializable {
 
         longestSimilarString.setText(similarity.longestString());
 
-        if(saveAsTextFile.isSelected()) files.createScore(similarity.getMatrix(),logFileName.getText());
+        if(saveAsTextFile.isSelected()) files.writeScoreFile(similarity.getMatrix(),logFileName.getText());
 
         ObservableList<String> listView = FXCollections.observableArrayList(
                 "kenley"//+"matthew"
