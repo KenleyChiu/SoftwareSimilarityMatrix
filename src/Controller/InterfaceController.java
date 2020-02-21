@@ -18,6 +18,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class InterfaceController implements Initializable {
@@ -76,7 +77,6 @@ public class InterfaceController implements Initializable {
     public void compareFiles() throws IOException {
 
 //        statusMessage.setText("Loading");
-
         //Kenley Edit
         type= new ArrayList<>();
         if(javaOp.isSelected()) type.add(".java");
@@ -111,12 +111,13 @@ public class InterfaceController implements Initializable {
         if(saveAsTextFile.isSelected()) files.writeScoreFile(similarity.getMatrix(),logFileName.getText());
 
         setTop10Listview();
-
     }
 
     private void setTop10Listview(){
-        for(int i=0; i<similarity.getMatrix().getResultsSize(); i++)
+        top10Listview.getItems().clear();
+        for(int i=0; i<10; i++)
         {
+            if(i+1>similarity.getMatrix().getResultsSize()) break;
             top10Listview.getItems().add(similarity.getMatrix().getRowRepo(i)+ " and " + similarity.getMatrix().getColumnRepo(i)+": " + similarity.getMatrix().getResults(i));
         }
     }
