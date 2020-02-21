@@ -90,7 +90,6 @@ public class InterfaceController implements Initializable {
             }
             else
                 type.add(filesTextField.getText());
-
         }
         if(saveAsTextFile.isSelected())
         {
@@ -101,13 +100,25 @@ public class InterfaceController implements Initializable {
             }
             else
                 type.add(filesTextField.getText());
-
+        }
+        filesTextField.clear();
+        logFileName.clear();
+        //Kenley Edit
+        File checkFileStatus= new File(filePath.getText());
+        if(!checkFileStatus.exists()&& !filePath.getText().equals(""))
+        {
+            statusMessage.setText("File not exist");
+            filePath.clear();
+            return;
         }
 
-        filesTextField.clear();
-        //Kenley Edit
 
         similarity.creationMatrix(comparison,type,filePath.getText());
+        if(similarity.getMatrix().getMatrix().isEmpty())
+        {
+            statusMessage.setText("Empty Matrix");
+            return;
+        }
 
         createMatrix();
 
@@ -151,7 +162,14 @@ public class InterfaceController implements Initializable {
         }
         else {
             folder = folderTextfield.getText().replaceAll("\\\\", "\\\\\\\\");
-            masterFile = new File(folder);  //enter src for our files [API only works for java files
+            masterFile = new File(folder);  //enter src for our files [API only works for java files]
+            if(!masterFile.exists())
+            {
+                statusMessage2.setText("File not Exist");
+                folderTextfield.clear();
+                return;
+            }
+
         }
 
         metrics.createSystemMetricsTable(masterFile,onlySourceFiles);  //check this for other's files
