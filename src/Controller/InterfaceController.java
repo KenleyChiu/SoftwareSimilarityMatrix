@@ -121,7 +121,7 @@ public class InterfaceController implements Initializable {
         for(int i=0; i<10; i++)
         {
             if(i+1>similarity.getMatrix().getResultsSize()) break;
-            top10Listview.getItems().add(similarity.getMatrix().getRowRepo(i)+ " and " + similarity.getMatrix().getColumnRepo(i)+": " + similarity.getMatrix().getResults(i));
+            top10Listview.getItems().add(i+1 + ". " + similarity.getMatrix().getRowRepo(i)+ " and " + similarity.getMatrix().getColumnRepo(i)+": " + similarity.getMatrix().getResults(i));
         }
 
     }
