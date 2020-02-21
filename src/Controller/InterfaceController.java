@@ -6,8 +6,15 @@ import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
+<<<<<<< HEAD
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.*;
+=======
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+>>>>>>> 652e97dce7392417e80caf2277828d54e125f14b
 import javafx.stage.Stage;
 import metrics.HalsteadMetrics;
 import metrics.MetricMachine;
@@ -73,8 +80,11 @@ public class InterfaceController implements Initializable {
 
     public void compareFiles() throws IOException {
 
+<<<<<<< HEAD
 //        statusMessage.setText("Loading");
 
+=======
+>>>>>>> 652e97dce7392417e80caf2277828d54e125f14b
         //Kenley Edit
         type= new ArrayList<>();
         if(javaOp.isSelected()) type.add(".java");
@@ -99,6 +109,12 @@ public class InterfaceController implements Initializable {
         longestSimilarString.setText(similarity.longestString());
 
         if(saveAsTextFile.isSelected()) files.writeScoreFile(similarity.getMatrix(),logFileName.getText());
+<<<<<<< HEAD
+=======
+
+        ObservableList<String> listView = FXCollections.observableArrayList(
+                "kenley"//+"matthew"
+>>>>>>> 652e97dce7392417e80caf2277828d54e125f14b
 
         setTop10Listview();
 
