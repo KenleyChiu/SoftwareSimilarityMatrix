@@ -117,7 +117,7 @@ public class Matrix {
         int i= low-1;
         for(int j=low; j<high; j++)
         {
-            if(result.get(j)<pivot)
+            if(result.get(j)>pivot)
             {
                 i++;
                 float resultTemp=result.get(i);
