@@ -28,6 +28,7 @@ public class FileHandling {
         Process p = Runtime.getRuntime().exec("python RepoGrabber.py"); //python RepoGrabber.py
         BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()));
         System.out.println("Completed:"+in.readLine());
+        
     }
 
     private void deleteCodes(File codes)
@@ -125,7 +126,7 @@ public class FileHandling {
 
 
     public void writeScoreFile(Matrix matrix, String fileName) throws IOException {
-        BufferedWriter out = new BufferedWriter(new FileWriter("Logs/"+fileName+".txt",false));
+        BufferedWriter out = new BufferedWriter(new FileWriter(fileName+".txt",false));
         out.write("No.\tRepository 1\t\tRepoitory 2\t\tScores");
         out.newLine();
         for(int i=0; i<matrix.getResultsSize(); i++)
