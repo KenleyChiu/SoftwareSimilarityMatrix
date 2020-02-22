@@ -88,8 +88,6 @@ public class InterfaceController implements Initializable {
                 return;
 //                throw new NullPointerException("Invalid Input");
             }
-            else
-                type.add(filesTextField.getText());
         }
         filesTextField.clear();
         //Kenley Edit
@@ -116,6 +114,7 @@ public class InterfaceController implements Initializable {
 
         if(saveAsTextFile.isSelected()) files.writeScoreFile(similarity.getMatrix(),logFileName.getText());
         logFileName.clear();    //clear it after this^ bc it uses logFileName.getText()
+
         setTop10Listview();
     }
 

@@ -6,5 +6,4 @@
 *.swp
 out/*
 .idea/*
-
 /RepoGrabber.py

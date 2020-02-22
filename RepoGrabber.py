@@ -14,7 +14,7 @@ if not os.path.exists(path):
 os.chdir(path)
 
 # acquire repositories
-with open("D:\\College\\TERM5\\LBYCP2D\\Module 1-3\\SoftwareSimilarityMatrix\\Repo.txt",'r') as repo_list:
+with open("D:\\Downloads\\College stuff\\SoftwareSimilarityMatrix\\Repo.txt",'r') as repo_list:
     for count, repo in enumerate(repo_list):    
        pair_id = "LBYCPD2_Pair" + str(count)
        print("Downloading ", pair_id)
