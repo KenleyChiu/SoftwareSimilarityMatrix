@@ -1,8 +1,6 @@
 package Controller;
 
 import Backend.*;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
@@ -15,7 +13,6 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class InterfaceController implements Initializable {
@@ -47,10 +44,10 @@ public class InterfaceController implements Initializable {
     }
 
     //FOLDER
-    public void src(){
-        folder = "src";
-        onlySourceFiles = true;
-    }
+//    public void src(){
+//        folder = "src";
+//        onlySourceFiles = true;
+//    }
 //    public void mergedCodes(){
 //        folder = "mergedCodes";
 //        onlySourceFiles = false;
@@ -142,10 +139,10 @@ public class InterfaceController implements Initializable {
 
         apiLength.setText(Double.toString(Math.round(hal.getProglen())));
         apiVocab.setText(Double.toString(Math.round(hal.getVocabulary())));
-        apiVolume.setText(Double.toString(Math.round(hal.getVolume())) + " bits");
+        apiVolume.setText(Math.round(hal.getVolume()) + " bits");
         apiDifficulty.setText(Double.toString(Math.round(hal.getDifficulty())));
         apiEffort.setText(Double.toString(Math.round(hal.getEffort())));
-        apiTime.setText(Double.toString(Math.round(hal.getTimeDelBugs())));
+        apiTime.setText(Double.toString(Math.round(hal.getTimeReqProg())));
         apiBugs.setText(Double.toString(Math.round(hal.getTimeDelBugs())));
     }
 
@@ -162,7 +159,7 @@ public class InterfaceController implements Initializable {
             masterFile = new File(folder);  //enter src for our files [API only works for java files]
             if(!masterFile.exists())
             {
-                statusMessage2.setText("File not Exist");
+                statusMessage2.setText("File does not Exist");
                 folderTextfield.clear();
                 return;
             }
@@ -181,6 +178,8 @@ public class InterfaceController implements Initializable {
 
         //API METRICS
         setMetricsTableApi(folder);
+
+        statusMessage2.setText("Metrics Generated!");
     }
 
     public void createMatrix() {
@@ -232,11 +231,11 @@ public class InterfaceController implements Initializable {
         gridPane.add(vb,0,0);
 
         ColumnConstraints column = new ColumnConstraints();
-        column.setPrefWidth(column.getPercentWidth() + 55);
+        column.setPrefWidth(column.getPercentWidth()+60);
         gridPane.getColumnConstraints().addAll(column);
 
         RowConstraints row = new RowConstraints();
-        row.setPrefHeight(row.getPercentHeight() + 40);
+        row.setPrefHeight(row.getPercentHeight()+40);
         gridPane.getRowConstraints().addAll(row);
 
         for(int v=0;v<similarity.getMatrix().matrixSize();v++){
@@ -284,12 +283,13 @@ public class InterfaceController implements Initializable {
 
             }
             ColumnConstraints columnNext = new ColumnConstraints();
-            columnNext.setPrefWidth(columnNext.getPercentWidth() + 55);
+            columnNext.setPrefWidth(columnNext.getPercentWidth()+60);
             gridPane.getColumnConstraints().addAll(columnNext);
 
             RowConstraints rowNext = new RowConstraints();
-            rowNext.setPrefHeight(rowNext.getPercentHeight() + 40);
+            rowNext.setPrefHeight(rowNext.getPercentHeight()+40);
             gridPane.getRowConstraints().addAll(rowNext);
+
             System.out.println();
         }
         System.out.println();
