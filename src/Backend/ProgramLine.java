@@ -9,7 +9,7 @@ public class ProgramLine {
         this.compared=compared;
     }
 
-    public void setBoolean(boolean compared){
+    public void setCompared(boolean compared){
         this.compared=compared;
     }
 
@@ -17,7 +17,7 @@ public class ProgramLine {
         return this.line;
     }
 
-    public boolean getBoolean(){
+    public boolean isCompared(){
         return this.compared;
     }
 
