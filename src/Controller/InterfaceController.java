@@ -88,11 +88,8 @@ public class InterfaceController implements Initializable {
                 return;
 //                throw new NullPointerException("Invalid Input");
             }
-            else
-                type.add(filesTextField.getText());
         }
         filesTextField.clear();
-        logFileName.clear();
         //Kenley Edit
         File checkFileStatus= new File(filePath.getText());
         if(!checkFileStatus.exists()&& !filePath.getText().equals(""))
@@ -116,6 +113,7 @@ public class InterfaceController implements Initializable {
         longestSimilarString.setText(similarity.longestString());
 
         if(saveAsTextFile.isSelected()) files.writeScoreFile(similarity.getMatrix(),logFileName.getText());
+        logFileName.clear();
 
         setTop10Listview();
     }
