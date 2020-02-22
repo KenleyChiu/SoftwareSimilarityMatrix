@@ -66,7 +66,7 @@ public class Similarity {
                         similarString = arrayA.get(x).getLine();
                         longestLength = currentLength;
                     }
-                    if(!arrayB.get(y).getBoolean()&&!arrayA.get(x).getBoolean()) {
+                    if(!arrayB.get(y).getBoolean() && !arrayA.get(x).getBoolean()) {
                         arrayB.get(y).setBoolean(true);
                         arrayA.get(x).setBoolean(true);
                         sameLines++;
