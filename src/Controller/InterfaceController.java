@@ -21,8 +21,6 @@ public class InterfaceController implements Initializable {
     public AnchorPane matrixAnchor;
     public Label vol,length,vocab,longestSimilarString,difficulty,effort,intelligence,time,statusMessage;
     public Label apiLength,apiVocab,apiDifficulty,apiEffort,apiTime,apiVolume,apiBugs,statusMessage2;
-//    public TableView<DataEntry> similaritiesTable;
-//    public TableColumn<DataEntry,String> program1,program2,score;
     public ListView<String> top10Listview;
     public CheckBox javaOp,cppOp,othersOp1,saveAsTextFile;
     public TextField filePath,filesTextField,logFileName,folderTextfield;
@@ -44,6 +42,7 @@ public class InterfaceController implements Initializable {
     }
 
     //FOLDER
+<<<<<<< HEAD
 //    public void src(){
 //        folder = "src";
 //        onlySourceFiles = true;
@@ -52,6 +51,12 @@ public class InterfaceController implements Initializable {
 //        folder = "mergedCodes";
 //        onlySourceFiles = false;
 //    }
+=======
+    public void src(){
+        folder = "src";
+        onlySourceFiles = true;
+    }
+>>>>>>> 6b488f9070ecdcb2ea763d5ae350f592bcb9e23e
 
     public void otherOperation()
     {
@@ -66,11 +71,13 @@ public class InterfaceController implements Initializable {
 
     public void retrieveGit() throws IOException {
         files.gitFileRetriever();
+        statusMessage.setText("Retrieved all Repositories");
     }
 
     public void compareFiles() throws IOException {
 
 //        statusMessage.setText("Loading");
+
         //Kenley Edit
         type= new ArrayList<>();
         if(javaOp.isSelected()) type.add(".java");
