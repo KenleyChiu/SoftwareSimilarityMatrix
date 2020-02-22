@@ -98,12 +98,12 @@
                                                 <Label fx:id="longestSimilarString" styleClass="labelSmall" stylesheets="@bg.css" text="-" />
                                              </children>
                                           </VBox>
-                                          <ScrollPane layoutX="23.0" layoutY="83.0" prefHeight="432.0" prefWidth="831.0" styleClass="anchor" stylesheets="@bg.css">
+                                          <ScrollPane layoutX="23.0" layoutY="83.0" prefHeight="432.0" prefWidth="805.0" styleClass="anchor" stylesheets="@bg.css">
                                              <content>
                                                 <AnchorPane fx:id="matrixAnchor" minHeight="0.0" minWidth="0.0" prefHeight="647.0" prefWidth="2170.0" styleClass="labelNumbers" stylesheets="@bg.css" />
                                              </content>
                                           </ScrollPane>
-                                          <Label layoutX="929.0" layoutY="44.0" styleClass="labelHeader" stylesheets="@bg.css" text="Top 10 Similarity Scores" />
+                                          <Label layoutX="915.0" layoutY="43.0" styleClass="labelHeader" stylesheets="@bg.css" text="Top 10 Similarity Scores" />
                                           <HBox alignment="CENTER" layoutX="23.0" prefHeight="72.0" prefWidth="666.0" spacing="20.0">
                                              <children>
                                                 <Button fx:id="btnRetrieveGit" mnemonicParsing="false" onAction="#retrieveGit" styleClass="labelSmall" stylesheets="@bg.css" text="Retrieve GitHub" />
@@ -112,14 +112,14 @@
                                                 <Button fx:id="compare1" layoutX="303.0" layoutY="45.0" mnemonicParsing="false" onAction="#compareFiles" styleClass="labelSmall" text="Compare" />
                                              </children>
                                           </HBox>
-                                          <Button fx:id="exit" layoutX="974.0" layoutY="418.0" mnemonicParsing="false" onAction="#exitProg" styleClass="labelSmall" stylesheets="@bg.css" text="Quit Program" />
-                                          <VBox alignment="CENTER" layoutX="895.0" layoutY="457.0" prefHeight="117.0" prefWidth="269.0" spacing="20.0">
+                                          <Button fx:id="exit" layoutX="960.0" layoutY="417.0" mnemonicParsing="false" onAction="#exitProg" styleClass="labelSmall" stylesheets="@bg.css" text="Quit Program" />
+                                          <VBox alignment="CENTER" layoutX="881.0" layoutY="456.0" prefHeight="117.0" prefWidth="269.0" spacing="20.0">
                                              <children>
                                                 <Label styleClass="labelHeader" stylesheets="@bg.css" text="Status:" />
                                                 <Label fx:id="statusMessage" styleClass="labelSmall" stylesheets="@bg.css" text="-" />
                                              </children>
                                           </VBox>
-                                          <ListView fx:id="top10Listview" layoutX="881.0" layoutY="82.0" prefHeight="314.0" prefWidth="297.0" styleClass="labelNumbers" stylesheets="@bg.css" />
+                                          <ListView fx:id="top10Listview" layoutX="842.0" layoutY="82.0" prefHeight="314.0" prefWidth="347.0" styleClass="labelNumbers" stylesheets="@bg.css" />
                                        </children>
                                     </Pane>
                                  </children>
