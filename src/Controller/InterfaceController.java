@@ -42,21 +42,10 @@ public class InterfaceController implements Initializable {
     }
 
     //FOLDER
-<<<<<<< HEAD
-//    public void src(){
-//        folder = "src";
-//        onlySourceFiles = true;
-//    }
-//    public void mergedCodes(){
-//        folder = "mergedCodes";
-//        onlySourceFiles = false;
-//    }
-=======
     public void src(){
         folder = "src";
         onlySourceFiles = true;
     }
->>>>>>> 6b488f9070ecdcb2ea763d5ae350f592bcb9e23e
 
     public void otherOperation()
     {
