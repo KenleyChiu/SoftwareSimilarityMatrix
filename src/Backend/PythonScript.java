@@ -24,7 +24,7 @@ public class PythonScript {
                         "# acquire repositories\n" +
                         "with open(\"filename\",'r') as repo_list:\n" +
                         "    for count, repo in enumerate(repo_list):    \n" +
-                        "       pair_id = \"LBYCPD2_Pair\" + str(count)\n" +
+                        "       pair_id = \"LBYCPD2_Pair\" + str(count+1)\n" +
                         "       print(\"Downloading \", pair_id)\n" +
                         "       Repo.clone_from(repo.strip(), pair_id, branch='master')\n" +
                         "   \n" +

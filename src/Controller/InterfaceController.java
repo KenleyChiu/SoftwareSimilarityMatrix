@@ -113,7 +113,7 @@ public class InterfaceController implements Initializable {
         longestSimilarString.setText(similarity.longestString());
 
         if(saveAsTextFile.isSelected()) files.writeScoreFile(similarity.getMatrix(),logFileName.getText());
-        logFileName.clear();
+        logFileName.clear();    //clear it after this^ bc it uses logFileName.getText()
 
         setTop10Listview();
     }
@@ -225,11 +225,11 @@ public class InterfaceController implements Initializable {
         gridPane.add(vb,0,0);
 
         ColumnConstraints column = new ColumnConstraints();
-        column.setPrefWidth(column.getPercentWidth()+60);
+        column.setPrefWidth(column.getPercentWidth()+130);
         gridPane.getColumnConstraints().addAll(column);
 
         RowConstraints row = new RowConstraints();
-        row.setPrefHeight(row.getPercentHeight()+40);
+        row.setPrefHeight(row.getPercentHeight()+30);
         gridPane.getRowConstraints().addAll(row);
 
         for(int v=0;v<similarity.getMatrix().matrixSize();v++){
@@ -277,11 +277,11 @@ public class InterfaceController implements Initializable {
 
             }
             ColumnConstraints columnNext = new ColumnConstraints();
-            columnNext.setPrefWidth(columnNext.getPercentWidth()+60);
+            columnNext.setPrefWidth(columnNext.getPercentWidth()+130);
             gridPane.getColumnConstraints().addAll(columnNext);
 
             RowConstraints rowNext = new RowConstraints();
-            rowNext.setPrefHeight(rowNext.getPercentHeight()+40);
+            rowNext.setPrefHeight(rowNext.getPercentHeight()+30);
             gridPane.getRowConstraints().addAll(rowNext);
 
             System.out.println();
