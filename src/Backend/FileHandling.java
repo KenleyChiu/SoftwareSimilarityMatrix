@@ -30,7 +30,7 @@ public class FileHandling {
         System.out.println("Completed:"+in.readLine());
     }
 
-    private void deleteCodes(File codes)
+    public void deleteCodes(File codes)
     {
         String[]entries = codes.list();
         if (entries != null) {

@@ -131,10 +131,9 @@ public class Similarity {
             String[] line= scan.nextLine().split("^[a-zA-Z]+$");
             for(String s :line)
             {
-                if(!s.equals(""))
-                {
+                if(!s.equals("")) {
                     code.add(s);
-                    if(s.length()>=similarString.length()) similarString=s;
+                    if (s.length() >= similarString.length()) similarString = s;
                 }
             }
         }
