@@ -11,13 +11,16 @@ public class Similarity {
     private Matrix data = new Matrix();
     private String similarString = "";
     private FileHandling files= new FileHandling();
+    private ArrayList<ProgramLine> arrayA,arrayB;
+    private ArrayList<String> firstSameCode= new ArrayList<>();
+    private ArrayList<String> secondSameCode= new ArrayList<>();
 
-    private void ReadCodeLine() {
+    public void ReadCodeLine() {
         int sameLines=0,totalLines=0;
         ProgramLine progLine;
 
-        ArrayList<ProgramLine> arrayA = new ArrayList<>();
-        ArrayList<ProgramLine> arrayB = new ArrayList<>();
+        arrayA = new ArrayList<>();
+        arrayB = new ArrayList<>();
 
         while(checkerScan.hasNextLine() || comparisonScan.hasNextLine()) {
 
@@ -80,12 +83,19 @@ public class Similarity {
         percentage = ((float)sameLines / (float)totalLines);
     }
 
+    public ArrayList<ProgramLine> getArrayA(){
+        return arrayA;
+    }
+
+    public ArrayList<ProgramLine> getArrayB(){
+        return arrayB;
+    }
 
     public String longestString(){
         return similarString;
     }
 
-    private void ReadCodeString() {
+    public void ReadCodeString() {
         int countString = 0;
         int countTotal;
         int j=0;
@@ -106,6 +116,8 @@ public class Similarity {
                 if(firstCode.get(j).equals(secondCode.get(i)))
                 {
                     countString++;
+                    firstSameCode.add(firstCode.get(j));
+                    secondSameCode.add(secondCode.get(i));
                     firstCode.remove(j);
                     secondCode.remove(i);
                     compare=true;
@@ -123,6 +135,13 @@ public class Similarity {
         percentage = ((float) countString / (float) countTotal);
     }
 
+    public ArrayList<String> getFirstCode(){
+        return firstSameCode;
+    }
+
+    public ArrayList<String> getSecondCode(){
+        return secondSameCode;
+    }
 
     private void getAllStrings(Scanner scan, ArrayList<String> code)
     {
@@ -137,6 +156,14 @@ public class Similarity {
                 }
             }
         }
+    }
+
+    public void setCheckerScan(Scanner sc){
+        this.checkerScan=sc;
+    }
+
+    public void setComparisonScan(Scanner cs){
+        this.comparisonScan=cs;
     }
 
 
